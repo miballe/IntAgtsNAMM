@@ -1,0 +1,12 @@
+15/05 18:04:07 SEVERE agentware.ServerConnection|(2) could not read
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.io.DataInputStream.readInt(Unknown Source)
+	at tau.tac.adx.agentware.ServerConnection.run(ServerConnection.java:216)
+	at java.lang.Thread.run(Unknown Source)
+15/05 18:04:07 SEVERE agentware.SimClient|************************************************************
+15/05 18:04:07 SEVERE agentware.SimClient|* Connection Lost
+15/05 18:04:07 SEVERE agentware.SimClient|* Lost connection to localhost (will reconnect in 30 seconds)
+15/05 18:04:07 SEVERE agentware.SimClient|************************************************************

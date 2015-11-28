@@ -1,0 +1,8 @@
+@relation CampaignBidWinLossClassifierAttributes
+@attribute campaignLength numeric
+@attribute dailyAvgReachImps numeric
+@attribute qualityScore numeric
+@attribute TheBidFor1000Imps numeric
+@attribute supposedToBeWinOrLoss {0,1}
+@data
+-1,-1,-1,-1,0

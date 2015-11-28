@@ -1,0 +1,9 @@
+@relation CampaignWinLossJ48ClassifierAttributes
+
+@attribute campaignLength numeric
+@attribute totalReachImps numeric
+@attribute qualityScore numeric
+@attribute TheBidFor1000Imps numeric
+@attribute supposedToBeWinOrLoss {0,1}
+
+@data
