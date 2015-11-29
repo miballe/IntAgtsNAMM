@@ -19,3 +19,5 @@
 		both mentioned folders, under the lib folder. Also, it can be generated
 		using the install goal for maven (mvn install).
                                                        
+
+With some modifications

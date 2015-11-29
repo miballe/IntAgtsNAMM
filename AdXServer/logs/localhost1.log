@@ -1,4 +1,4 @@
-16/11 09:28:20 INFO file.FileDatabase|infodb: database opened as C:\Users\Miguel\Desktop\AdXServer\infodb
-16/11 09:28:20 INFO common.BlockingViewerServer|viewer server started at *:4042
-16/11 09:28:22 INFO sim.Admin|adding manager for simulation type tac13adx
-16/11 09:28:22 INFO server.TACTGateway|TACT Server started at *:6502
+29/11 18:22:18 INFO file.FileDatabase|infodb: database opened as /home/mabm1e15/github/IntAgtsNAMM/AdXServer/infodb
+29/11 18:22:18 INFO common.BlockingViewerServer|viewer server started at *:4042
+29/11 18:22:19 INFO sim.Admin|adding manager for simulation type tac13adx
+29/11 18:22:19 INFO server.TACTGateway|TACT Server started at *:6502
