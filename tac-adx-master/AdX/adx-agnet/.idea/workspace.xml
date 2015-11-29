@@ -4,13 +4,12 @@
     <list default="true" id="e0075869-34e0-485b-8e62-716fe3156850" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SimpleAdNetwork.java" afterPath="$PROJECT_DIR$/SimpleAdNetwork.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/SimpleAdNetwork.conf" afterPath="$PROJECT_DIR$/config/SimpleAdNetwork.conf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/adx-agnet/.idea/misc.xml" afterPath="$PROJECT_DIR$/out/production/adx-agnet/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/adx-agnet/.idea/workspace.xml" afterPath="$PROJECT_DIR$/out/production/adx-agnet/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/adx-agnet/config/SimpleAdNetwork.conf" afterPath="$PROJECT_DIR$/out/production/adx-agnet/config/SimpleAdNetwork.conf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/adx-agnet/logs/aw0.log.1" afterPath="$PROJECT_DIR$/out/production/adx-agnet/logs/aw0.log.1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/adx-agnet/logs/aw0.log.2" afterPath="$PROJECT_DIR$/out/production/adx-agnet/logs/aw0.log.2" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/adx-agnet/logs/aw1.log.1" afterPath="$PROJECT_DIR$/out/production/adx-agnet/logs/aw1.log.1" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/adx-agnet/logs/aw2.log.1" afterPath="$PROJECT_DIR$/out/production/adx-agnet/logs/aw2.log.1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/adx-agnet/logs/aw3.log.1" afterPath="$PROJECT_DIR$/out/production/adx-agnet/logs/aw3.log.1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/adx-agnet/logs/aw4.log.1" afterPath="$PROJECT_DIR$/out/production/adx-agnet/logs/aw4.log.1" />
     </list>
     <ignored path="adx-agnet.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,11 +34,13 @@
       <file leaf-file-name="SimpleAdNetwork.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SimpleAdNetwork.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.654185">
-              <caret line="258" column="23" selection-start-line="258" selection-start-column="23" selection-end-line="258" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.35629922">
+              <caret line="440" column="39" selection-start-line="440" selection-start-column="39" selection-end-line="440" selection-end-column="39" />
               <folding>
-                <element signature="e#10047#10048#0" expanded="true" />
-                <element signature="e#10062#10063#0" expanded="true" />
+                <element signature="e#3518#3519#0" expanded="true" />
+                <element signature="e#3575#3576#0" expanded="true" />
+                <element signature="e#10215#10216#0" expanded="true" />
+                <element signature="e#10230#10231#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -106,8 +107,24 @@
     <panes />
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="198" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="265" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="265" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1953" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="165" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="276" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="276" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1964" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RunManager" selected="Application.Unnamed">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -384,11 +401,18 @@
       <option name="number" value="Default" />
       <updated>1448450469183</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added basic functionality for starting strategy&#10;">
+      <created>1448819435697</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1448819435697</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="2768" height="1756" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -396,8 +420,8 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30834976" sideWeight="0.50293255" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6666667" sideWeight="0.49706745" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938856" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2537804" sideWeight="0.49706745" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4919355" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
@@ -444,6 +468,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added basic functionality for starting strategy&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added basic functionality for starting strategy&#10;" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
@@ -458,8 +486,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#10047#10048#0" expanded="true" />
-            <element signature="e#10062#10063#0" expanded="true" />
+            <element signature="e#3518#3519#0" expanded="true" />
+            <element signature="e#3575#3576#0" expanded="true" />
+            <element signature="e#10215#10216#0" expanded="true" />
+            <element signature="e#10230#10231#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -477,8 +507,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#10047#10048#0" expanded="true" />
-            <element signature="e#10062#10063#0" expanded="true" />
+            <element signature="e#3518#3519#0" expanded="true" />
+            <element signature="e#3575#3576#0" expanded="true" />
+            <element signature="e#10215#10216#0" expanded="true" />
+            <element signature="e#10230#10231#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -496,8 +528,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#10047#10048#0" expanded="true" />
-            <element signature="e#10062#10063#0" expanded="true" />
+            <element signature="e#3518#3519#0" expanded="true" />
+            <element signature="e#3575#3576#0" expanded="true" />
+            <element signature="e#10215#10216#0" expanded="true" />
+            <element signature="e#10230#10231#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -515,8 +549,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#10047#10048#0" expanded="true" />
-            <element signature="e#10062#10063#0" expanded="true" />
+            <element signature="e#3518#3519#0" expanded="true" />
+            <element signature="e#3575#3576#0" expanded="true" />
+            <element signature="e#10215#10216#0" expanded="true" />
+            <element signature="e#10230#10231#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -534,8 +570,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#10047#10048#0" expanded="true" />
-            <element signature="e#10062#10063#0" expanded="true" />
+            <element signature="e#3518#3519#0" expanded="true" />
+            <element signature="e#3575#3576#0" expanded="true" />
+            <element signature="e#10215#10216#0" expanded="true" />
+            <element signature="e#10230#10231#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -553,8 +591,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#10047#10048#0" expanded="true" />
-            <element signature="e#10062#10063#0" expanded="true" />
+            <element signature="e#3518#3519#0" expanded="true" />
+            <element signature="e#3575#3576#0" expanded="true" />
+            <element signature="e#10215#10216#0" expanded="true" />
+            <element signature="e#10230#10231#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -569,11 +609,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SimpleAdNetwork.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.654185">
-          <caret line="258" column="23" selection-start-line="258" selection-start-column="23" selection-end-line="258" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.35629922">
+          <caret line="440" column="39" selection-start-line="440" selection-start-column="39" selection-end-line="440" selection-end-column="39" />
           <folding>
-            <element signature="e#10047#10048#0" expanded="true" />
-            <element signature="e#10062#10063#0" expanded="true" />
+            <element signature="e#3518#3519#0" expanded="true" />
+            <element signature="e#3575#3576#0" expanded="true" />
+            <element signature="e#10215#10216#0" expanded="true" />
+            <element signature="e#10230#10231#0" expanded="true" />
           </folding>
         </state>
       </provider>

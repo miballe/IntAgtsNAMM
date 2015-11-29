@@ -248,15 +248,15 @@ public class SimpleAdNetwork extends Agent {
 		// Starting strategy for first few days
 		if (day <= startDays) {
 			cmpBidMillis = campaignStartingStrategy((int) cmpimps);
-			System.out.println("Day " + day + ": Using starting strategy");
 		}
 		// Quality recovery when quality is too low
 		else if (adNetworkDailyNotification.getQualityScore() < 1) { // Condition for Quality strategy
 			cmpBidMillis = campaignQualityRecoveryStrategy((int)cmpimps);
+			System.out.println("Day " + day + ": Using quality recovery strategy");
 		}
 		else cmpBidMillis = campaignProfitStrategy((int)cmpimps);
 		// If bid is too high, just bid the maximum value.
-		if (cmpBidMillis >= 0.8*cmpimps) {
+		if (cmpBidMillis >= cmpimps) {
 			cmpBidMillis = cmpimps;
 			System.out.println("Day " + day + ": Bid " + cmpBidMillis + " too high");
 		}
@@ -301,7 +301,8 @@ public class SimpleAdNetwork extends Agent {
 	 */
 	private long campaignProfitStrategy(int cmpimps) {
 		Random random = new Random(cmpimps);
-		return random.nextInt();
+		// return random.nextInt();
+		return 1;
 	}
 
 	/*
@@ -316,12 +317,12 @@ public class SimpleAdNetwork extends Agent {
 	 */
 	private long campaignStartingStrategy(int cmpimps) {
 		double cmpBidMillis;
-		if(pendingCampaign.dayEnd - pendingCampaign.dayEnd  == 9){ // long campaign
+		if(pendingCampaign.dayEnd - pendingCampaign.dayStart  >= 9){ // long campaign
 			cmpBidMillis = campaignProfitStrategy(cmpimps)*0.3;
 			System.out.println("Day :" + day +  "Long campaign Starting Strategy");
 		}
-		else if (pendingCampaign.dayEnd - pendingCampaign.dayEnd == 4){ // medium campaign
-			cmpBidMillis = campaignProfitStrategy(cmpimps)*1.1;
+		else if (pendingCampaign.dayEnd - pendingCampaign.dayStart == 4){ // medium campaign
+			cmpBidMillis = campaignProfitStrategy(cmpimps)*0.9;
 			System.out.println("Day :" + day + " Medium campaign Starting Strategy");
 		}
 		else { // short campaign
