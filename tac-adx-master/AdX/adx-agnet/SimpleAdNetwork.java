@@ -77,6 +77,7 @@ public class SimpleAdNetwork extends Agent {
 	private String demandAgentAddress;
 	private String adxAgentAddress;
 
+
 	/*
 	 * we maintain a list of queries - each characterized by the web site (the
 	 * publisher), the device type, the ad type, and the user market segment
@@ -237,6 +238,27 @@ public class SimpleAdNetwork extends Agent {
 		pendingCampaign = new CampaignData(com);
 		System.out.println("Day " + day + ": Campaign opportunity - " + pendingCampaign);
 
+		/**
+		*  ALUN: Decide which of the 4 campaign strategies to use
+		*/
+		long cmpBidMillis;
+		long cmpimps = com.getReachImps();
+		int startDays = 10;
+
+		if (day <= startDays) {
+			cmpBidMillis = campaignStartingStrategy(); // Condition for starting strategy
+			System.out.println("Day " + day + ": Using starting strategy");
+		}
+		else if (adNetworkDailyNotification.getQualityScore() < 1) { // Condition for Quality strategy
+			cmpBidMillis = campaignQualityRecoveryStrategy();
+			System.out.println("Day " + day + ": Using Quality Strategy");
+		}
+		else cmpBidMillis = campaignProfitStrategy((int) cmpimps); // Condition for profit strategy
+		if (cmpBidMillis >= 0.6*cmpimps) { // Condition for high bid strategy
+			cmpBidMillis = cmpimps;
+			System.out.println("Day " + day + ": Using max bid Strategy");
+		}
+
 		/*
 		 * The campaign requires com.getReachImps() impressions. The competing
 		 * Ad Networks bid for the total campaign Budget (that is, the ad
@@ -246,9 +268,6 @@ public class SimpleAdNetwork extends Agent {
 		 * (upper bound) price for the auction.
 		 */
 
-		Random random = new Random();
-		long cmpimps = com.getReachImps();
-		long cmpBidMillis = random.nextInt((int)cmpimps);
 
 		System.out.println("Day " + day + ": Campaign total budget bid (millis): " + cmpBidMillis);
 
@@ -256,7 +275,7 @@ public class SimpleAdNetwork extends Agent {
 		 * Adjust ucs bid s.t. target level is achieved. Note: The bid for the
 		 * user classification service is piggybacked
 		 */
-
+		Random random = new Random();
 		if (adNetworkDailyNotification != null) {
 			double ucsLevel = adNetworkDailyNotification.getServiceLevel();
 			ucsBid = 0.1 + random.nextDouble()/10.0;			
@@ -268,6 +287,27 @@ public class SimpleAdNetwork extends Agent {
 		/* Note: Campaign bid is in millis */
 		AdNetBidMessage bids = new AdNetBidMessage(ucsBid, pendingCampaign.id, cmpBidMillis);
 		sendMessage(demandAgentAddress, bids);
+	}
+	/*
+	 * Method for computing campaign bid to maximise profit
+	 */
+	private long campaignProfitStrategy(int cmpimps) {
+		Random random = new Random();
+		return random.nextInt(cmpimps);
+	}
+
+	/*
+	 * Method for computing the quality recovery campaign bid strategy
+	 */
+	private long campaignQualityRecoveryStrategy() {
+		return 1;
+	}
+
+	/*
+	 * Method for computing the campaign bid for starting strategy
+	 */
+	private long campaignStartingStrategy() {
+		return 2;
 	}
 
 	/**
@@ -440,7 +480,7 @@ public class SimpleAdNetwork extends Agent {
 		System.out.println("Day " + day + " : AdNetworkReport");
 		/*
 		 * for (AdNetworkKey adnetKey : adnetReport.keys()) {
-		 * 
+		 *
 		 * double rnd = Math.random(); if (rnd > 0.95) { AdNetworkReportEntry
 		 * entry = adnetReport .getAdNetworkReportEntry(adnetKey);
 		 * System.out.println(adnetKey + " " + entry); } }
