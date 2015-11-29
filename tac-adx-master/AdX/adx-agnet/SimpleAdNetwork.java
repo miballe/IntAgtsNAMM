@@ -301,15 +301,18 @@ public class SimpleAdNetwork extends Agent {
 	 */
 	private long campaignProfitStrategy(int cmpimps) {
 		Random random = new Random(cmpimps);
-		// return random.nextInt();
-		return 1;
+		return random.nextInt();
 	}
 
 	/*
 	 * Method for computing the quality recovery campaign bid strategy
+	 * Multiply profit strategy by quality squared, first to turn our bid into an effective bid.
+	 * Second to try and win more campaigns than our value assigns.
 	 */
 	private long campaignQualityRecoveryStrategy(int cmpimps) {
-		return 1;
+		double bid =  campaignProfitStrategy(cmpimps) * adNetworkDailyNotification.getQualityScore() * adNetworkDailyNotification.getQualityScore();
+		System.out.print("Day :" + day + "Quality Recovery Strategy");
+		return (long)bid;
 	}
 
 	/*
