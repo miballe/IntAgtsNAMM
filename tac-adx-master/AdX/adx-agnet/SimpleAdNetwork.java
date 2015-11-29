@@ -238,25 +238,27 @@ public class SimpleAdNetwork extends Agent {
 		pendingCampaign = new CampaignData(com);
 		System.out.println("Day " + day + ": Campaign opportunity - " + pendingCampaign);
 
-		/**
+		/*
 		*  ALUN: Decide which of the 4 campaign strategies to use
 		*/
 		long cmpBidMillis;
 		long cmpimps = com.getReachImps();
 		int startDays = 10;
 
+		// Starting strategy for first few days
 		if (day <= startDays) {
-			cmpBidMillis = campaignStartingStrategy(); // Condition for starting strategy
+			cmpBidMillis = campaignStartingStrategy((int) cmpimps);
 			System.out.println("Day " + day + ": Using starting strategy");
 		}
+		// Quality recovery when quality is too low
 		else if (adNetworkDailyNotification.getQualityScore() < 1) { // Condition for Quality strategy
-			cmpBidMillis = campaignQualityRecoveryStrategy();
-			System.out.println("Day " + day + ": Using Quality Strategy");
+			cmpBidMillis = campaignQualityRecoveryStrategy((int)cmpimps);
 		}
-		else cmpBidMillis = campaignProfitStrategy((int) cmpimps); // Condition for profit strategy
-		if (cmpBidMillis >= 0.6*cmpimps) { // Condition for high bid strategy
+		else cmpBidMillis = campaignProfitStrategy((int)cmpimps);
+		// If bid is too high, just bid the maximum value.
+		if (cmpBidMillis >= 0.8*cmpimps) {
 			cmpBidMillis = cmpimps;
-			System.out.println("Day " + day + ": Using max bid Strategy");
+			System.out.println("Day " + day + ": Bid " + cmpBidMillis + " too high");
 		}
 
 		/*
@@ -288,29 +290,48 @@ public class SimpleAdNetwork extends Agent {
 		AdNetBidMessage bids = new AdNetBidMessage(ucsBid, pendingCampaign.id, cmpBidMillis);
 		sendMessage(demandAgentAddress, bids);
 	}
+
+	/*
+	 * ALUN: different methods for each campaign strategy
+     */
+
 	/*
 	 * Method for computing campaign bid to maximise profit
+	 * Currently just bids randomly between min and max as before
 	 */
 	private long campaignProfitStrategy(int cmpimps) {
-		Random random = new Random();
-		return random.nextInt(cmpimps);
+		Random random = new Random(cmpimps);
+		return random.nextInt();
 	}
 
 	/*
 	 * Method for computing the quality recovery campaign bid strategy
 	 */
-	private long campaignQualityRecoveryStrategy() {
+	private long campaignQualityRecoveryStrategy(int cmpimps) {
 		return 1;
 	}
 
 	/*
 	 * Method for computing the campaign bid for starting strategy
 	 */
-	private long campaignStartingStrategy() {
-		return 2;
+	private long campaignStartingStrategy(int cmpimps) {
+		double cmpBidMillis;
+		if(pendingCampaign.dayEnd - pendingCampaign.dayEnd  == 9){ // long campaign
+			cmpBidMillis = campaignProfitStrategy(cmpimps)*0.3;
+			System.out.println("Day :" + day +  "Long campaign Starting Strategy");
+		}
+		else if (pendingCampaign.dayEnd - pendingCampaign.dayEnd == 4){ // medium campaign
+			cmpBidMillis = campaignProfitStrategy(cmpimps)*1.1;
+			System.out.println("Day :" + day + " Medium campaign Starting Strategy");
+		}
+		else { // short campaign
+			cmpBidMillis = cmpimps;
+			System.out.println("Day :" + day + " Short campaign Starting Strategy");
+		}
+		return ((long)cmpBidMillis);
 	}
 
-	/**
+	 /**
 	 * On day n ( > 0), the result of the UserClassificationService and Campaign
 	 * auctions (for which the competing agents sent bids during day n -1) are
 	 * reported. The reported Campaign starts in day n+1 or later and the user
@@ -473,7 +494,7 @@ public class SimpleAdNetwork extends Agent {
 
 	/**
 	 * 
-	 * @param AdNetworkReport
+	 * @param //AdNetworkReport
 	 */
 	private void handleAdNetworkReport(AdNetworkReport adnetReport) {
 
