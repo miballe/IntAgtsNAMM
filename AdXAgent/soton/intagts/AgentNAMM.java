@@ -94,7 +94,6 @@ public class AgentNAMM extends Agent {
 	 * by our agent.
 	 */
 	private Map<Integer, CampaignData> myCampaigns;
-	private int numCampaigns = 0; //Temporary var as I don't know how to extract length of myCampaigns.
 	/*
 	 * the bidBundle to be sent daily to the AdX
 	 */
@@ -134,6 +133,7 @@ public class AgentNAMM extends Agent {
 
 			// Dumps all recieved messages to log
 			log.fine(message.getContent().getClass().toString());
+			this.log.log(Level.ALL, message.getContent().getClass().toString());
 
 			if (content instanceof InitialCampaignMessage) {
 				handleInitialCampaignMessage((InitialCampaignMessage) content);
@@ -228,7 +228,6 @@ public class AgentNAMM extends Agent {
 		 */
 		System.out.println("Day " + day + ": Allocated campaign - " + campaignData);
 		myCampaigns.put(initialCampaignMessage.getId(), campaignData);
-		numCampaigns ++;
 	}
 
 	/**
@@ -324,7 +323,6 @@ public class AgentNAMM extends Agent {
 			currCampaign = pendingCampaign;
 			genCampaignQueries(currCampaign);
 			myCampaigns.put(pendingCampaign.id, pendingCampaign);
-			numCampaigns ++;
 
 			campaignAllocatedTo = " WON at cost (Millis)"
 					+ notificationMessage.getCostMillis();
@@ -349,7 +347,8 @@ public class AgentNAMM extends Agent {
 	}
 
 	/**
-	 *
+	 * Miguel
+	 * 
 	 */
 	protected void sendBidAndAds() {
 
@@ -370,7 +369,7 @@ public class AgentNAMM extends Agent {
 		double rbid = 10000.0;
 
 		/*
-		 * add bid entries w.r.t. each active campaign with remaining contracted
+		 * add bid entries w.r.t. each active campaign with remaining contractedcmpBidMillis
 		 * impressions.
 		 *
 		 * for now, a single entry per active campaign is added for queries of
@@ -681,17 +680,19 @@ public class AgentNAMM extends Agent {
 	 */
 	private long campaignProfitStrategy() {
 		Random random = new Random();
-		double bid;
+		double bid, bidFactor;
 		double totalCostPerImp = 0.0;
-		if (myCampaigns.size() > 0) {
+		if (myCampaigns.size() > 1) {
 			for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
-				if (entry.getValue().dayStart != 0) {
+				if (entry.getValue().dayStart != 1) {
 					totalCostPerImp += entry.getValue().budget / entry.getValue().reachImps;
+					System.out.println("############## Budget: " + entry.getValue().budget + "reachImps: " + entry.getValue().reachImps);
 				}
 			}
-			bid = currCampaign.reachImps * totalCostPerImp / myCampaigns.size();
+			bidFactor = (random.nextInt(40)/100) + 0.8;
+			bid = 1000 * pendingCampaign.reachImps * totalCostPerImp / (myCampaigns.size() -1) * bidFactor;
 		}
-		else bid = (double)random.nextInt(currCampaign.reachImps.intValue()); //Random bid initially
+		else bid = (double)random.nextInt(pendingCampaign.reachImps.intValue()); //Random bid initially
 
 		System.out.println("Day :" + day + " Campaign - Base bid: " + bid);
 		return (long)bid;
@@ -757,7 +758,7 @@ public class AgentNAMM extends Agent {
 	}
 
 	/*
-	 * Nickola: UCS cost estimate
+	 * Nicola: UCS cost estimate
 	 * This function estimates the cost to achieve a specific ucs tier. Note that ucsTarget is the integer tier not the
 	 * percentage of users classified. (1 = 100%, 2 = 90%, 3 = 81% ...).
 	 * Expansion: Factor in changes to unknown and known impression costs.
@@ -768,7 +769,7 @@ public class AgentNAMM extends Agent {
 	}
 
 	/*
-	 * Nickola: Best UCS impression cost combination
+	 * Nicola: Best UCS impression cost combination
 	 * This function queries impression and UCS cost estimations over the entire range of UCS costs to evaluate the
 	 * cheapest cost to achieve our impression target.
 	 */
@@ -778,7 +779,7 @@ public class AgentNAMM extends Agent {
 	}
 
 	/*
-	 * Nickola: UCS bid
+	 * Nicola: UCS bid
 	 * This method takes a UCS target and tries to evaluate the bid required to reach that target.
 	 * Expansion: include a sense of risk aversion to this function. i.e. when it is more important to achieve a
 	 * specific UCS level (like incomplete campaign due that day) we want to overbid.
