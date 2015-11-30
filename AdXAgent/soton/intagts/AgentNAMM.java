@@ -262,7 +262,7 @@ public class AgentNAMM extends Agent {
 		else cmpBidMillis = campaignProfitStrategy();
 		// If bid is too high, just bid the maximum value.
 		if (cmpBidMillis >= 0.8*cmpimps) {
-			cmpBidMillis = cmpimps;
+			cmpBidMillis = cmpimps; //TODO: quality is factored into reserve price
 			System.out.println("Day " + day + ": Campaign - Bid " + cmpBidMillis + " too high");
 		}
 
@@ -321,6 +321,7 @@ public class AgentNAMM extends Agent {
 			/* add campaign to list of won campaigns */
 			pendingCampaign.setBudget(notificationMessage.getCostMillis()/1000.0);
 			pendingCampaign.setBid(cmpBidMillis);
+			pendingCampaign.impressionTarget = setImpressionTargets();
 			currCampaign = pendingCampaign;
 			genCampaignQueries(currCampaign);
 			myCampaigns.put(pendingCampaign.id, pendingCampaign);
@@ -601,6 +602,7 @@ public class AgentNAMM extends Agent {
 		int id;
 		private AdxQuery[] campaignQueries;//array of queries relvent for the campaign.
 		long cmpBidMillis;
+		long impressionTarget;
 
 		/* campaign info as reported */
 		CampaignStats stats;
@@ -614,6 +616,7 @@ public class AgentNAMM extends Agent {
 			videoCoef = icm.getVideoCoef();
 			mobileCoef = icm.getMobileCoef();
 			id = icm.getId();
+			impressionTarget = icm.getReachImps(); // TODO calculate default value for impression target.
 
 			stats = new CampaignStats(0, 0, 0);
 			budget = 0.0;
@@ -624,7 +627,7 @@ public class AgentNAMM extends Agent {
 		}
 
 		public void setBid(long b) {
-			cmpBidMillis = b; //added
+			cmpBidMillis = b; //NAMM
 		}
 
 		public CampaignData(CampaignOpportunityMessage com) {
@@ -637,7 +640,8 @@ public class AgentNAMM extends Agent {
 			videoCoef = com.getVideoCoef();
 			stats = new CampaignStats(0, 0, 0);
 			budget = 0.0;
-			cmpBidMillis = 0; // Added
+			cmpBidMillis = 0; //NAMM
+			impressionTarget = com.getReachImps(); //TODO calculate default value for impression target.
 		}
 
 		@Override
@@ -705,8 +709,9 @@ public class AgentNAMM extends Agent {
 	 * Second to try and win more campaigns than our value assigns.
 	 */
 	private long campaignQualityRecoveryStrategy() {
-		double bid =  campaignProfitStrategy() * Math.pow(adNetworkDailyNotification.getQualityScore(),2);
+		double bid =  campaignProfitStrategy() * Math.pow(adNetworkDailyNotification.getQualityScore(),2); //TODO: learn the power
 		System.out.println("Day :" + day + " Campaign - Quality Recovery Strategy");
+		// TODO: ferocity of quality recovery should be based on our ability to complete the campaigns and the number of campaigns we currently have.
 		return (long)bid;
 	}
 
@@ -733,13 +738,47 @@ public class AgentNAMM extends Agent {
 
 	/*
 	 *  Method for computing impression targets to be used in the UCS and impression auctions
-	 *  Currently gives 0 as the impression target.
 	 *  Later it will be useful to return a range of targets rather than a single target.
+	 *  Loops through impression targets to work out the most cost efficient permutation.
 	 */
-	private long impressionTargets() {
-		long target = 0;
+	private long setImpressionTargets() {
+		long target=0;
+		for (double multiplier = 0.6; multiplier <= 2; multiplier+= 0.02){ // loop over range of impression targets
+			double tempTarget = pendingCampaign.reachImps*multiplier;
+			// Decide which impression target is most cost efficient
+			long targetCost = totalCost(pendingCampaign, target) + qualityEffect(pendingCampaign);
+			long tempTargetCost = totalCost(pendingCampaign, (long)tempTarget) + qualityEffect(pendingCampaign);
+			if (tempTargetCost < targetCost) {
+				target = (long)tempTarget;
+			}
+		}
+		//if impression cost estimate doesn't work just set default value
+		if (target == 0) target = pendingCampaign.reachImps;
 		System.out.println("Day " + day + ": Impression target = " + target);
 		return(target);
+	}
+
+	/*
+	 * Evaluates the effect of estimated quality change on future revenue.
+	 */
+	private long qualityEffect(CampaignData Campaign) {
+		
+		return 0;
+	}
+
+	/*
+	 * Estimates the total cost of running a campaign based on the sum UCS and impression estimation functions.
+	 */
+	private long totalCost(CampaignData Campaign, long targetImp) {
+		long totalCost = 0;
+		// loop over each day of the campaign
+		for (day = (int)Campaign.dayStart; day <= (int)Campaign.dayEnd; day++) {
+			// evaluate best UCS/impression cost combination estimation
+			ucsTargetLevel = bestImpUcsCombination();
+			// add the UCS cost to the Impression cost estimate and sum
+			totalCost += impressionCostEstimate(targetImp, day, ucsTargetLevel) + ucsCostEstimate(ucsTargetLevel);
+		}
+		return totalCost;
 	}
 
 	/*
@@ -773,7 +812,7 @@ public class AgentNAMM extends Agent {
 	 * cheapest cost to achieve our impression target.
 	 */
 	private int bestImpUcsCombination(){
-		// TODO;
+		// TODO Return desired UCS classification;
 		return 0;
 	}
 
