@@ -181,7 +181,7 @@ public class AgentNAMM extends Agent {
 
 	/**
 	 * Processes the start information.
-	 * 
+	 *
 	 * @param startInfo
 	 *            the start information.
 	 */
@@ -191,7 +191,7 @@ public class AgentNAMM extends Agent {
 
 	/**
 	 * Process the reported set of publishers
-	 * 
+	 *
 	 * @param publisherCatalog
 	 */
 	private void handlePublisherCatalog(PublisherCatalog publisherCatalog) {
@@ -287,7 +287,7 @@ public class AgentNAMM extends Agent {
 		Random random = new Random();
 		if (adNetworkDailyNotification != null) {
 			double ucsLevel = adNetworkDailyNotification.getServiceLevel();
-			ucsBid = 0.1 + random.nextDouble()/10.0;			
+			ucsBid = 0.1 + random.nextDouble()/10.0;
 			System.out.println("Day " + day + ": ucs level reported: " + ucsLevel);
 		} else {
 			System.out.println("Day " + day + ": Initial ucs bid is " + ucsBid);
@@ -350,7 +350,7 @@ public class AgentNAMM extends Agent {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	protected void sendBidAndAds() {
 
@@ -373,7 +373,7 @@ public class AgentNAMM extends Agent {
 		/*
 		 * add bid entries w.r.t. each active campaign with remaining contracted
 		 * impressions.
-		 * 
+		 *
 		 * for now, a single entry per active campaign is added for queries of
 		 * matching target segment.
 		 */
@@ -463,7 +463,7 @@ public class AgentNAMM extends Agent {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param //AdNetworkReport
 	 */
 	private void handleAdNetworkReport(AdNetworkReport adnetReport) {
@@ -502,7 +502,7 @@ public class AgentNAMM extends Agent {
 	 * opportunity (a query) that is characterized by the the publisher, the
 	 * market segment the user may belongs to, the device used (mobile or
 	 * desktop) and the ad type (text or video).
-	 * 
+	 *
 	 * An array of all possible queries is generated here, based on the
 	 * publisher names reported at game initialization in the publishers catalog
 	 * message
@@ -688,6 +688,16 @@ public class AgentNAMM extends Agent {
 		// TODO: work out how to loop over each campaign
 		// TODO: work out how to access the length of myCampaigns
 		// TODO: Build a system for choosing initial bids when data isn't available i.e. read/write from previous games.
+		/*
+		 *  Less simple version of profit strategy
+		 */
+
+		double totalCostPerImp = 0.0;
+		for (CampaignData Campaign : myCampaigns){ //loop  over all previous won campaigns (not first one)
+			totalCostPerImp += Campaign.budget / Campaign.reachImps);
+		}
+		totalCostPerImp = totalCostPerImp / myCampaigns.size();
+
 	}
 
 	/*
