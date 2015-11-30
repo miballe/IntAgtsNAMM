@@ -1,4 +1,4 @@
-
+package soton.intagts;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +18,6 @@ import se.sics.tasim.aw.Message;
 import se.sics.tasim.props.SimulationStatus;
 import se.sics.tasim.props.StartInfo;
 import tau.tac.adx.ads.properties.AdType;
-import tau.tac.adx.demand.Campaign;
 import tau.tac.adx.demand.CampaignStats;
 import tau.tac.adx.devices.Device;
 import tau.tac.adx.props.AdxBidBundle;
@@ -684,20 +683,26 @@ public class AgentNAMM extends Agent {
 		Random random = new Random();
 		long bid = random.nextInt(cmpimps);
 		System.out.println("Day :" + day + " Campaign - Base bid: " + bid);
+
+		for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
+			System.out.println("Campaign : " + entry.getKey() + " Count : " + entry.getValue());
+		}
 		return bid;
 		// TODO: work out how to loop over each campaign
-		// TODO: work out how to access the length of myCampaigns
 		// TODO: Build a system for choosing initial bids when data isn't available i.e. read/write from previous games.
 		/*
 		 *  Less simple version of profit strategy
 		 */
 
-		double totalCostPerImp = 0.0;
+		// totalCostPerImp = 0.0;
+
+
+		/*
 		for (CampaignData Campaign : myCampaigns){ //loop  over all previous won campaigns (not first one)
 			totalCostPerImp += Campaign.budget / Campaign.reachImps);
 		}
 		totalCostPerImp = totalCostPerImp / myCampaigns.size();
-
+		*/
 	}
 
 	/*
