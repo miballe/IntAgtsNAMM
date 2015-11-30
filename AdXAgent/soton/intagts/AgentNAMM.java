@@ -171,7 +171,6 @@ public class AgentNAMM extends Agent {
 
 	private void hadnleCampaignAuctionReport(CampaignAuctionReport content) {
 		// ingoring
-		System.out.println("COMPILING IS WORKING ##################################################££");
 	}
 
 	private void handleBankStatus(BankStatus content) {
@@ -383,7 +382,7 @@ public class AgentNAMM extends Agent {
 			int entCount = 0;
 
 			for (AdxQuery query : currCampaign.campaignQueries) {
-				if (currCampaign.impsTogo() - entCount > 0) {
+				if (currCampaign.impsTogo() - entCount > 0) {    // TODO: Consider overachieving campaigns when quality < 1 
 					/*
 					 * among matching entries with the same campaign id, the AdX
 					 * randomly chooses an entry according to the designated
@@ -414,8 +413,9 @@ public class AgentNAMM extends Agent {
 			bidBundle.setCampaignDailyLimit(currCampaign.id,
 					(int) impressionLimit, budgetLimit);
 
-			System.out.println("Day " + day + ": Updated " + entCount
+			System.out.println("Day " + day + " #####BIDBUNDLE#####: Updated " + entCount
 					+ " Bid Bundle entries for Campaign id " + currCampaign.id);
+			log.log(Level.ALL, "##### Bid Bundle #####; currCampaign: " + currCampaign.id + "; " + currCampaign.budget);
 		}
 
 		if (bidBundle != null) {
