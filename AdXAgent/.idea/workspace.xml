@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8d47181-fdd7-4794-be3c-277d03d0c306" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/intagts/AgentNAMM.java.bak" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/soton/intagts/AgentNAMM - Copy.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/soton/intagts/AgentNAMM$CampaignData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/soton/intagts/AgentNAMM.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/soton/intagts/AgentNAMM.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/logs/localhost0.log" afterPath="$PROJECT_DIR$/../AdXServer/logs/localhost0.log" />
     </list>
     <ignored path="adx-agent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,8 +27,8 @@
       <file leaf-file-name="AgentNAMM.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/soton/intagts/AgentNAMM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.07058824">
-              <caret line="38" column="43" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.7529412">
+              <caret line="757" column="93" selection-start-line="757" selection-start-column="93" selection-end-line="757" selection-end-column="93" />
               <folding />
             </state>
           </provider>
@@ -486,8 +480,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/soton/intagts/AgentNAMM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07058824">
-          <caret line="38" column="43" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.7529412">
+          <caret line="757" column="93" selection-start-line="757" selection-start-column="93" selection-end-line="757" selection-end-column="93" />
           <folding />
         </state>
       </provider>

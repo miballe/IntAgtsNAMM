@@ -745,6 +745,7 @@ public class AgentNAMM extends Agent {
 	 */
 	private long setImpressionTargets() {
 		long target=0;
+		// loop over a variety of possible impression targets
 		for (double multiplier = 0.6; multiplier <= 2; multiplier+= 0.02){ // loop over range of impression targets
 			double tempTarget = pendingCampaign.reachImps*multiplier;
 			// Decide which impression target is most cost efficient
@@ -754,8 +755,8 @@ public class AgentNAMM extends Agent {
 				target = (long)tempTarget;
 			}
 		}
-		//if impression cost estimate doesn't work just set default value
-		if (target == 0) target = pendingCampaign.reachImps;
+		//if impression cost estimate doesn't work / not implemented then use default value. 
+		if (campaignCost(pendingCampaign, target)==0) target = pendingCampaign.reachImps;
 		System.out.println("Day " + day + ": Impression target = " + target);
 		return(target);
 	}
