@@ -1,16 +1,60 @@
-30/11 11:02:41 INFO agentware.SimClient|next simulation starts in 18 seconds
-30/11 11:02:48 SEVERE agentware.SimClient|************************************************************
-30/11 11:02:48 SEVERE agentware.SimClient|* ALERT: Multiple Connections
-30/11 11:02:48 SEVERE agentware.SimClient|* The server connection was closed due to new connection
-from agent sample@127.0.0.1.
-30/11 11:02:48 SEVERE agentware.SimClient|************************************************************
-30/11 11:02:48 SEVERE agentware.ServerConnection|(1) could not read
-java.io.EOFException
-	at java.io.DataInputStream.readInt(DataInputStream.java:392)
-	at tau.tac.adx.agentware.ServerConnection.run(ServerConnection.java:216)
+30/11 11:06:35 SEVERE agentware.ServerConnection|(1) connection to server failed
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at java.net.Socket.<init>(Socket.java:434)
+	at java.net.Socket.<init>(Socket.java:211)
+	at tau.tac.adx.agentware.ServerConnection.connect(ServerConnection.java:136)
+	at tau.tac.adx.agentware.ServerConnection.run(ServerConnection.java:197)
 	at java.lang.Thread.run(Thread.java:745)
-30/11 11:02:48 SEVERE agentware.SimClient|************************************************************
-30/11 11:02:48 SEVERE agentware.SimClient|* Connection Lost
-30/11 11:02:48 SEVERE agentware.SimClient|* Lost connection to localhost (will reconnect in 30 seconds)
-30/11 11:02:48 SEVERE agentware.SimClient|************************************************************
-30/11 11:03:18 INFO agentware.SimClient|next simulation 16 has already started
+30/11 11:06:35 SEVERE agentware.SimClient|************************************************************
+30/11 11:06:35 SEVERE agentware.SimClient|* Connection Failed
+30/11 11:06:35 SEVERE agentware.SimClient|* Could not connect to localhost (will retry in 30 seconds)
+30/11 11:06:35 SEVERE agentware.SimClient|************************************************************
+30/11 11:07:06 SEVERE agentware.ServerConnection|(1) connection to server failed
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at java.net.Socket.<init>(Socket.java:434)
+	at java.net.Socket.<init>(Socket.java:211)
+	at tau.tac.adx.agentware.ServerConnection.connect(ServerConnection.java:136)
+	at tau.tac.adx.agentware.ServerConnection.run(ServerConnection.java:197)
+	at java.lang.Thread.run(Thread.java:745)
+30/11 11:07:06 SEVERE agentware.SimClient|************************************************************
+30/11 11:07:06 SEVERE agentware.SimClient|* Connection Failed
+30/11 11:07:06 SEVERE agentware.SimClient|* Could not connect to localhost (will retry in 30 seconds)
+30/11 11:07:06 SEVERE agentware.SimClient|************************************************************
+30/11 11:07:37 SEVERE agentware.ServerConnection|(1) connection to server failed
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at java.net.Socket.<init>(Socket.java:434)
+	at java.net.Socket.<init>(Socket.java:211)
+	at tau.tac.adx.agentware.ServerConnection.connect(ServerConnection.java:136)
+	at tau.tac.adx.agentware.ServerConnection.run(ServerConnection.java:197)
+	at java.lang.Thread.run(Thread.java:745)
+30/11 11:07:37 SEVERE agentware.SimClient|************************************************************
+30/11 11:07:37 SEVERE agentware.SimClient|* Connection Failed
+30/11 11:07:37 SEVERE agentware.SimClient|* Could not connect to localhost (will retry in 30 seconds)
+30/11 11:07:37 SEVERE agentware.SimClient|************************************************************

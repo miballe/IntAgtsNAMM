@@ -253,13 +253,13 @@ public class AgentNAMM extends Agent {
 
 		// Starting strategy for first few days
 		if (day <= startDays) {
-			cmpBidMillis = campaignStartingStrategy((int) cmpimps);
+			cmpBidMillis = campaignStartingStrategy();
 		}
 		// Quality recovery when quality is too low
 		else if (adNetworkDailyNotification.getQualityScore() < 1) { // Condition for Quality strategy
-			cmpBidMillis = campaignQualityRecoveryStrategy((int)cmpimps);
+			cmpBidMillis = campaignQualityRecoveryStrategy();
 		}
-		else cmpBidMillis = campaignProfitStrategy((int)cmpimps);
+		else cmpBidMillis = campaignProfitStrategy();
 		// If bid is too high, just bid the maximum value.
 		if (cmpBidMillis >= 0.8*cmpimps) {
 			cmpBidMillis = cmpimps;
@@ -679,30 +679,24 @@ public class AgentNAMM extends Agent {
 	 * In progress: version will bid the average successful second price.
 	 * Not great because it creates a system where we assign our value based on other agents value.
 	 */
-	private long campaignProfitStrategy(int cmpimps) {
+	private long campaignProfitStrategy() {
 		Random random = new Random();
-		long bid = random.nextInt(cmpimps);
-		System.out.println("Day :" + day + " Campaign - Base bid: " + bid);
-
-		for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
-			System.out.println("Campaign : " + entry.getKey() + " Count : " + entry.getValue());
-		}
-		return bid;
-		// TODO: work out how to loop over each campaign
-		// TODO: Build a system for choosing initial bids when data isn't available i.e. read/write from previous games.
-		/*
-		 *  Less simple version of profit strategy
-		 */
-
+		double bid;
 		double totalCostPerImp = 0.0;
-
-
-		/*
-		for (CampaignData Campaign : myCampaigns){ //loop  over all previous won campaigns (not first one)
-			totalCostPerImp += Campaign.budget / Campaign.reachImps);
+		if (myCampaigns.size() > 0) {
+			for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
+				if (entry.getValue().dayStart != 0) {
+					totalCostPerImp += entry.getValue().budget / entry.getValue().reachImps;
+				}
+			}
+			bid = currCampaign.reachImps * totalCostPerImp / myCampaigns.size();
 		}
-		totalCostPerImp = totalCostPerImp / myCampaigns.size();
-		*/
+		else bid = (double)random.nextInt(currCampaign.reachImps.intValue()); //Random bid initially
+
+		System.out.println("Day :" + day + " Campaign - Base bid: " + bid);
+		return (long)bid;
+		// TODO: Build a system for choosing initial bids when data isn't available i.e. read/write from previous games.
+
 	}
 
 	/*
@@ -710,8 +704,8 @@ public class AgentNAMM extends Agent {
 	 * Multiply profit strategy by quality squared, first to turn our bid into an effective bid.
 	 * Second to try and win more campaigns than our value assigns.
 	 */
-	private long campaignQualityRecoveryStrategy(int cmpimps) {
-		double bid =  campaignProfitStrategy(cmpimps) * Math.pow(adNetworkDailyNotification.getQualityScore(),2);
+	private long campaignQualityRecoveryStrategy() {
+		double bid =  campaignProfitStrategy() * Math.pow(adNetworkDailyNotification.getQualityScore(),2);
 		System.out.println("Day :" + day + " Campaign - Quality Recovery Strategy");
 		return (long)bid;
 	}
@@ -719,19 +713,19 @@ public class AgentNAMM extends Agent {
 	/*
 	 * Method for computing the campaign bid for starting strategy
 	 */
-	private long campaignStartingStrategy(int cmpimps) {
+	private long campaignStartingStrategy() {
 		double cmpBidMillis;
 		long campaignLength = pendingCampaign.dayEnd - pendingCampaign.dayStart + 1;
 		if(campaignLength == 10){ // long campaign
-			cmpBidMillis = campaignProfitStrategy(cmpimps)*0.8;
+			cmpBidMillis = campaignProfitStrategy()*0.8;
 			System.out.println("Day :" + day +  " Campaign - Long campaign Starting Strategy");
 		}
 		else if (campaignLength == 5){ // medium campaign
-			cmpBidMillis = campaignProfitStrategy(cmpimps)*1.2;
+			cmpBidMillis = campaignProfitStrategy()*1.2;
 			System.out.println("Day: " + day + " Campaign - Medium campaign Starting Strategy");
 		}
 		else { // short campaign
-			cmpBidMillis = campaignProfitStrategy(cmpimps)*2;
+			cmpBidMillis = campaignProfitStrategy()*2;
 			System.out.println("Day :" + day + " Short campaign Starting Strategy");
 		}
 		return ((long)cmpBidMillis);
