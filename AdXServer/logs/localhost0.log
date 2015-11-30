@@ -117,3 +117,10 @@
 
 
 30/11 15:20:13 INFO is.TACAAResultManager|generating results for simulation 39 to public_html\localhost\history\39\index.html
+30/11 19:48:24 SEVERE tact.TACTConnection|NAMM@tact-2: reading error 
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.io.DataInputStream.readInt(Unknown Source)
+	at se.sics.isl.tact.TACTConnection$TACTReader.run(TACTConnection.java:405)

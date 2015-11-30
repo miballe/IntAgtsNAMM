@@ -1,4 +1,4 @@
-package soton.intagts; 
+package soton.intagts;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -94,7 +94,7 @@ public class AgentNAMM extends Agent {
 	 * by our agent.
 	 */
 	private Map<Integer, CampaignData> myCampaigns;
-
+	private int numCampaigns = 0; //Temporary var as I don't know how to extract length of myCampaigns.
 	/*
 	 * the bidBundle to be sent daily to the AdX
 	 */
@@ -108,7 +108,13 @@ public class AgentNAMM extends Agent {
 	/*
 	 * The targeted service level for the user classification service
 	 */
-	double ucsTargetLevel;
+	int ucsTargetLevel;
+
+	/*
+	 *  The bid campaign bid we send.
+	 *  Note it is not reset each day on purpose so there is a default value in case we fail to calculate a bid in time.
+	 */
+	long cmpBidMillis;
 
 	/*
 	 * current day of simulation
@@ -174,7 +180,7 @@ public class AgentNAMM extends Agent {
 
 	/**
 	 * Processes the start information.
-	 * 
+	 *
 	 * @param startInfo
 	 *            the start information.
 	 */
@@ -184,7 +190,7 @@ public class AgentNAMM extends Agent {
 
 	/**
 	 * Process the reported set of publishers
-	 * 
+	 *
 	 * @param publisherCatalog
 	 */
 	private void handlePublisherCatalog(PublisherCatalog publisherCatalog) {
@@ -222,6 +228,7 @@ public class AgentNAMM extends Agent {
 		 */
 		System.out.println("Day " + day + ": Allocated campaign - " + campaignData);
 		myCampaigns.put(initialCampaignMessage.getId(), campaignData);
+		numCampaigns ++;
 	}
 
 	/**
@@ -241,24 +248,22 @@ public class AgentNAMM extends Agent {
 		/*
 		*  ALUN: Decide which of the 4 campaign strategies to use
 		*/
-		long cmpBidMillis;
 		long cmpimps = com.getReachImps();
-		int startDays = 10;
+		int startDays = 5;
 
 		// Starting strategy for first few days
 		if (day <= startDays) {
-			cmpBidMillis = campaignStartingStrategy((int) cmpimps);
+			cmpBidMillis = campaignStartingStrategy();
 		}
 		// Quality recovery when quality is too low
 		else if (adNetworkDailyNotification.getQualityScore() < 1) { // Condition for Quality strategy
-			cmpBidMillis = campaignQualityRecoveryStrategy((int)cmpimps);
-			System.out.println("Day " + day + ": Using quality recovery strategy");
+			cmpBidMillis = campaignQualityRecoveryStrategy();
 		}
-		else cmpBidMillis = campaignProfitStrategy((int)cmpimps);
+		else cmpBidMillis = campaignProfitStrategy();
 		// If bid is too high, just bid the maximum value.
-		if (cmpBidMillis >= cmpimps) {
-			cmpBidMillis = cmpimps;
-			System.out.println("Day " + day + ": Bid " + cmpBidMillis + " too high");
+		if (cmpBidMillis >= 0.8*cmpimps) {
+			cmpBidMillis = cmpimps; //TODO: quality is factored into reserve price
+			System.out.println("Day " + day + ": Campaign - Bid " + cmpBidMillis + " too high");
 		}
 
 		/*
@@ -271,16 +276,17 @@ public class AgentNAMM extends Agent {
 		 */
 
 
-		System.out.println("Day " + day + ": Campaign total budget bid (millis): " + cmpBidMillis);
+		System.out.println("Day " + day + ": Campaign - Total budget bid (millis): " + cmpBidMillis);
 
 		/*
 		 * Adjust ucs bid s.t. target level is achieved. Note: The bid for the
 		 * user classification service is piggybacked
 		 */
+		// TODO: UCS bid calculation here
 		Random random = new Random();
 		if (adNetworkDailyNotification != null) {
 			double ucsLevel = adNetworkDailyNotification.getServiceLevel();
-			ucsBid = 0.1 + random.nextDouble()/10.0;			
+			ucsBid = 0.1 + random.nextDouble()/10.0;
 			System.out.println("Day " + day + ": ucs level reported: " + ucsLevel);
 		} else {
 			System.out.println("Day " + day + ": Initial ucs bid is " + ucsBid);
@@ -291,49 +297,6 @@ public class AgentNAMM extends Agent {
 		sendMessage(demandAgentAddress, bids);
 	}
 
-	/*
-	 * ALUN: different methods for each campaign strategy
-     */
-
-	/*
-	 * Method for computing campaign bid to maximise profit
-	 * Currently just bids randomly between min and max as before
-	 */
-	private long campaignProfitStrategy(int cmpimps) {
-		Random random = new Random(cmpimps);
-		return random.nextInt();
-	}
-
-	/*
-	 * Method for computing the quality recovery campaign bid strategy
-	 * Multiply profit strategy by quality squared, first to turn our bid into an effective bid.
-	 * Second to try and win more campaigns than our value assigns.
-	 */
-	private long campaignQualityRecoveryStrategy(int cmpimps) {
-		double bid =  campaignProfitStrategy(cmpimps) * adNetworkDailyNotification.getQualityScore() * adNetworkDailyNotification.getQualityScore();
-		System.out.print("Day :" + day + "Quality Recovery Strategy");
-		return (long)bid;
-	}
-
-	/*
-	 * Method for computing the campaign bid for starting strategy
-	 */
-	private long campaignStartingStrategy(int cmpimps) {
-		double cmpBidMillis;
-		if(pendingCampaign.dayEnd - pendingCampaign.dayStart  >= 9){ // long campaign
-			cmpBidMillis = campaignProfitStrategy(cmpimps)*0.3;
-			System.out.println("Day :" + day +  "Long campaign Starting Strategy");
-		}
-		else if (pendingCampaign.dayEnd - pendingCampaign.dayStart == 4){ // medium campaign
-			cmpBidMillis = campaignProfitStrategy(cmpimps)*0.9;
-			System.out.println("Day :" + day + " Medium campaign Starting Strategy");
-		}
-		else { // short campaign
-			cmpBidMillis = cmpimps;
-			System.out.println("Day :" + day + " Short campaign Starting Strategy");
-		}
-		return ((long)cmpBidMillis);
-	}
 
 	 /**
 	 * On day n ( > 0), the result of the UserClassificationService and Campaign
@@ -357,9 +320,12 @@ public class AgentNAMM extends Agent {
 
 			/* add campaign to list of won campaigns */
 			pendingCampaign.setBudget(notificationMessage.getCostMillis()/1000.0);
+			pendingCampaign.setBid(cmpBidMillis);
+			pendingCampaign.impressionTarget = setImpressionTargets();
 			currCampaign = pendingCampaign;
 			genCampaignQueries(currCampaign);
 			myCampaigns.put(pendingCampaign.id, pendingCampaign);
+			numCampaigns ++;
 
 			campaignAllocatedTo = " WON at cost (Millis)"
 					+ notificationMessage.getCostMillis();
@@ -384,14 +350,14 @@ public class AgentNAMM extends Agent {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	protected void sendBidAndAds() {
 
 		bidBundle = new AdxBidBundle();
 
 		/*
-		 * 
+		 *  TODO: CREATE OUR BID BUNDLE HERE
 		 */
 
 		int dayBiddingFor = day + 1;
@@ -407,7 +373,7 @@ public class AgentNAMM extends Agent {
 		/*
 		 * add bid entries w.r.t. each active campaign with remaining contracted
 		 * impressions.
-		 * 
+		 *
 		 * for now, a single entry per active campaign is added for queries of
 		 * matching target segment.
 		 */
@@ -497,7 +463,7 @@ public class AgentNAMM extends Agent {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param //AdNetworkReport
 	 */
 	private void handleAdNetworkReport(AdNetworkReport adnetReport) {
@@ -536,7 +502,7 @@ public class AgentNAMM extends Agent {
 	 * opportunity (a query) that is characterized by the the publisher, the
 	 * market segment the user may belongs to, the device used (mobile or
 	 * desktop) and the ad type (text or video).
-	 * 
+	 *
 	 * An array of all possible queries is generated here, based on the
 	 * publisher names reported at game initialization in the publishers catalog
 	 * message
@@ -635,6 +601,8 @@ public class AgentNAMM extends Agent {
 		double mobileCoef;
 		int id;
 		private AdxQuery[] campaignQueries;//array of queries relvent for the campaign.
+		long cmpBidMillis;
+		long impressionTarget;
 
 		/* campaign info as reported */
 		CampaignStats stats;
@@ -648,6 +616,7 @@ public class AgentNAMM extends Agent {
 			videoCoef = icm.getVideoCoef();
 			mobileCoef = icm.getMobileCoef();
 			id = icm.getId();
+			impressionTarget = icm.getReachImps(); // TODO calculate default value for impression target.
 
 			stats = new CampaignStats(0, 0, 0);
 			budget = 0.0;
@@ -655,6 +624,10 @@ public class AgentNAMM extends Agent {
 
 		public void setBudget(double d) {
 			budget = d;
+		}
+
+		public void setBid(long b) {
+			cmpBidMillis = b; //NAMM
 		}
 
 		public CampaignData(CampaignOpportunityMessage com) {
@@ -667,6 +640,8 @@ public class AgentNAMM extends Agent {
 			videoCoef = com.getVideoCoef();
 			stats = new CampaignStats(0, 0, 0);
 			budget = 0.0;
+			cmpBidMillis = 0; //NAMM
+			impressionTarget = com.getReachImps(); //TODO calculate default value for impression target.
 		}
 
 		@Override
@@ -694,4 +669,178 @@ public class AgentNAMM extends Agent {
 
 	}
 
+	/**
+	 *  User defined methods
+	 */
+
+	/*
+	 * ALUN: different methods for each campaign strategy
+     */
+
+	/*
+	 * Method for computing campaign bid to maximise profit
+	 * Currently just bids randomly between min and max as before
+	 * In progress: version will bid the average successful second price.
+	 * Not great because it creates a system where we assign our value based on other agents value.
+	 */
+	private long campaignProfitStrategy() {
+		Random random = new Random();
+		double bid;
+		double totalCostPerImp = 0.0;
+		if (myCampaigns.size() > 0) {
+			for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
+				if (entry.getValue().dayStart != 0) {
+					totalCostPerImp += entry.getValue().budget / entry.getValue().reachImps;
+				}
+			}
+			bid = currCampaign.reachImps * totalCostPerImp / myCampaigns.size();
+		}
+		else bid = (double)random.nextInt(currCampaign.reachImps.intValue()); //Random bid initially
+
+		System.out.println("Day :" + day + " Campaign - Base bid: " + bid);
+		return (long)bid;
+		// TODO: Build a system for choosing initial bids when data isn't available i.e. read/write from previous games.
+
+	}
+
+	/*
+	 * Method for computing the quality recovery campaign bid strategy
+	 * Multiply profit strategy by quality squared, first to turn our bid into an effective bid.
+	 * Second to try and win more campaigns than our value assigns.
+	 */
+	private long campaignQualityRecoveryStrategy() {
+		double bid =  campaignProfitStrategy() * Math.pow(adNetworkDailyNotification.getQualityScore(),2); //TODO: learn the power
+		System.out.println("Day :" + day + " Campaign - Quality Recovery Strategy");
+		// TODO: ferocity of quality recovery should be based on our ability to complete the campaigns and the number of campaigns we currently have.
+		return (long)bid;
+	}
+
+	/*
+	 * Method for computing the campaign bid for starting strategy
+	 */
+	private long campaignStartingStrategy() {
+		double cmpBidMillis;
+		long campaignLength = pendingCampaign.dayEnd - pendingCampaign.dayStart + 1;
+		if(campaignLength == 10){ // long campaign
+			cmpBidMillis = campaignProfitStrategy()*0.8;
+			System.out.println("Day :" + day +  " Campaign - Long campaign Starting Strategy");
+		}
+		else if (campaignLength == 5){ // medium campaign
+			cmpBidMillis = campaignProfitStrategy()*1.2;
+			System.out.println("Day: " + day + " Campaign - Medium campaign Starting Strategy");
+		}
+		else { // short campaign
+			cmpBidMillis = campaignProfitStrategy()*2;
+			System.out.println("Day :" + day + " Short campaign Starting Strategy");
+		}
+		return ((long)cmpBidMillis);
+	}
+
+	/*
+	 *  Method for computing impression targets to be used in the UCS and impression auctions
+	 *  Later it will be useful to return a range of targets rather than a single target.
+	 *  Loops through impression targets to work out the most cost efficient permutation.
+	 */
+	private long setImpressionTargets() {
+		long target=0;
+		for (double multiplier = 0.6; multiplier <= 2; multiplier+= 0.02){ // loop over range of impression targets
+			double tempTarget = pendingCampaign.reachImps*multiplier;
+			// Decide which impression target is most cost efficient
+			long targetCost = totalCost(pendingCampaign, target) + qualityEffect(pendingCampaign);
+			long tempTargetCost = totalCost(pendingCampaign, (long)tempTarget) + qualityEffect(pendingCampaign);
+			if (tempTargetCost < targetCost) {
+				target = (long)tempTarget;
+			}
+		}
+		//if impression cost estimate doesn't work just set default value
+		if (target == 0) target = pendingCampaign.reachImps;
+		System.out.println("Day " + day + ": Impression target = " + target);
+		return(target);
+	}
+
+	/*
+	 * Evaluates the effect of estimated quality change on future revenue.
+	 */
+	private long qualityEffect(CampaignData Campaign) {
+
+		return 0;
+	}
+
+	/*
+	 * Estimates the total cost of running a campaign based on the sum UCS and impression estimation functions.
+	 */
+	private long totalCost(CampaignData Campaign, long targetImp) {
+		long totalCost = 0;
+		// loop over each day of the campaign
+		for (day = (int)Campaign.dayStart; day <= (int)Campaign.dayEnd; day++) {
+			// evaluate best UCS/impression cost combination estimation
+			ucsTargetLevel = bestImpUcsCombination();
+			// add the UCS cost to the Impression cost estimate and sum
+			totalCost += impressionCostEstimate(targetImp, day, ucsTargetLevel) + ucsCostEstimate(ucsTargetLevel);
+		}
+		return totalCost;
+	}
+
+	/*
+	 *  Manu: Impression cost estimate
+	 *  This method takes an impression target as an input and evaluates the estimated cost to achieve that value given
+	 *  the day and UCS target.
+	 *  Again later it will be useful to be able to estimate costs for a range of impressions to choose a local optimum.
+	 *  May include functionality to recall past actual costs / estimates.
+	 *  USE: use this function for campaign bids by evaluating the best impression/UCS combination then summing over
+	 *  all days of the prospective campaign to evaluate total cost to complete campaign.
+	 */
+	private long impressionCostEstimate(long impTarget, long day, int ucsTargetLevel) {
+		// TODO;
+		return 0;
+	}
+
+	/*
+	 * Nickola: UCS cost estimate
+	 * This function estimates the cost to achieve a specific ucs tier. Note that ucsTarget is the integer tier not the
+	 * percentage of users classified. (1 = 100%, 2 = 90%, 3 = 81% ...).
+	 * Expansion: Factor in changes to unknown and known impression costs.
+	 */
+	private long ucsCostEstimate(int ucsTargetLevel) {
+		// TODO;
+		return 0;
+	}
+
+	/*
+	 * Nickola: Best UCS impression cost combination
+	 * This function queries impression and UCS cost estimations over the entire range of UCS costs to evaluate the
+	 * cheapest cost to achieve our impression target.
+	 */
+	private int bestImpUcsCombination(){
+		// TODO Return desired UCS classification;
+		return 0;
+	}
+
+	/*
+	 * Nickola: UCS bid
+	 * This method takes a UCS target and tries to evaluate the bid required to reach that target.
+	 * Expansion: include a sense of risk aversion to this function. i.e. when it is more important to achieve a
+	 * specific UCS level (like incomplete campaign due that day) we want to overbid.
+	 * Will use a combination of machine learning techniques and recalling recorded values to produce estimate.
+	 */
+	private double ucsBidCalculator(int ucsTargetLevel){
+		// TODO;
+		return 0;
+	}
+
+	/*
+	 * Miguel: This method calculates how to bid for unknown users.
+	 */
+	private double untargetedImpressionBidCalculator(double impressionTarget){
+		// TODO;
+		return 0;
+	}
+
+	/*
+	 * Miguel: This method evaluates the bid for each impression query.
+	 */
+	private double ImpressionBidCalculator(double impressionTarget, AdxQuery query){
+		// TODO;
+		return 0;
+	}
 }

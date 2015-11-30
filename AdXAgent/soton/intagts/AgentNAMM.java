@@ -741,14 +741,15 @@ public class AgentNAMM extends Agent {
 	 *  Method for computing impression targets to be used in the UCS and impression auctions
 	 *  Later it will be useful to return a range of targets rather than a single target.
 	 *  Loops through impression targets to work out the most cost efficient permutation.
+	 *  Impression target minimises campaign cost + quality effect
 	 */
 	private long setImpressionTargets() {
 		long target=0;
 		for (double multiplier = 0.6; multiplier <= 2; multiplier+= 0.02){ // loop over range of impression targets
 			double tempTarget = pendingCampaign.reachImps*multiplier;
 			// Decide which impression target is most cost efficient
-			long targetCost = totalCost(pendingCampaign, target) + qualityEffect(pendingCampaign);
-			long tempTargetCost = totalCost(pendingCampaign, (long)tempTarget) + qualityEffect(pendingCampaign);
+			long targetCost = campaignCost(pendingCampaign, target) + qualityEffect(pendingCampaign);
+			long tempTargetCost = campaignCost(pendingCampaign, (long)tempTarget) + qualityEffect(pendingCampaign);
 			if (tempTargetCost < targetCost) {
 				target = (long)tempTarget;
 			}
@@ -763,14 +764,28 @@ public class AgentNAMM extends Agent {
 	 * Evaluates the effect of estimated quality change on future revenue.
 	 */
 	private long qualityEffect(CampaignData Campaign) {
-
-		return 0;
+		// Days remaining after campaign ends
+		long daysRemaining = 60 - Campaign.dayEnd;
+		// Average daily reach from past campaigns
+		double pastReach = 0;
+		for (Map.Entry<Integer, CampaignData> campaign : myCampaigns.entrySet()) {
+			pastReach += campaign.getValue().reachImps;
+		}
+		double pastDailyReach = pastReach / myCampaigns.size();
+		// Linearly reduces reliance on historic data --> dynamic data over time
+		long reachRemaining = (long)((daysRemaining/60) * 50 + (1-daysRemaining/60)*pastDailyReach); //TODO learn the average reach per day
+		// turn target into a quality change
+		double a = 4.08577, b = 3.08577, lRate = 0.6;
+		double qualityChange=lRate*(adNetworkDailyNotification.getQualityScore()+(2*lRate/a)*Math.atan(a*Campaign.impressionTarget/Campaign.reachImps-b)-Math.atan(-b));
+		// Sum the effect of increased quality on the remaining reach.
+		return (long)qualityChange * reachRemaining;
 	}
 
 	/*
 	 * Estimates the total cost of running a campaign based on the sum UCS and impression estimation functions.
+	 * Total cost = impression cost of campaign + ucs cost
 	 */
-	private long totalCost(CampaignData Campaign, long targetImp) {
+	private long campaignCost(CampaignData Campaign, long targetImp) {
 		long totalCost = 0;
 		// loop over each day of the campaign
 		for (day = (int)Campaign.dayStart; day <= (int)Campaign.dayEnd; day++) {
@@ -793,6 +808,8 @@ public class AgentNAMM extends Agent {
 	 */
 	private long impressionCostEstimate(long impTarget, long day, int ucsTargetLevel) {
 		// TODO;
+		// You can now access impression targets from campaign data;
+		// e.g. pendingCampaign.impressionTarget
 		return 0;
 	}
 
@@ -842,6 +859,8 @@ public class AgentNAMM extends Agent {
 	 */
 	private double ImpressionBidCalculator(double impressionTarget, AdxQuery query){
 		// TODO;
+		// You can now access impression targets from campaign data;
+		// e.g. pendingCampaign.impressionTarget
 		return 0;
 	}
 }
