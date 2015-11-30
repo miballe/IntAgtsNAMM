@@ -1,16 +1,6 @@
-30/11 10:57:57 INFO file.FileDatabase|infodb: database opened as C:\Users\inbre\Documents\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXServer\infodb
-30/11 10:57:57 INFO common.BlockingViewerServer|viewer server started at *:4042
-30/11 10:57:57 INFO sim.Admin|adding manager for simulation type tac13adx
-30/11 10:57:57 INFO server.TACTGateway|TACT Server started at *:6502
-30/11 10:58:05 INFO server.TACTChannel|user sample logged in as sample@tact-1 with version 0.9.6 from 127.0.0.1
-30/11 10:58:05 INFO sim.Admin|created simulation 14
-30/11 10:58:21 WARNING sim.Admin|closing old channel sample due to new connection sample
-30/11 10:58:21 INFO server.TACTChannel|user sample logged in as sample@tact-2 with version 0.9.6 from 127.0.0.1
-30/11 10:58:51 WARNING sim.Admin|closing old channel sample due to new connection sample
-30/11 10:58:51 INFO server.TACTChannel|user sample logged in as sample@tact-3 with version 0.9.6 from 127.0.0.1
-30/11 10:59:00 FINE sim.Admin|Entering log for simulation 14
-************************************************************
-* Entering log for simulation 14
-************************************************************
-
-
+30/11 11:04:06 INFO file.FileDatabase|infodb: database opened as C:\Users\inbre\Documents\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXServer\infodb
+30/11 11:04:06 INFO common.BlockingViewerServer|viewer server started at *:4042
+30/11 11:04:07 INFO sim.Admin|adding manager for simulation type tac13adx
+30/11 11:04:07 INFO server.TACTGateway|TACT Server started at *:6502
+30/11 11:04:18 INFO server.TACTChannel|user sample logged in as sample@tact-1 with version 0.9.6 from 127.0.0.1
+30/11 11:04:18 INFO sim.Admin|created simulation 17

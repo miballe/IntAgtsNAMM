@@ -694,7 +694,7 @@ public class AgentNAMM extends Agent {
 		 *  Less simple version of profit strategy
 		 */
 
-		// totalCostPerImp = 0.0;
+		double totalCostPerImp = 0.0;
 
 
 		/*

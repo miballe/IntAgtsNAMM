@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8d47181-fdd7-4794-be3c-277d03d0c306" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/AgentNAMM$CampaignData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/AgentNAMM.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/intagts/AgentNAMM - legacy.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/soton/intagts/AgentNAMM - legacy.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soton/intagts/AgentNAMM.java" afterPath="$PROJECT_DIR$/soton/intagts/AgentNAMM.java" />
-    </list>
+    <list default="true" id="b8d47181-fdd7-4794-be3c-277d03d0c306" name="Default" comment="" />
     <ignored path="adx-agent.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/" />
@@ -32,8 +25,8 @@
       <file leaf-file-name="AgentNAMM.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/soton/intagts/AgentNAMM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.028571429">
-              <caret line="686" column="8" selection-start-line="686" selection-start-column="8" selection-end-line="686" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.51357144">
+              <caret line="700" column="14" selection-start-line="700" selection-start-column="14" selection-end-line="700" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3802#3803#0" expanded="true" />
@@ -515,8 +508,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/soton/intagts/AgentNAMM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.028571429">
-          <caret line="686" column="8" selection-start-line="686" selection-start-column="8" selection-end-line="686" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.51357144">
+          <caret line="700" column="14" selection-start-line="700" selection-start-column="14" selection-end-line="700" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3802#3803#0" expanded="true" />
