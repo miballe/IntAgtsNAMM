@@ -252,6 +252,7 @@ public class AgentNAMM extends Agent {
 		// Quality recovery when quality is too low
 		else if (adNetworkDailyNotification.getQualityScore() < 1) { // Condition for Quality strategy
 			cmpBidMillis = campaignQualityRecoveryStrategy((int)cmpimps);
+			System.out.println("Day " + day + ": Using quality recovery strategy");
 		}
 		else cmpBidMillis = campaignProfitStrategy((int)cmpimps);
 		// If bid is too high, just bid the maximum value.
@@ -299,10 +300,8 @@ public class AgentNAMM extends Agent {
 	 * Currently just bids randomly between min and max as before
 	 */
 	private long campaignProfitStrategy(int cmpimps) {
-		Random random = new Random();
-		long bid = random.nextInt(cmpimps);
-		System.out.println("Day :" + day + "Base bid: " + bid);
-		return bid;
+		Random random = new Random(cmpimps);
+		return random.nextInt();
 	}
 
 	/*
@@ -311,8 +310,8 @@ public class AgentNAMM extends Agent {
 	 * Second to try and win more campaigns than our value assigns.
 	 */
 	private long campaignQualityRecoveryStrategy(int cmpimps) {
-		double bid =  campaignProfitStrategy(cmpimps) * Math.pow(adNetworkDailyNotification.getQualityScore(),2);
-		System.out.println("Day :" + day + "Quality Recovery Strategy");
+		double bid =  campaignProfitStrategy(cmpimps) * adNetworkDailyNotification.getQualityScore() * adNetworkDailyNotification.getQualityScore();
+		System.out.print("Day :" + day + "Quality Recovery Strategy");
 		return (long)bid;
 	}
 
@@ -322,15 +321,15 @@ public class AgentNAMM extends Agent {
 	private long campaignStartingStrategy(int cmpimps) {
 		double cmpBidMillis;
 		if(pendingCampaign.dayEnd - pendingCampaign.dayStart  >= 9){ // long campaign
-			cmpBidMillis = campaignProfitStrategy(cmpimps)*0.8;
+			cmpBidMillis = campaignProfitStrategy(cmpimps)*0.3;
 			System.out.println("Day :" + day +  "Long campaign Starting Strategy");
 		}
 		else if (pendingCampaign.dayEnd - pendingCampaign.dayStart == 4){ // medium campaign
-			cmpBidMillis = campaignProfitStrategy(cmpimps)*1.2;
-			System.out.println("Day: " + day + " Medium campaign Starting Strategy");
+			cmpBidMillis = campaignProfitStrategy(cmpimps)*0.9;
+			System.out.println("Day :" + day + " Medium campaign Starting Strategy");
 		}
 		else { // short campaign
-			cmpBidMillis = campaignProfitStrategy(cmpimps)*2;
+			cmpBidMillis = cmpimps;
 			System.out.println("Day :" + day + " Short campaign Starting Strategy");
 		}
 		return ((long)cmpBidMillis);
