@@ -13,3 +13,6 @@ logs/
 public_html/
 
 
+AdXAgent/.idea/workspace.xml
+AdXAgent/.idea/*
+AdXAgent/.idea/**/*
