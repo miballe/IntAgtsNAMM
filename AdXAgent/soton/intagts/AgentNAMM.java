@@ -297,9 +297,8 @@ public class AgentNAMM extends Agent {
 		}
 
 		/* Note: Campaign bid is in millis */
-		AdNetBidMessage bids = new AdNetBidMessage(ucsBid, pendingCampaign.id, (long)cmpBid*1000);
+		AdNetBidMessage bids = new AdNetBidMessage(ucsBid, pendingCampaign.id, (long)(cmpBid*1000));
 		sendMessage(demandAgentAddress, bids);
-		// TODO Fix bug where sometimes bid isn't submitted
 		// TODO FIx bug where day 0 isn't bid for
 	}
 
@@ -685,7 +684,7 @@ public class AgentNAMM extends Agent {
 		NOTE: this function should be turned off while training historical data
 	*/
 	private double bidTooLow(long cmpimps, int confidence) {
-		// TODO implement this strategy
+		// TODO implement Machine Learning strategy
 		// currently just evaluates the reserve price
 		double bidLow = cmpimps * 0.0001 / adNetworkDailyNotification.getQualityScore();
 		System.out.println(" Min: " + (long)(bidLow*1000));
