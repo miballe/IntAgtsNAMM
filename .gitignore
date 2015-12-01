@@ -1,0 +1,9 @@
+*.~1~
+*.log
+*.dat
+*.lck
+AdXServer/infodb/*.*
+AdXServer/logs/*.*
+AdXServer/public_html/*.*
+AdXClient/.idea/*.*
+AdXClient/logs/*.*
