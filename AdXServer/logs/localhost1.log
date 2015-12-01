@@ -1,19 +1,12 @@
-01/12 14:06:14 INFO file.FileDatabase|infodb: database opened as C:\Users\inbre\Documents\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXServer\infodb
-01/12 14:06:14 INFO common.BlockingViewerServer|viewer server started at *:4042
-01/12 14:06:14 INFO sim.Admin|adding manager for simulation type tac13adx
-01/12 14:06:14 INFO server.TACTGateway|TACT Server started at *:6502
-01/12 14:06:15 INFO server.TACTChannel|user namm logged in as namm@tact-1 with version 0.9.6 from 127.0.0.1
-01/12 14:06:15 INFO sim.Admin|created simulation 63
-01/12 14:07:00 FINE sim.Admin|Entering log for simulation 63
+01/12 15:36:43 INFO file.FileDatabase|infodb: database opened as C:\Users\inbre\Documents\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXServer\infodb
+01/12 15:36:43 INFO common.BlockingViewerServer|viewer server started at *:4042
+01/12 15:36:43 INFO sim.Admin|adding manager for simulation type tac13adx
+01/12 15:36:43 INFO server.TACTGateway|TACT Server started at *:6502
+01/12 15:37:21 INFO server.TACTChannel|user namm logged in as namm@tact-1 with version 0.9.6 from 127.0.0.1
+01/12 15:37:21 INFO sim.Admin|created simulation 78
+01/12 15:38:00 FINE sim.Admin|Entering log for simulation 78
 ************************************************************
-* Entering log for simulation 63
-************************************************************
-
-
-01/12 14:17:01 INFO is.TACAAResultManager|generating results for simulation 63 to public_html\localhost\history\63\index.html
-01/12 14:18:00 FINE sim.Admin|Entering log for simulation 64
-************************************************************
-* Entering log for simulation 64
+* Entering log for simulation 78
 ************************************************************
 
 
