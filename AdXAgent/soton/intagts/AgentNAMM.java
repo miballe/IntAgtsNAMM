@@ -261,16 +261,15 @@ public class AgentNAMM extends Agent {
 		System.out.print("Day " + day + ": Campaign - Bid: " + (long)(cmpBid*1000));
 		// If bid is too high, just bid the maximum value.
 		if (cmpBid >= bidTooHigh(cmpimps, 95)) {
-			cmpBid = (long)(cmpimps*adNetworkDailyNotification.getQualityScore());
+			cmpBid = 0.001 * cmpimps * adNetworkDailyNotification.getQualityScore() - 0.001;
 			System.out.print(" " + (long)(cmpBid*1000) + "-too high!");
 		}
 		// If bid is too low, bid the "minimum value"
 		double lowBid = bidTooLow(cmpimps, 95);
 		if (cmpBid <= lowBid) {
-			cmpBid = lowBid;
+			cmpBid = lowBid + 0.001;
 			System.out.println(" " + (long)(cmpBid*1000) + "-too low!");
 		}
-		System.out.println("*******''''''" +  ImpressionTargets(pendingCampaign));
 		/*
 		 * The campaign requires com.getReachImps() impressions. The competing
 		 * Ad Networks bid for the total campaign Budget (that is, the ad
@@ -300,6 +299,8 @@ public class AgentNAMM extends Agent {
 		/* Note: Campaign bid is in millis */
 		AdNetBidMessage bids = new AdNetBidMessage(ucsBid, pendingCampaign.id, (long)cmpBid*1000);
 		sendMessage(demandAgentAddress, bids);
+		// TODO Fix bug where sometimes bid isn't submitted
+		// TODO FIx bug where day 0 isn't bid for
 	}
 
 	/**
@@ -359,10 +360,6 @@ public class AgentNAMM extends Agent {
 	protected void sendBidAndAds() {
 
 		bidBundle = new AdxBidBundle();
-
-		/*
-		 *  TODO: CREATE OUR BID BUNDLE HERE
-		 */
 
 		int dayBiddingFor = day + 1;
 
@@ -786,20 +783,33 @@ public class AgentNAMM extends Agent {
 	 */
 	private long ImpressionTargets(CampaignData campaign) {
 		long target=campaign.reachImps;
-		double targetCost = campaignCost(campaign, target) + qualityEffect(campaign, target);
+		double estProfit = campaign.budget * estQuality(campaign, target) + qualityEffect(campaign, target)
+				- campaignCost(campaign, target);
 		// Consider a range of possible impression targets
 		for (double multiplier = 0.6; multiplier <= 2; multiplier+= 0.02){ // loop over range of impression targets
 			long tempTarget = (long)(campaign.reachImps*multiplier);
 			// Decide which impression target is most cost efficient
-			double tempTargetCost = campaignCost(campaign, tempTarget) + qualityEffect(campaign, target);
+			double tempEstProfit = campaign.budget * estQuality(campaign, tempTarget) + qualityEffect(campaign, tempTarget)
+					- campaignCost(campaign, target);
 			//System.out.println("~~~ temp: " + tempTarget + " " + tempTargetCost + " Current " + target + " " + targetCost);
-			if (tempTargetCost < targetCost) {
+			if (tempEstProfit > estProfit) {
 				target = tempTarget;
 			}
 		}
-		System.out.print("BEST TARGET IMPRESSIONS: " + target + " Est campaign cost: " + campaignCost(campaign, target));
-		System.out.println(" Est. Quality effect: " + qualityEffect(campaign, target));
+		System.out.println("ESTIMATED PROFIT: " + (long)estProfit + " target imps: " + target + " Est.cmp cost: " +
+				campaignCost(campaign, target) + " Est.Quality effect: " + qualityEffect(campaign, target));
 		return(target);
+	}
+
+
+	// Function that estimates you quality after completing the inputted ongoing campaign.
+	// doesn't consider other ongoing campaigns effects.
+	private double estQuality(CampaignData campaign, long target) {
+		double currentQuality = adNetworkDailyNotification.getQualityScore();
+		double a = 4.08577, b = 3.08577, lRate = 0.6;
+		double qualityChange=lRate*(currentQuality
+				+(2*lRate/a)*Math.atan(a*target/campaign.reachImps-b)-Math.atan(-b));
+		return currentQuality + qualityChange;
 	}
 
 	/*
@@ -813,15 +823,14 @@ public class AgentNAMM extends Agent {
 		for (Map.Entry<Integer, CampaignData> campaign : myCampaigns.entrySet()) {
 			pastReach += campaign.getValue().reachImps;
 		}
-		double pastDailyReach = pastReach / myCampaigns.size();
+		double revenuePerImpression = 0.0008;// TODO learn revenue per impression
+		double pastDailyReach = pastReach / day;
 		// Linearly reduces reliance on historic data --> dynamic data over time
 		long reachRemaining = (long)((daysRemaining/60) * 1000 + pastDailyReach * (1-daysRemaining)/60); //TODO learn the average reach per day
 		// turn target into a quality change
-		double a = 4.08577, b = 3.08577, lRate = 0.6;
-		double qualityChange=lRate*(adNetworkDailyNotification.getQualityScore()+(2*lRate/a)*Math.atan(a*target/Campaign.reachImps-b)-Math.atan(-b));
+		double qualityChange = estQuality(Campaign, target) - adNetworkDailyNotification.getQualityScore();
 		// Sum the effect of increased quality on the remaining reach.
-		//return qualityChange * reachRemaining;
-		return 0;
+		return qualityChange * reachRemaining * revenuePerImpression;
 	}
 
 	/*

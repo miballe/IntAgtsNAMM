@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8d47181-fdd7-4794-be3c-277d03d0c306" name="Default" comment="">
+    <list default="true" id="b8d47181-fdd7-4794-be3c-277d03d0c306" name="Default" comment="small changes">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingparticipants.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingparticipants.dat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingsimulations.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingsimulations.dat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_state.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_state.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soton/intagts/AgentNAMM.java" afterPath="$PROJECT_DIR$/soton/intagts/AgentNAMM.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/logs/localhost1.log" afterPath="$PROJECT_DIR$/../AdXServer/logs/localhost1.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/logs/localhost0.log" afterPath="$PROJECT_DIR$/../AdXServer/logs/localhost0.log" />
     </list>
     <ignored path="adx-agent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,17 +32,17 @@
       <file leaf-file-name="AgentNAMM.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/soton/intagts/AgentNAMM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6400772">
-              <caret line="823" column="17" selection-start-line="823" selection-start-column="17" selection-end-line="823" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.3673207">
+              <caret line="362" column="0" selection-start-line="362" selection-start-column="0" selection-end-line="362" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1803#1830#0" expanded="true" />
                 <element signature="e#5667#5668#0" expanded="true" />
                 <element signature="e#5734#5735#0" expanded="true" />
-                <element signature="e#20740#20741#0" expanded="true" />
-                <element signature="e#20759#20760#0" expanded="true" />
-                <element signature="e#21471#21472#0" expanded="true" />
-                <element signature="e#21541#21542#0" expanded="true" />
+                <element signature="e#20728#20729#0" expanded="true" />
+                <element signature="e#20747#20748#0" expanded="true" />
+                <element signature="e#21459#21460#0" expanded="true" />
+                <element signature="e#21529#21530#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -83,9 +86,9 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2572" />
+    <option name="x" value="3267" />
     <option name="y" value="-3600" />
-    <option name="width" value="4286" />
+    <option name="width" value="3591" />
     <option name="height" value="3513" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -508,7 +511,13 @@
       <option name="project" value="LOCAL" />
       <updated>1448982882353</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="small changes">
+      <created>1448985135551</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1448985135552</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -521,7 +530,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="2572" y="-3600" width="4286" height="3513" extended-state="0" />
+    <frame x="3267" y="-3600" width="3591" height="3513" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -531,12 +540,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806692" sideWeight="0.5007993" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990655" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="1.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="432" y="-3600" width="3291" height="3513" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="1.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="432" y="-3600" width="2771" height="3513" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22218554" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992566" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18560423" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22289678" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -564,7 +573,8 @@
     <MESSAGE value="converted cmpBidding into non-millis (converted to millis for submitting the bid and printing to console).... makes all the maths better and less confusing." />
     <MESSAGE value="implementing impression target as inherent attribute to myCampaigns. Some bugs exist." />
     <MESSAGE value="removed impressionTarget character, please use function to access impression targets" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed impressionTarget character, please use function to access impression targets" />
+    <MESSAGE value="small changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="small changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -601,17 +611,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/soton/intagts/AgentNAMM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6400772">
-          <caret line="823" column="17" selection-start-line="823" selection-start-column="17" selection-end-line="823" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.3673207">
+          <caret line="362" column="0" selection-start-line="362" selection-start-column="0" selection-end-line="362" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1803#1830#0" expanded="true" />
             <element signature="e#5667#5668#0" expanded="true" />
             <element signature="e#5734#5735#0" expanded="true" />
-            <element signature="e#20740#20741#0" expanded="true" />
-            <element signature="e#20759#20760#0" expanded="true" />
-            <element signature="e#21471#21472#0" expanded="true" />
-            <element signature="e#21541#21542#0" expanded="true" />
+            <element signature="e#20728#20729#0" expanded="true" />
+            <element signature="e#20747#20748#0" expanded="true" />
+            <element signature="e#21459#21460#0" expanded="true" />
+            <element signature="e#21529#21530#0" expanded="true" />
           </folding>
         </state>
       </provider>
