@@ -1,0 +1,15 @@
+*.~1~
+*.log
+*.dat
+*.lck
+*.class
+infodb/**/*
+.idea/**/*
+logs/**/*
+public_html/**/*
+infodb/
+.idea/
+logs/
+public_html/
+
+
