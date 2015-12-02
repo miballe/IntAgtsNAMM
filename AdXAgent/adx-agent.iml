@@ -37,6 +37,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="adx-1.2.8" level="project" />
+    <orderEntry type="library" exported="" name="adx-1.2.8" level="project" />
   </component>
 </module>
