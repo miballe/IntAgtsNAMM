@@ -1,12 +1,40 @@
-01/12 18:09:34 INFO file.FileDatabase|infodb: database opened as C:\Users\inbre\Documents\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXServer\infodb
-01/12 18:09:34 INFO common.BlockingViewerServer|viewer server started at *:4042
-01/12 18:09:35 INFO sim.Admin|adding manager for simulation type tac13adx
-01/12 18:09:35 INFO server.TACTGateway|TACT Server started at *:6502
-01/12 18:09:40 INFO server.TACTChannel|user namm logged in as namm@tact-1 with version 0.9.6 from 127.0.0.1
-01/12 18:09:40 INFO sim.Admin|created simulation 97
-01/12 18:10:00 FINE sim.Admin|Entering log for simulation 97
+02/12 07:20:09 INFO file.FileDatabase|infodb: database opened as C:\Users\inbre\Documents\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXServer\infodb
+02/12 07:20:09 INFO common.BlockingViewerServer|viewer server started at *:4042
+02/12 07:20:09 INFO sim.Admin|adding manager for simulation type tac13adx
+02/12 07:20:10 INFO server.TACTGateway|TACT Server started at *:6502
+02/12 07:20:15 INFO server.TACTChannel|user namm logged in as namm@tact-1 with version 0.9.6 from 127.0.0.1
+02/12 07:20:15 INFO sim.Admin|created simulation 135
+02/12 07:21:00 FINE sim.Admin|Entering log for simulation 136
 ************************************************************
-* Entering log for simulation 97
+* Entering log for simulation 136
+************************************************************
+
+
+02/12 07:31:00 INFO is.TACAAResultManager|generating results for simulation 136 to public_html\localhost\history\136\index.html
+02/12 07:32:00 FINE sim.Admin|Entering log for simulation 137
+************************************************************
+* Entering log for simulation 137
+************************************************************
+
+
+02/12 07:42:00 INFO is.TACAAResultManager|generating results for simulation 137 to public_html\localhost\history\137\index.html
+02/12 07:43:00 FINE sim.Admin|Entering log for simulation 138
+************************************************************
+* Entering log for simulation 138
+************************************************************
+
+
+02/12 07:53:01 INFO is.TACAAResultManager|generating results for simulation 138 to public_html\localhost\history\138\index.html
+02/12 07:54:00 FINE sim.Admin|Entering log for simulation 139
+************************************************************
+* Entering log for simulation 139
+************************************************************
+
+
+02/12 08:04:00 INFO is.TACAAResultManager|generating results for simulation 139 to public_html\localhost\history\139\index.html
+02/12 08:05:00 FINE sim.Admin|Entering log for simulation 140
+************************************************************
+* Entering log for simulation 140
 ************************************************************
 
 
