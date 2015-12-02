@@ -670,15 +670,21 @@ public class AgentNAMM extends Agent {
 		}
 
 		private void setImpressionTargets() {
-			long target=this.reachImps;
-			double estProfit = this.budget * ERR + qualityEffect(this, target)
-					- campaignCost(this, target/(this.dayEnd-this.dayStart));
+			long target = 0;
+			double estProfit = 0, ERR = 0, estQuality = 0;
 			// Consider a range of possible impression targets
 			for (double multiplier = 0.6; multiplier <= 2; multiplier+= 0.02){ // loop over range of impression targets
 				long tempTarget = (long)(this.reachImps*multiplier);
+
+				double currentQuality = adNetworkDailyNotification.getQualityScore();
+				double a = 4.08577, b = 3.08577, lRate = 0.6, fracComplete = (double)target/(double)this.reachImps;
+				ERR = (2/a) * (( Math.atan((a*fracComplete) - b )) - Math.atan(-b));
+				estQuality = (1 - lRate)*currentQuality + lRate*ERR;
+
 				// Decide which impression target is most cost efficient
-				double tempEstProfit = this.budget * ERR + qualityEffect(this, tempTarget)
-						- campaignCost(this, tempTarget);
+				double tempEstProfit = this.budget * ERR + qualityEffect(this, estQuality) - campaignCost(this, tempTarget);
+				System.out.println("Best: " + target + "-" + estProfit +
+						"  Testing: " + tempTarget + "-" + tempEstProfit);
 				if (tempEstProfit > estProfit) {
 					target = tempTarget;
 					estProfit = tempEstProfit;
@@ -693,7 +699,7 @@ public class AgentNAMM extends Agent {
 
 			System.out.println("ESTIMATED PROFIT: " + estProfit + " | target: " + target + " | Est.cmp cost: " +
 					campaignCost(this,  target/(this.dayEnd-this.dayStart)) + " | Est.Quality effect: "
-					+ qualityEffect(this, target) + " | Est.ERR: " + ERR + " | cmpBudget: " + this.budget);
+					+ qualityEffect(this, estQuality) + " | Est.ERR: " + ERR + " | cmpBudget: " + this.budget);
 
 			impressionTarget = target;
 		}
@@ -814,45 +820,24 @@ public class AgentNAMM extends Agent {
 	}
 
 	/*
-	 *  Method for computing impression targets to be used in the UCS and impression auctions
-	 *  Later it will be useful to return a range of targets rather than a single target.
-	 *  Loops through impression targets to work out the most cost efficient permutation.
-	 *  Impression target minimises campaign cost + quality effect
-	 */
-	double ERR = 1.0; //TODO fix the scope of this
-
-	// Function that estimates your quality after completing the inputted ongoing campaign.
-	// doesn't consider other ongoing campaigns effects.
-	private double estQuality(CampaignData campaign, long target) {
-		double currentQuality = adNetworkDailyNotification.getQualityScore();
-		double a = 4.08577, b = 3.08577, lRate = 0.6, fracComplete = (double)target/(double)campaign.reachImps;
-		ERR = (2/a) * (( Math.atan((a*fracComplete) - b )) - Math.atan(-b));
-		return (1 - lRate)*currentQuality + lRate*ERR;
-
-	}
-
-	/*
 	 * Evaluates the effect of estimated quality change on future revenue.
 	 */
-	private double qualityEffect(CampaignData Campaign, long target) { //TODO consider setting as campaignData property
+	private double qualityEffect(CampaignData Campaign, double estQuality) {
 		// Days remaining after campaign ends
 		long daysRemaining = 60 - Campaign.dayEnd;
-		// Average daily reach from past campaigns
-		double pastReach = 0.0;
+		// Using budget as a proxy for income, also assumes all campaigns are complete
+		double pastIncome = 0.0;
 		for (Map.Entry<Integer, CampaignData> campaign : myCampaigns.entrySet()) {
-			pastReach += campaign.getValue().reachImps;
+			pastIncome += campaign.getValue().budget;
 		}
-		double revenuePerImpression = 0.0008;// TODO learn revenue per impression
-		double pastDailyReach = pastReach / day;
+		double historicDailyIncome = 1;// TODO machine learning
+		double pastDailyIncome = pastIncome / day;
 		// Linearly reduces reliance on historic data --> dynamic data over time
-		long reachRemaining = (long)((daysRemaining/60)*1000 + pastDailyReach*(1-daysRemaining/60))*daysRemaining; //TODO learn the average reach per day
+		long revenueRemaining = (long)((daysRemaining/60)*daysRemaining*historicDailyIncome
+				+ pastDailyIncome*(1-daysRemaining/60)*daysRemaining);
 		// turn target into a quality change
-		double qualityChange = estQuality(Campaign, target) - adNetworkDailyNotification.getQualityScore();
-		// Sum the effect of increased quality on the remaining reach.
-		//tOdo calculations incorrect - you earn ERR * budget profit.
-		//todo ERR effects revenue, Quality effects quantity of campaigns.
-		// todo but budget is a function of Quality rating as well :S
-		return qualityChange * reachRemaining * revenuePerImpression;
+		double qualityChange = estQuality - adNetworkDailyNotification.getQualityScore();
+		return qualityChange * revenueRemaining;
 	}
 
 	/*
@@ -861,12 +846,16 @@ public class AgentNAMM extends Agent {
 	 */
 	private double campaignCost(CampaignData Campaign, long targetImp) {
 		double totalCost = 0;
+		// todo campaign cost = cost paid of past impressions paid for + cost of future impressions
+		// todo try not to include ucs cost twice for overlapping campaigns.
 		// loop over each day of the campaign
-		for (int days = (int)Campaign.dayStart; days <= (int)Campaign.dayEnd; days++) {
+		for (int today = (int)Campaign.dayStart; today <= (int)Campaign.dayEnd; today++) {
 			// evaluate best UCS/impression cost combination estimation
-			ucsTargetLevel = bestImpUcsCombination();
+			ucsTargetLevel = bestImpUcsCombination(targetImp);
 			// add the UCS cost to the Impression cost estimate and sum
-			totalCost += impressionCostEstimate(targetImp, days, ucsTargetLevel) + ucsCostEstimate(ucsTargetLevel);
+			// Currently assumes impression target per day = impression target / number of days todo allow flexibility with daily impressions
+			totalCost += impressionCostEstimate(targetImp/(Campaign.dayEnd-Campaign.dayStart), today, ucsTargetLevel)
+					+ ucsCostEstimate(ucsTargetLevel);
 		}
 		return totalCost;
 	}
@@ -903,9 +892,9 @@ public class AgentNAMM extends Agent {
 	 * This function queries impression and UCS cost estimations over the entire range of UCS costs to evaluate the
 	 * cheapest cost to achieve our impression target.
 	 */
-	private int bestImpUcsCombination(){
+	private int bestImpUcsCombination(long targetImpressions){
 		// TODO Return desired UCS classification;
-		return 0;
+		return 1; // default desire to get first place (100%)
 	}
 
 	/*
