@@ -226,6 +226,7 @@ public class AgentNAMM extends Agent {
 		 */
 		System.out.println("Day " + day + ": Allocated campaign - " + campaignData);
 		myCampaigns.put(initialCampaignMessage.getId(), campaignData);
+		System.out.println("BUG HERE!1");
 	}
 
 	/**
@@ -239,6 +240,16 @@ public class AgentNAMM extends Agent {
 
 		day = com.getDay();
 
+		// For campaigns taht finished yesterday set the value for revenue achieved.
+		for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
+			if (entry.getValue().dayEnd < day) {
+				CampaignData campaign = entry.getValue();
+				double revenue = campaign.budget * ERRcalc(campaign, campaign.reachImps);
+				campaign.setRevenue(revenue);
+			}
+		}
+
+
 		pendingCampaign = new CampaignData(com);
 		System.out.println("Day " + day + ": Campaign opportunity - " + pendingCampaign);
 
@@ -247,7 +258,6 @@ public class AgentNAMM extends Agent {
 		*/
 		long cmpimps = com.getReachImps();
 		int startDays = 5;
-
 		// Starting strategy for first few days
 		if (day <= startDays) {
 			cmpBid = campaignStartingStrategy();
@@ -269,7 +279,6 @@ public class AgentNAMM extends Agent {
 			cmpBid = lowBid + 0.001;
 			System.out.println(" " + (long)(cmpBid*1000) + "-too low!");
 		}
-
 		/*
 		 * The campaign requires com.getReachImps() impressions. The competing
 		 * Ad Networks bid for the total campaign Budget (that is, the ad
@@ -297,7 +306,9 @@ public class AgentNAMM extends Agent {
 		/* Note: Campaign bid is in millis */
 		AdNetBidMessage bids = new AdNetBidMessage(ucsBid, pendingCampaign.id, (long)(cmpBid*1000));
 		sendMessage(demandAgentAddress, bids);
-		// TODO FIx bug where day 0 isn't bid for
+		/* TODO FIx bug where day 0 isn't bid for
+		 *	- Harder than expected the error moves position on the first day of each run
+		 */
 	}
 
 	/**
@@ -310,7 +321,6 @@ public class AgentNAMM extends Agent {
 			AdNetworkDailyNotification notificationMessage) {
 
 		adNetworkDailyNotification = notificationMessage;
-
 		System.out.println("Day " + day + ": Daily notification for campaign "
 				+ adNetworkDailyNotification.getCampaignId());
 
@@ -436,7 +446,7 @@ public class AgentNAMM extends Agent {
 	private void handleCampaignReport(CampaignReport campaignReport) {
 
 		campaignReports.add(campaignReport);
-
+		System.out.println("~~~~~~~~~~~~~~~~~~~~" + campaignReport);
 		/*
 		 * for each campaign, the accumulated statistics from day 1 up to day
 		 * n-1 are reported
@@ -597,7 +607,6 @@ public class AgentNAMM extends Agent {
 	private class CampaignData {
 		/* campaign attributes as set by server */
 		Long reachImps;
-		long impressionTarget;
 		long dayStart;
 		long dayEnd;
 		Set<MarketSegment> targetSegment;
@@ -605,11 +614,17 @@ public class AgentNAMM extends Agent {
 		double mobileCoef;
 		int id;
 		private AdxQuery[] campaignQueries;//array of queries relvent for the campaign.
-		double cmpBid;
 
 		/* campaign info as reported */
-		CampaignStats stats;
+		CampaignStats stats; // targeted imps, other imps and cost of imps
 		double budget;
+		double revenue;
+		double profit;
+		double profitEstimate;
+		double cmpBid;
+		long impressionTarget;
+		double uncorrectedProfitEstimate;
+
 
 		public CampaignData(InitialCampaignMessage icm) {
 			reachImps = icm.getReachImps();
@@ -622,10 +637,18 @@ public class AgentNAMM extends Agent {
 			stats = new CampaignStats(0, 0, 0);
 			budget = 0.0;
 			impressionTarget = reachImps;
+			revenue = 0;
+			profit = 0.0;
+			profitEstimate = 0.0;
+			uncorrectedProfitEstimate = 0.0;
 		}
 
 		public void setBudget(double d) {
 			budget = d;
+		}
+
+		public void setRevenue(double r) {
+			revenue = r;
 		}
 
 		public void setBid(double b) {
@@ -644,6 +667,10 @@ public class AgentNAMM extends Agent {
 			budget = 0.0;
 			cmpBid = 0.0; //NAMM
 			impressionTarget = reachImps;
+			revenue = 0;
+			profit = 0.0;
+			profitEstimate = 0.0;
+			uncorrectedProfitEstimate = 0.0;
 		}
 
 		@Override
@@ -669,44 +696,60 @@ public class AgentNAMM extends Agent {
 			this.campaignQueries = campaignQueries;
 		}
 
+		// Calculates an estimate for impression targets (and profit) to maximise estimated profit.
+		// Considers the effect of short term cost of the campaign, long term effect of quality change and inaccuracies in previous predictions.
 		private void setImpressionTargets() {
 			long target = 0;
-			double estProfit = 0, ERR = 0, estQuality = 0;
+			double estProfit = -99999, ERR = 0, estQuality = 0;
 			// Consider a range of possible impression targets
 			for (double multiplier = 0.6; multiplier <= 2; multiplier+= 0.02){ // loop over range of impression targets
 				long tempTarget = (long)(this.reachImps*multiplier);
 
 				double currentQuality = adNetworkDailyNotification.getQualityScore();
-				double a = 4.08577, b = 3.08577, lRate = 0.6, fracComplete = (double)target/(double)this.reachImps;
-				ERR = (2/a) * (( Math.atan((a*fracComplete) - b )) - Math.atan(-b));
+				double lRate = 0.6;
+				ERR = ERRcalc(this, target);
 				estQuality = (1 - lRate)*currentQuality + lRate*ERR;
 
 				// Decide which impression target is most cost efficient
 				double tempEstProfit = this.budget * ERR + qualityEffect(this, estQuality) - campaignCost(this, tempTarget);
-				System.out.println("Best: " + target + "-" + estProfit +
+				System.out.print("Best: " + target + "-" + estProfit +
 						"  Testing: " + tempTarget + "-" + tempEstProfit);
 				if (tempEstProfit > estProfit) {
 					target = tempTarget;
 					estProfit = tempEstProfit;
 				}
 			}
-			/* Factor in any bias we may have (adjust for difference in prediction and result)
+			// Factor in any bias we may have (adjust for difference in prediction and result)
+			// This multiplier is highly subject to random noise at the start and should incorporate historic data to
+			// help smooth this: TODO historic data
+			double cumProfitEstimate = 0.0;
+			double cumProfit = 0.0;
+			// calculate total profit and estimated profit from ended campaigns.
 			for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
 				if (entry.getValue().dayEnd < day){
-				TODO
+					CampaignData campaign = entry.getValue();
+					cumProfit += campaign.profit;
+					cumProfitEstimate += campaign.uncorrectedProfitEstimate;
 				}
-			} */
+			}
+			// error factor
+			double profitError = cumProfit / cumProfitEstimate;
+			uncorrectedProfitEstimate = estProfit;
+			profitEstimate = estProfit * profitError;
+			impressionTarget = target;
 
 			System.out.println("ESTIMATED PROFIT: " + estProfit + " | target: " + target + " | Est.cmp cost: " +
 					campaignCost(this,  target/(this.dayEnd-this.dayStart)) + " | Est.Quality effect: "
-					+ qualityEffect(this, estQuality) + " | Est.ERR: " + ERR + " | cmpBudget: " + this.budget);
+					+ qualityEffect(this, estQuality) + " | Est.ERR: " + ERR + " | cmpRevenue: " + this.budget*ERR
+			+ " | uncorrected profit estimate: " + uncorrectedProfitEstimate);
 
-			impressionTarget = target;
 		}
 
 
 
 	}
+
+
 
 	/**
 	 *  User defined methods
@@ -716,6 +759,12 @@ public class AgentNAMM extends Agent {
 	 * ALUN: different methods for each campaign strategy
      */
 
+	// Method for calculating an ERR value for a specific target.
+	private double ERRcalc(CampaignData campaign, long target) {
+		double a = 4.08577, b = 3.08577, fracComplete = (double)target/(double)campaign.reachImps;
+		double ERR = (2/a) * (( Math.atan((a*fracComplete) - b )) - Math.atan(-b));
+		return ERR;
+	}
 		/*
 		Goes through historical (previously trained) data and evaluates when the bid is too low to be profitable
 		at a confidence level given.
@@ -724,7 +773,7 @@ public class AgentNAMM extends Agent {
 		NOTE: this function should be turned off while training historical data
 	*/
 	private double bidTooLow(long cmpimps, int confidence) {
-		// TODO implement Machine Learning strategy
+		// TODO Historic Data
 		// currently just evaluates the reserve price
 		double bidLow = cmpimps * 0.0001 / adNetworkDailyNotification.getQualityScore();
 		System.out.println(" Min: " + (long)(bidLow*1000));
@@ -737,7 +786,7 @@ public class AgentNAMM extends Agent {
 	*/
 	private double bidTooHigh(long cmpimps, int percentFailure) {
 		// At the moment models as uniform distribution.
-		// todo t-test
+		// TODO Historic Data
 		double bidHigh = (0.001*cmpimps*percentFailure)/100;
 		// Make sure bid is still below maximum price.
 		double bidMax = 0.001 * cmpimps * adNetworkDailyNotification.getQualityScore();
@@ -771,7 +820,7 @@ public class AgentNAMM extends Agent {
 
 		System.out.println("Day " + day + ": Campaign - Base bid(millis): " + (long)(1000*bid));
 		return bid;
-		// TODO: Build a system for choosing initial bids when data isn't available i.e. read/write from previous games.
+		// TODO Historic Data
 
 	}
 
@@ -783,7 +832,7 @@ public class AgentNAMM extends Agent {
 	 * the reduced number of won campaigns.
 	 */
 	private double campaignQualityRecoveryStrategy() {
-		double bid =  campaignProfitStrategy() * Math.pow(adNetworkDailyNotification.getQualityScore(),2); //TODO: learn the power
+		double bid =  campaignProfitStrategy() * Math.pow(adNetworkDailyNotification.getQualityScore(),2); //TODO Historic Data
 		System.out.println("Day " + day + ": Campaign - Quality Recovery Strategy");
 		/*
 		TODO: ferocity of quality recovery should be based on our ability to complete the campaigns and the number of campaigns we currently have.
@@ -825,18 +874,22 @@ public class AgentNAMM extends Agent {
 	private double qualityEffect(CampaignData Campaign, double estQuality) {
 		// Days remaining after campaign ends
 		long daysRemaining = 60 - Campaign.dayEnd;
-		// Using budget as a proxy for income, also assumes all campaigns are complete
 		double pastIncome = 0.0;
-		for (Map.Entry<Integer, CampaignData> campaign : myCampaigns.entrySet()) {
-			pastIncome += campaign.getValue().budget;
+		for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
+			CampaignData campaign = entry.getValue();
+			if (campaign.dayEnd < day)
+				pastIncome += campaign.revenue;
+			else { // Smooths out estimate by adding fractional completeness of ongoing campaigns (approximated by budget)
+				pastIncome += campaign.budget * (1 - campaign.impsTogo()/campaign.reachImps);
+			}
 		}
 		double historicDailyIncome = 1;// TODO machine learning
 		double pastDailyIncome = pastIncome / day;
 		// Linearly reduces reliance on historic data --> dynamic data over time
 		long revenueRemaining = (long)((daysRemaining/60)*daysRemaining*historicDailyIncome
 				+ pastDailyIncome*(1-daysRemaining/60)*daysRemaining);
-		// turn target into a quality change
 		double qualityChange = estQuality - adNetworkDailyNotification.getQualityScore();
+		// todo use a more accurate model than linear quality change * revenueRemaining
 		return qualityChange * revenueRemaining;
 	}
 
@@ -849,15 +902,21 @@ public class AgentNAMM extends Agent {
 		// todo campaign cost = cost paid of past impressions paid for + cost of future impressions
 		// todo try not to include ucs cost twice for overlapping campaigns.
 		// loop over each day of the campaign
-		for (int today = (int)Campaign.dayStart; today <= (int)Campaign.dayEnd; today++) {
-			// evaluate best UCS/impression cost combination estimation
-			ucsTargetLevel = bestImpUcsCombination(targetImp);
-			// add the UCS cost to the Impression cost estimate and sum
-			// Currently assumes impression target per day = impression target / number of days todo allow flexibility with daily impressions
-			totalCost += impressionCostEstimate(targetImp/(Campaign.dayEnd-Campaign.dayStart), today, ucsTargetLevel)
-					+ ucsCostEstimate(ucsTargetLevel);
-		}
-		return totalCost;
+		if( Campaign.dayEnd < day) {totalCost = Campaign.revenue;}
+		else
+			for (int Day = (int)Campaign.dayStart; Day <= (int)Campaign.dayEnd; Day++) {
+				if (Day < day){
+					totalCost += Campaign.stats.getCost();
+					Day = day -1; // Because reports cumulative stats.
+				}
+				// evaluate best UCS/impression cost combination estimation
+				ucsTargetLevel = bestImpUcsCombination(targetImp);
+				// add the UCS cost to the Impression cost estimate and sum
+				// todo allow flexibility with daily impressions
+				totalCost += impressionCostEstimate(targetImp/(Campaign.dayEnd-Campaign.dayStart), Day, ucsTargetLevel)
+						+ ucsCostEstimate(ucsTargetLevel);
+			}
+			return totalCost;
 	}
 
 	/*
