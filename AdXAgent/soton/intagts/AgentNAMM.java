@@ -39,6 +39,13 @@ import edu.umich.eecs.tac.props.Ad;
 import edu.umich.eecs.tac.props.BankStatus;
 
 /**
+ * Temporary include to write a CSV for learning data
+ * TODO: Remove these includes along with the relevant code
+ */
+// import java.io.FileWriter;
+// import java.io.IOException;
+
+/**
  * 
  * @author Mariano Schain
  * Test plug-in
@@ -122,9 +129,14 @@ public class AgentNAMM extends Agent {
 	private String[] publisherNames;
 	private CampaignData currCampaign;
 
+
+
 	public AgentNAMM() {
 		campaignReports = new LinkedList<CampaignReport>();
 	}
+
+
+
 
 	@Override
 	protected void messageReceived(Message message) {
@@ -366,23 +378,32 @@ public class AgentNAMM extends Agent {
 
 	/**
 	 * Miguel
-	 * 
+	 *
 	 */
 	protected void sendBidAndAds() {
+
+		/**
+		 * TODO: MB, Remove this block for final version
+		 */
+		// FileWriter csvWriter;
+		// try{
+		// csvWriter = new FileWriter("c:\\temp\\queries.csv");
+		// StringBuilder csvLine = new StringBuilder();
+
 
 		bidBundle = new AdxBidBundle();
 
 		int dayBiddingFor = day + 1;
 
-		/* A fixed random bid, for all queries of the campaign */
-		/*
+		/**
+		 *  A fixed random bid, for all queries of the campaign
 		 * Note: bidding per 1000 imps (CPM) - no more than average budget
 		 * revenue per imp
 		 */
 
 		double rbid = 10000.0;
 
-		/*
+		/**
 		 * add bid entries w.r.t. each active campaign with remaining contractedcmpBidMillis
 		 * impressions.
 		 *
@@ -390,16 +411,18 @@ public class AgentNAMM extends Agent {
 		 * matching target segment.
 		 */
 
-
 		if ((dayBiddingFor >= currCampaign.dayStart)
 				&& (dayBiddingFor <= currCampaign.dayEnd)
 				&& (currCampaign.impsTogo() > 0)) {
 
 			int entCount = 0;
 
+			/**
+			 * TODO: MB, Consider overachieving campaigns when quality < 1
+			 */
 			for (AdxQuery query : currCampaign.campaignQueries) {
-				if (currCampaign.impsTogo() - entCount > 0) {    // TODO: Consider overachieving campaigns when quality < 1 
-					/*
+				if (currCampaign.impsTogo() - entCount > 0) {
+					/**
 					 * among matching entries with the same campaign id, the AdX
 					 * randomly chooses an entry according to the designated
 					 * weight. by setting a constant weight 1, we create a
@@ -419,8 +442,9 @@ public class AgentNAMM extends Agent {
 						}
 
 					}
-					bidBundle.addQuery(query, rbid, new Ad(null),
-							currCampaign.id, 1);
+					bidBundle.addQuery(query, rbid, new Ad(null), currCampaign.id, 1);
+
+					// csvLine.append(query.getPublisher() + "," + query.getTransportName() + "," + query.getAdType() + "," + query.getDevice() + "," + query.getMarketSegments() + "," + currCampaign.id + '\n');
 				}
 			}
 
@@ -432,12 +456,25 @@ public class AgentNAMM extends Agent {
 			System.out.println("Day " + day + " ###BIDBUNDLE###: Updated " + entCount
 					+ " Bid Bundle entries for Campaign id " + currCampaign.id);
 			log.log(Level.ALL, "## Bid Bundle ##; currCampaign: " + currCampaign.id + "; " + (long)currCampaign.budget);
+
+			// csvWriter.write(csvLine.toString());
+
 		}
+
+		/**
+		 * TODO, MB Delete these lines for CSV file
+		 */
+		// csvWriter.flush();
+		// csvWriter.close();
 
 		if (bidBundle != null) {
 			System.out.println("Day " + day + ": Sending BidBundle");
 			sendMessage(adxAgentAddress, bidBundle);
 		}
+
+		// }	catch(IOException e) {
+		// 	e.printStackTrace();
+		// }
 	}
 
 	/**

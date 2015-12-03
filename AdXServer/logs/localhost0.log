@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 03/12 10:08:59 INFO file.FileDatabase|infodb: database opened as C:\Users\inbre\Documents\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXServer\infodb
 03/12 10:08:59 INFO common.BlockingViewerServer|viewer server started at *:4042
 03/12 10:08:59 INFO sim.Admin|adding manager for simulation type tac13adx
@@ -11,3 +12,9 @@
 
 
 03/12 10:49:03 INFO is.TACAAResultManager|generating results for simulation 187 to public_html\localhost\history\187\index.html
+=======
+02/12 16:26:13 INFO file.FileDatabase|infodb: database opened as C:\Users\Miguel\Documents\GitHub\IntAgtsNAMM\AdXServer\infodb
+02/12 16:26:13 INFO common.BlockingViewerServer|viewer server started at *:4042
+02/12 16:26:14 INFO sim.Admin|adding manager for simulation type tac13adx
+02/12 16:26:14 INFO server.TACTGateway|TACT Server started at *:6502
+>>>>>>> origin/master

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="adx-agent:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b8d47181-fdd7-4794-be3c-277d03d0c306" name="Default" comment="added estimated profit, achieved profit, (uncorrected profit estimate) to the variables stored in each campaigns class.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soton/intagts/AgentNAMM$CampaignData.class" afterPath="$PROJECT_DIR$/soton/intagts/AgentNAMM$CampaignData.class" />
@@ -7,7 +12,14 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingparticipants.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingparticipants.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingsimulations.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingsimulations.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_state.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_state.dat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gitignore" afterPath="$PROJECT_DIR$/../.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+<<<<<<< HEAD
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adx-agent.iml" afterPath="$PROJECT_DIR$/adx-agent.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/logs/localhost0.log" afterPath="$PROJECT_DIR$/../AdXServer/logs/localhost0.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/logs/localhost1.log" afterPath="$PROJECT_DIR$/../AdXServer/logs/localhost1.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/public_html/localhost/history/simtable-5.html" afterPath="$PROJECT_DIR$/../AdXServer/public_html/localhost/history/simtable-5.html" />
+=======
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm0.log.1" afterPath="$PROJECT_DIR$/logs/namm0.log.1" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm1.log.1" afterPath="$PROJECT_DIR$/logs/namm1.log.1" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm2.log.1" afterPath="$PROJECT_DIR$/logs/namm2.log.1" />
@@ -16,8 +28,12 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm5.log.1" afterPath="$PROJECT_DIR$/logs/namm5.log.1" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm6.log.1" afterPath="$PROJECT_DIR$/logs/namm6.log.1" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soton/intagts/AgentNAMM.java" afterPath="$PROJECT_DIR$/soton/intagts/AgentNAMM.java" />
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/logs/localhost0.log" afterPath="$PROJECT_DIR$/../AdXServer/logs/localhost0.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/logs/localhost1.log" afterPath="$PROJECT_DIR$/../AdXServer/logs/localhost1.log" />
+=======
+>>>>>>> 8b165642674478dedb9129e8485c86a23a6c24f4
+>>>>>>> origin/master
     </list>
     <ignored path="adx-agent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,6 +49,10 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="hideWarnings" value="true" />
+    <option name="HIDE_WARNINGS" value="true" />
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="adx-agent" />
@@ -42,23 +62,41 @@
       <file leaf-file-name="AgentNAMM.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/soton/intagts/AgentNAMM.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="0.76949155">
               <caret line="720" column="13" selection-start-line="720" selection-start-column="13" selection-end-line="720" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1803#1830#0" expanded="true" />
                 <element signature="method#handleSimulationStatus#0;class#AgentNAMM#0" expanded="false" />
+=======
+<<<<<<< HEAD
+            <state vertical-scroll-proportion="0.5944056">
+              <caret line="502" column="7" selection-start-line="502" selection-start-column="7" selection-end-line="502" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1981#2008#0" expanded="true" />
+                <element signature="e#3877#3878#0" expanded="true" />
+                <element signature="e#3934#3935#0" expanded="true" />
+                <element signature="e#5850#5851#0" expanded="true" />
+                <element signature="e#5917#5918#0" expanded="true" />
+                <element signature="e#17700#17710#0" expanded="true" />
+                <element signature="e#18126#18141#0" expanded="true" />
+                <element signature="e#19525#19533#0" expanded="true" />
+                <element signature="e#19970#19980#0" expanded="true" />
+=======
+            <state vertical-scroll-proportion="0.2152367">
+              <caret line="824" column="62" selection-start-line="824" selection-start-column="62" selection-end-line="824" selection-end-column="62" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1803#1830#0" expanded="true" />
+                <element signature="e#20765#20766#0" expanded="true" />
+                <element signature="e#20784#20785#0" expanded="true" />
+                <element signature="e#21613#21614#0" expanded="true" />
+                <element signature="e#21640#21641#0" expanded="true" />
+>>>>>>> 8b165642674478dedb9129e8485c86a23a6c24f4
+>>>>>>> origin/master
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="agent1.conf" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/agent1.conf">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -91,10 +129,24 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
+<<<<<<< HEAD
     <option name="x" value="484" />
     <option name="y" value="-3616" />
     <option name="width" value="6432" />
     <option name="height" value="3532" />
+=======
+<<<<<<< HEAD
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1456" />
+    <option name="height" value="876" />
+=======
+    <option name="x" value="-16" />
+    <option name="y" value="-16" />
+    <option name="width" value="2768" />
+    <option name="height" value="1756" />
+>>>>>>> 8b165642674478dedb9129e8485c86a23a6c24f4
+>>>>>>> origin/master
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -121,61 +173,31 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
+      <pane id="Scope">
+        <subPane subId="Default">
           <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adx-agent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            <PATH_ELEMENT USER_OBJECT="AdXAgent">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adx-agent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            <PATH_ELEMENT USER_OBJECT="soton">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AdXAgent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adx-agent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AdXAgent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="soton" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="intagts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adx-agent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AdXAgent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            <PATH_ELEMENT USER_OBJECT="intagts">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane />
         <option name="show-excluded-files" value="false" />
       </pane>
       <pane id="PackagesPane">
@@ -192,8 +214,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -202,13 +222,17 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/soton/intagts" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="adx-agent" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\inbre\Documents\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXAgent\config" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Unnamed">
+  <component name="RunManager" selected="Application.Agent">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -453,11 +477,11 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="false" name="Unnamed" type="Application" factoryName="Application">
+    <configuration default="false" name="Agent" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="tau.tac.adx.agentware.Main" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="-config config/agent1.conf" />
+      <option name="PROGRAM_PARAMETERS" value="-config config/namm1.conf" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -469,7 +493,7 @@
       <method />
     </configuration>
     <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Application.Unnamed" />
+      <item index="0" class="java.lang.String" itemvalue="Application.Agent" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -565,7 +589,29 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="484" y="-3616" width="6432" height="3532" extended-state="6" />
+=======
+<<<<<<< HEAD
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="7" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18034993" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3270525" sideWeight="0.49920073" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32767624" sideWeight="0.5007993" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990655" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="0.8304172" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="230" y="110" width="955" height="617" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22851002" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992566" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22277936" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+=======
+    <frame x="-16" y="-16" width="2768" height="1756" extended-state="6" />
+>>>>>>> origin/master
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -580,6 +626,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22218554" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33378655" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33915022" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+>>>>>>> 8b165642674478dedb9129e8485c86a23a6c24f4
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -632,7 +679,19 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+<<<<<<< HEAD
+            <element signature="e#1981#2008#0" expanded="true" />
+            <element signature="e#3877#3878#0" expanded="true" />
+            <element signature="e#3934#3935#0" expanded="true" />
+            <element signature="e#5850#5851#0" expanded="true" />
+            <element signature="e#5917#5918#0" expanded="true" />
+            <element signature="e#17700#17710#0" expanded="true" />
+            <element signature="e#18126#18141#0" expanded="true" />
+            <element signature="e#19525#19533#0" expanded="true" />
+            <element signature="e#19970#19980#0" expanded="true" />
+=======
             <element signature="e#1803#1830#0" expanded="true" />
+<<<<<<< HEAD
             <element signature="method#handleSimulationStatus#0;class#AgentNAMM#0" expanded="false" />
           </folding>
         </state>
@@ -674,6 +733,13 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1803#1830#0" expanded="true" />
             <element signature="method#handleSimulationStatus#0;class#AgentNAMM#0" expanded="false" />
+=======
+            <element signature="e#20765#20766#0" expanded="true" />
+            <element signature="e#20784#20785#0" expanded="true" />
+            <element signature="e#21613#21614#0" expanded="true" />
+            <element signature="e#21640#21641#0" expanded="true" />
+>>>>>>> 8b165642674478dedb9129e8485c86a23a6c24f4
+>>>>>>> origin/master
           </folding>
         </state>
       </provider>
@@ -690,6 +756,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
+=======
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AgentNAMM.java.bak">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+>>>>>>> 8b165642674478dedb9129e8485c86a23a6c24f4
         </state>
       </provider>
     </entry>
@@ -702,20 +778,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/agent1.conf">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.22238372">
+          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/soton/intagts/AgentNAMM.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.76949155">
           <caret line="720" column="13" selection-start-line="720" selection-start-column="13" selection-end-line="720" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1803#1830#0" expanded="true" />
             <element signature="method#handleSimulationStatus#0;class#AgentNAMM#0" expanded="false" />
+=======
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="0.5944056">
+          <caret line="502" column="7" selection-start-line="502" selection-start-column="7" selection-end-line="502" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1981#2008#0" expanded="true" />
+            <element signature="e#3877#3878#0" expanded="true" />
+            <element signature="e#3934#3935#0" expanded="true" />
+            <element signature="e#5850#5851#0" expanded="true" />
+            <element signature="e#5917#5918#0" expanded="true" />
+            <element signature="e#17700#17710#0" expanded="true" />
+            <element signature="e#18126#18141#0" expanded="true" />
+            <element signature="e#19525#19533#0" expanded="true" />
+            <element signature="e#19970#19980#0" expanded="true" />
+=======
+        <state vertical-scroll-proportion="0.2152367">
+          <caret line="824" column="62" selection-start-line="824" selection-start-column="62" selection-end-line="824" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1803#1830#0" expanded="true" />
+            <element signature="e#20765#20766#0" expanded="true" />
+            <element signature="e#20784#20785#0" expanded="true" />
+            <element signature="e#21613#21614#0" expanded="true" />
+            <element signature="e#21640#21641#0" expanded="true" />
+>>>>>>> 8b165642674478dedb9129e8485c86a23a6c24f4
+>>>>>>> origin/master
           </folding>
         </state>
       </provider>
@@ -726,10 +830,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>adx-agent:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -777,7 +883,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
