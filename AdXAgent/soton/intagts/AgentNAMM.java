@@ -41,6 +41,7 @@ import edu.umich.eecs.tac.props.BankStatus;
 /**
  * Temporary include to write a CSV for learning data
  * TODO: Remove these includes along with the relevant code
+ * (alun): I don't think we should remove the includes, we can have them as a data stream.
  */
 // import java.io.FileWriter;
 // import java.io.IOException;
@@ -661,7 +662,7 @@ public class AgentNAMM extends Agent {
 		double cmpBid;
 		long impressionTarget;
 		double uncorrectedProfitEstimate;
-
+		double costEstimate;
 
 		public CampaignData(InitialCampaignMessage icm) {
 			reachImps = icm.getReachImps();
@@ -678,6 +679,7 @@ public class AgentNAMM extends Agent {
 			profit = 0.0;
 			profitEstimate = 0.0;
 			uncorrectedProfitEstimate = 0.0;
+			costEstimate = 0.0;
 		}
 
 		public void setBudget(double d) {
@@ -708,6 +710,7 @@ public class AgentNAMM extends Agent {
 			profit = 0.0;
 			profitEstimate = 0.0;
 			uncorrectedProfitEstimate = 0.0;
+			costEstimate = 0.0;
 		}
 
 		@Override
@@ -737,23 +740,29 @@ public class AgentNAMM extends Agent {
 		// Considers the effect of short term cost of the campaign, long term effect of quality change and inaccuracies in previous predictions.
 		private void setImpressionTargets() {
 			long target = 0;
-			double estProfit = -99999, ERR = 0, estQuality = 0;
+			double estProfit = -99999, ERR = 0, estQuality = 0, estCost = 0;
 			// Consider a range of possible impression targets
 			for (double multiplier = 0.6; multiplier <= 2; multiplier+= 0.02){ // loop over range of impression targets
 				long tempTarget = (long)(this.reachImps*multiplier);
 
 				double currentQuality = adNetworkDailyNotification.getQualityScore();
-				double lRate = 0.6;
+				double lRate = 0.6, double Budget;
 				ERR = ERRcalc(this, target);
 				estQuality = (1 - lRate)*currentQuality + lRate*ERR;
 
 				// Decide which impression target is most cost efficient
-				double tempEstProfit = this.budget * ERR + qualityEffect(this, estQuality) - campaignCost(this, tempTarget);
+				// todo need to change this.budget to a historical average budget per impression
+				// so this can be used to set the budget bid for. (but if budget already set then use it)
+				if (this.budget != 0){ Budget = this.budget; }
+				else Budget = 0; //TODO mean budget/impression from past * impressions;
+				double tempEstCost = campaignCost(this, tempTarget);
+				double tempEstProfit = this.budget * ERR + qualityEffect(this, estQuality) - tempEstCost;
 				System.out.print("Best: " + target + "-" + estProfit +
 						"  Testing: " + tempTarget + "-" + tempEstProfit);
 				if (tempEstProfit > estProfit) {
 					target = tempTarget;
 					estProfit = tempEstProfit;
+					estCost = tempEstCost;
 				}
 			}
 			// Factor in any bias we may have (adjust for difference in prediction and result)
@@ -774,6 +783,7 @@ public class AgentNAMM extends Agent {
 			uncorrectedProfitEstimate = estProfit;
 			profitEstimate = estProfit * profitError;
 			impressionTarget = target;
+			costEstimate = estCost;
 
 			System.out.println("ESTIMATED PROFIT: " + estProfit + " | target: " + target + " | Est.cmp cost: " +
 					campaignCost(this,  target/(this.dayEnd-this.dayStart)) + " | Est.Quality effect: "
@@ -811,6 +821,11 @@ public class AgentNAMM extends Agent {
 	*/
 	private double bidTooLow(long cmpimps, int confidence) {
 		// TODO Historic Data
+			// stores historic data about campaigns and classifies them as either profitable or non-profitable.
+			// Uses some classifier algorithm to analyse the probability of a bid giving us a profitable campaign.
+			// Sets a minimum bid at X % chance not profitable.
+			// X is a overly conservative value (low ~ 5%) be
+			// and because maximum can move down but not up.
 		// currently just evaluates the reserve price
 		double bidLow = cmpimps * 0.0001 / adNetworkDailyNotification.getQualityScore();
 		System.out.println(" Min: " + (long)(bidLow*1000));
@@ -824,6 +839,11 @@ public class AgentNAMM extends Agent {
 	private double bidTooHigh(long cmpimps, int percentFailure) {
 		// At the moment models as uniform distribution.
 		// TODO Historic Data
+			// Stores historic data about campaign bids, classifying them as successful or non-sucessful.
+			// Uses some classifier algorithm to analyse the probability of a bid being successful.
+			// Sets a maximum bid at X % chance to succeed.
+			// X is a overly conservative value (low ~ 5%) because you are not taking into account environmental factors
+			// and because maximum can move down but not up.
 		double bidHigh = (0.001*cmpimps*percentFailure)/100;
 		// Make sure bid is still below maximum price.
 		double bidMax = 0.001 * cmpimps * adNetworkDailyNotification.getQualityScore();
@@ -857,8 +877,14 @@ public class AgentNAMM extends Agent {
 
 		System.out.println("Day " + day + ": Campaign - Base bid(millis): " + (long)(1000*bid));
 		return bid;
-		// TODO Historic Data
 
+		/* Main strategy
+		 * estimates the cost of pendingCampaign - campaignCost(pendingCampaign);
+		 * Add some level of minimum profit (risk)
+		 * Bid this value... easy peasy.
+		 * pendingCampaign.setImpressiontarget();
+		 * return (pendingCampaign.estProfit + pendingCampaign.estCost ) * 1.1;
+         */
 	}
 
 	/*
@@ -950,11 +976,45 @@ public class AgentNAMM extends Agent {
 				ucsTargetLevel = bestImpUcsCombination(targetImp);
 				// add the UCS cost to the Impression cost estimate and sum
 				// todo allow flexibility with daily impressions
+					// e.g. increase impression target close to deadline
 				totalCost += impressionCostEstimate(targetImp/(Campaign.dayEnd-Campaign.dayStart), Day, ucsTargetLevel)
 						+ ucsCostEstimate(ucsTargetLevel);
 			}
 			return totalCost;
 	}
+
+	// Write a class of performance metrics which update daily throughout the game (and print out)
+	// Print these performance metrics to a file so they can be manually inspected.
+	// estimated cost accuracy, estimated profit accuracy, impression target fulfillment, price bid vs second price.
+	// Profit, profit per impression.
+	private class performanceData {
+		double estCostAcc;
+		double estProfitAcc;
+		double impTargetFulfillment;
+		double bidVs2ndRatio;
+		double profit;
+		double profitPerImpression;
+
+		public performanceData(InitialCampaignMessage com) {
+			estCostAcc = 0.0;
+			estProfitAcc = 0.0;
+			impTargetFulfillment = 0.0;
+			bidVs2ndRatio = 0.0;
+			profit = 0.0;
+			profitPerImpression = 0.0;
+		}
+
+		public void setEstCostAcc(double a){estCostAcc = a;}
+		public void setEstProfitAcc(double b){estProfitAcc = b;}
+		public void setImpTargetFulfillment(double c){estCostAcc = c;}
+		public void setBidVs2ndRatio(double d){estCostAcc = d;}
+		public void setProfit(double e){estCostAcc = e;}
+		public void setProfitPerImpression(double f){estCostAcc = f;}
+	}
+
+
+
+
 
 	/*
 	 *  Manu: Impression cost estimate
