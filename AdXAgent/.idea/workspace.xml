@@ -2,21 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdda3306-a315-4c5f-8e0f-77b534bca9f3" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/logs/namm0.log.1" afterPath="$PROJECT_DIR$/logs/namm4.log.1" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/logs/namm2.log.1" afterPath="$PROJECT_DIR$/logs/namm6.log.1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soton/intagts/AgentNAMM$CampaignData.class" afterPath="$PROJECT_DIR$/soton/intagts/AgentNAMM$CampaignData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soton/intagts/AgentNAMM.class" afterPath="$PROJECT_DIR$/soton/intagts/AgentNAMM.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingparticipants.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingparticipants.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingsimulations.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingsimulations.dat" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/soton/intagts/AgentNAMM$CampaignData.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/soton/intagts/AgentNAMM.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_state.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_state.dat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/adx_1_2_8.xml" afterPath="$PROJECT_DIR$/.idea/libraries/adx_1_2_8.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm0.log.1" afterPath="$PROJECT_DIR$/logs/namm0.log.1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm1.log.1" afterPath="$PROJECT_DIR$/logs/namm1.log.1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm2.log.1" afterPath="$PROJECT_DIR$/logs/namm2.log.1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm3.log.1" afterPath="$PROJECT_DIR$/logs/namm3.log.1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm5.log.1" afterPath="$PROJECT_DIR$/logs/namm5.log.1" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soton/intagts/AgentNAMM.java" afterPath="$PROJECT_DIR$/soton/intagts/AgentNAMM.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/logs/localhost0.log" afterPath="$PROJECT_DIR$/../AdXServer/logs/localhost0.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/logs/localhost1.log" afterPath="$PROJECT_DIR$/../AdXServer/logs/localhost1.log" />
     </list>
     <ignored path="adx-agent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,50 +33,42 @@
       <file leaf-file-name="AgentNAMM.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/soton/intagts/AgentNAMM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49187934">
-              <caret line="1194" column="0" selection-start-line="1194" selection-start-column="0" selection-end-line="1195" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.5114754">
+              <caret line="339" column="47" selection-start-line="339" selection-start-column="47" selection-end-line="339" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2338#2365#0" expanded="true" />
-                <element signature="e#6625#6626#0" expanded="true" />
-                <element signature="e#6692#6693#0" expanded="true" />
-                <element signature="e#6858#6859#0" expanded="true" />
-                <element signature="e#6891#6892#0" expanded="true" />
-                <element signature="e#23537#23547#0" expanded="true" />
-                <element signature="e#23963#23978#0" expanded="true" />
-                <element signature="e#25362#25370#0" expanded="true" />
-                <element signature="e#25807#25817#0" expanded="true" />
-                <element signature="class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-                <element signature="e#29098#29099#0" expanded="true" />
-                <element signature="e#29161#29162#0" expanded="true" />
-                <element signature="e#29196#29197#0" expanded="true" />
-                <element signature="e#29241#29242#0" expanded="true" />
-                <element signature="e#29421#29422#0" expanded="true" />
-                <element signature="e#29471#29472#0" expanded="true" />
-                <element signature="e#29504#29505#0" expanded="true" />
-                <element signature="e#29553#29554#0" expanded="true" />
-                <element signature="e#29594#29595#0" expanded="true" />
-                <element signature="e#29662#29663#0" expanded="true" />
-                <element signature="e#29699#29700#0" expanded="true" />
-                <element signature="e#29787#29788#0" expanded="true" />
-                <element signature="e#30080#30081#0" expanded="true" />
-                <element signature="e#30123#30124#0" expanded="true" />
-                <element signature="e#31214#31215#0" expanded="true" />
-                <element signature="e#31284#31285#0" expanded="true" />
-                <element signature="e#31320#31321#0" expanded="true" />
-                <element signature="e#31347#31348#0" expanded="true" />
-                <element signature="e#31391#31392#0" expanded="true" />
-                <element signature="e#31422#31423#0" expanded="true" />
-                <element signature="e#31486#31487#0" expanded="true" />
-                <element signature="e#31533#31534#0" expanded="true" />
-                <element signature="e#45617#45618#0" expanded="true" />
-                <element signature="e#45694#45695#0" expanded="true" />
-                <element signature="e#46386#46387#0" expanded="true" />
-                <element signature="e#46414#46415#0" expanded="true" />
-                <element signature="e#46456#46457#0" expanded="true" />
-                <element signature="e#46485#46486#0" expanded="true" />
-                <element signature="e#50330#50331#0" expanded="true" />
-                <element signature="e#50404#50405#0" expanded="true" />
+                <element signature="e#2057#2084#0" expanded="true" />
+                <element signature="e#6344#6345#0" expanded="true" />
+                <element signature="e#6411#6412#0" expanded="true" />
+                <element signature="e#23747#23757#0" expanded="true" />
+                <element signature="e#24173#24188#0" expanded="true" />
+                <element signature="e#25572#25580#0" expanded="true" />
+                <element signature="e#26017#26027#0" expanded="true" />
+                <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+                <element signature="method#setQualityChange#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+                <element signature="e#29713#29714#0" expanded="true" />
+                <element signature="e#29762#29763#0" expanded="true" />
+                <element signature="e#29803#29804#0" expanded="true" />
+                <element signature="e#29871#29872#0" expanded="true" />
+                <element signature="e#29908#29909#0" expanded="true" />
+                <element signature="e#29996#29997#0" expanded="true" />
+                <element signature="method#setImpTargetFulfillment#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+                <element signature="method#setBidVs2ndRatio#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+                <element signature="e#30289#30290#0" expanded="true" />
+                <element signature="e#30332#30333#0" expanded="true" />
+                <element signature="method#setProfitPerImpression#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+                <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+                <element signature="e#32480#32481#0" expanded="true" />
+                <element signature="e#32527#32528#0" expanded="true" />
+                <element signature="method#setImpressionTargets#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+                <element signature="e#46613#46614#0" expanded="true" />
+                <element signature="e#46690#46691#0" expanded="true" />
+                <element signature="e#47386#47387#0" expanded="true" />
+                <element signature="e#47414#47415#0" expanded="true" />
+                <element signature="e#47456#47457#0" expanded="true" />
+                <element signature="e#47485#47486#0" expanded="true" />
+                <element signature="e#51330#51331#0" expanded="true" />
+                <element signature="e#51404#51405#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -145,12 +128,12 @@
     <panes />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="D:/Program/Git/bin/git.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/AgentNAMM.jar!/" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
     <UpdatedFiles>
@@ -560,12 +543,18 @@
       <option name="project" value="LOCAL" />
       <updated>1449254563043</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Adding to performancedata class&#10;">
+      <created>1449337018218</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1449337018219</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -574,10 +563,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36197916" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36197916" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19010417" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29492602" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16979167" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -588,7 +578,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29492602" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -604,10 +593,13 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Completed debugging of campaign data summary statistics printed to console on completion of a campaign... Game summary statistics are still buggy (revenue is certainly accurate)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Completed debugging of campaign data summary statistics printed to console on completion of a campaign... Game summary statistics are still buggy (revenue is certainly accurate)." />
+    <MESSAGE value="Adding to performancedata class&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding to performancedata class&#10;" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -621,46 +613,38 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2338#2365#0" expanded="true" />
-            <element signature="e#6625#6626#0" expanded="true" />
-            <element signature="e#6692#6693#0" expanded="true" />
-            <element signature="e#6858#6859#0" expanded="true" />
-            <element signature="e#6891#6892#0" expanded="true" />
-            <element signature="e#23537#23547#0" expanded="true" />
-            <element signature="e#23963#23978#0" expanded="true" />
-            <element signature="e#25362#25370#0" expanded="true" />
-            <element signature="e#25807#25817#0" expanded="true" />
-            <element signature="class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="e#29098#29099#0" expanded="true" />
-            <element signature="e#29161#29162#0" expanded="true" />
-            <element signature="e#29196#29197#0" expanded="true" />
-            <element signature="e#29241#29242#0" expanded="true" />
-            <element signature="e#29421#29422#0" expanded="true" />
-            <element signature="e#29471#29472#0" expanded="true" />
-            <element signature="e#29504#29505#0" expanded="true" />
-            <element signature="e#29553#29554#0" expanded="true" />
-            <element signature="e#29594#29595#0" expanded="true" />
-            <element signature="e#29662#29663#0" expanded="true" />
-            <element signature="e#29699#29700#0" expanded="true" />
-            <element signature="e#29787#29788#0" expanded="true" />
-            <element signature="e#30080#30081#0" expanded="true" />
-            <element signature="e#30123#30124#0" expanded="true" />
-            <element signature="e#31214#31215#0" expanded="true" />
-            <element signature="e#31284#31285#0" expanded="true" />
-            <element signature="e#31320#31321#0" expanded="true" />
-            <element signature="e#31347#31348#0" expanded="true" />
-            <element signature="e#31391#31392#0" expanded="true" />
-            <element signature="e#31422#31423#0" expanded="true" />
-            <element signature="e#31486#31487#0" expanded="true" />
-            <element signature="e#31533#31534#0" expanded="true" />
-            <element signature="e#45617#45618#0" expanded="true" />
-            <element signature="e#45694#45695#0" expanded="true" />
-            <element signature="e#46386#46387#0" expanded="true" />
-            <element signature="e#46414#46415#0" expanded="true" />
-            <element signature="e#46456#46457#0" expanded="true" />
-            <element signature="e#46485#46486#0" expanded="true" />
-            <element signature="e#50330#50331#0" expanded="true" />
-            <element signature="e#50404#50405#0" expanded="true" />
+            <element signature="e#2057#2084#0" expanded="true" />
+            <element signature="e#6344#6345#0" expanded="true" />
+            <element signature="e#6411#6412#0" expanded="true" />
+            <element signature="e#23747#23757#0" expanded="true" />
+            <element signature="e#24173#24188#0" expanded="true" />
+            <element signature="e#25572#25580#0" expanded="true" />
+            <element signature="e#26017#26027#0" expanded="true" />
+            <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+            <element signature="method#setQualityChange#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+            <element signature="e#29713#29714#0" expanded="true" />
+            <element signature="e#29762#29763#0" expanded="true" />
+            <element signature="e#29803#29804#0" expanded="true" />
+            <element signature="e#29871#29872#0" expanded="true" />
+            <element signature="e#29908#29909#0" expanded="true" />
+            <element signature="e#29996#29997#0" expanded="true" />
+            <element signature="method#setImpTargetFulfillment#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+            <element signature="method#setBidVs2ndRatio#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+            <element signature="e#30289#30290#0" expanded="true" />
+            <element signature="e#30332#30333#0" expanded="true" />
+            <element signature="method#setProfitPerImpression#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+            <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+            <element signature="e#32480#32481#0" expanded="true" />
+            <element signature="e#32527#32528#0" expanded="true" />
+            <element signature="method#setImpressionTargets#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+            <element signature="e#46613#46614#0" expanded="true" />
+            <element signature="e#46690#46691#0" expanded="true" />
+            <element signature="e#47386#47387#0" expanded="true" />
+            <element signature="e#47414#47415#0" expanded="true" />
+            <element signature="e#47456#47457#0" expanded="true" />
+            <element signature="e#47485#47486#0" expanded="true" />
+            <element signature="e#51330#51331#0" expanded="true" />
+            <element signature="e#51404#51405#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -669,6 +653,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.55689657">
           <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -681,50 +666,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/soton/intagts/AgentNAMM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49187934">
-          <caret line="1194" column="0" selection-start-line="1194" selection-start-column="0" selection-end-line="1195" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.5114754">
+          <caret line="339" column="47" selection-start-line="339" selection-start-column="47" selection-end-line="339" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2338#2365#0" expanded="true" />
-            <element signature="e#6625#6626#0" expanded="true" />
-            <element signature="e#6692#6693#0" expanded="true" />
-            <element signature="e#6858#6859#0" expanded="true" />
-            <element signature="e#6891#6892#0" expanded="true" />
-            <element signature="e#23537#23547#0" expanded="true" />
-            <element signature="e#23963#23978#0" expanded="true" />
-            <element signature="e#25362#25370#0" expanded="true" />
-            <element signature="e#25807#25817#0" expanded="true" />
-            <element signature="class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="e#29098#29099#0" expanded="true" />
-            <element signature="e#29161#29162#0" expanded="true" />
-            <element signature="e#29196#29197#0" expanded="true" />
-            <element signature="e#29241#29242#0" expanded="true" />
-            <element signature="e#29421#29422#0" expanded="true" />
-            <element signature="e#29471#29472#0" expanded="true" />
-            <element signature="e#29504#29505#0" expanded="true" />
-            <element signature="e#29553#29554#0" expanded="true" />
-            <element signature="e#29594#29595#0" expanded="true" />
-            <element signature="e#29662#29663#0" expanded="true" />
-            <element signature="e#29699#29700#0" expanded="true" />
-            <element signature="e#29787#29788#0" expanded="true" />
-            <element signature="e#30080#30081#0" expanded="true" />
-            <element signature="e#30123#30124#0" expanded="true" />
-            <element signature="e#31214#31215#0" expanded="true" />
-            <element signature="e#31284#31285#0" expanded="true" />
-            <element signature="e#31320#31321#0" expanded="true" />
-            <element signature="e#31347#31348#0" expanded="true" />
-            <element signature="e#31391#31392#0" expanded="true" />
-            <element signature="e#31422#31423#0" expanded="true" />
-            <element signature="e#31486#31487#0" expanded="true" />
-            <element signature="e#31533#31534#0" expanded="true" />
-            <element signature="e#45617#45618#0" expanded="true" />
-            <element signature="e#45694#45695#0" expanded="true" />
-            <element signature="e#46386#46387#0" expanded="true" />
-            <element signature="e#46414#46415#0" expanded="true" />
-            <element signature="e#46456#46457#0" expanded="true" />
-            <element signature="e#46485#46486#0" expanded="true" />
-            <element signature="e#50330#50331#0" expanded="true" />
-            <element signature="e#50404#50405#0" expanded="true" />
+            <element signature="e#2057#2084#0" expanded="true" />
+            <element signature="e#6344#6345#0" expanded="true" />
+            <element signature="e#6411#6412#0" expanded="true" />
+            <element signature="e#23747#23757#0" expanded="true" />
+            <element signature="e#24173#24188#0" expanded="true" />
+            <element signature="e#25572#25580#0" expanded="true" />
+            <element signature="e#26017#26027#0" expanded="true" />
+            <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+            <element signature="method#setQualityChange#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+            <element signature="e#29713#29714#0" expanded="true" />
+            <element signature="e#29762#29763#0" expanded="true" />
+            <element signature="e#29803#29804#0" expanded="true" />
+            <element signature="e#29871#29872#0" expanded="true" />
+            <element signature="e#29908#29909#0" expanded="true" />
+            <element signature="e#29996#29997#0" expanded="true" />
+            <element signature="method#setImpTargetFulfillment#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+            <element signature="method#setBidVs2ndRatio#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+            <element signature="e#30289#30290#0" expanded="true" />
+            <element signature="e#30332#30333#0" expanded="true" />
+            <element signature="method#setProfitPerImpression#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+            <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+            <element signature="e#32480#32481#0" expanded="true" />
+            <element signature="e#32527#32528#0" expanded="true" />
+            <element signature="method#setImpressionTargets#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+            <element signature="e#46613#46614#0" expanded="true" />
+            <element signature="e#46690#46691#0" expanded="true" />
+            <element signature="e#47386#47387#0" expanded="true" />
+            <element signature="e#47414#47415#0" expanded="true" />
+            <element signature="e#47456#47457#0" expanded="true" />
+            <element signature="e#47485#47486#0" expanded="true" />
+            <element signature="e#51330#51331#0" expanded="true" />
+            <element signature="e#51404#51405#0" expanded="true" />
           </folding>
         </state>
       </provider>

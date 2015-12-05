@@ -1,8 +1,8 @@
-package soton.intagts;
+//package soton.intagts;
 
 import edu.umich.eecs.tac.props.Ad;
 import edu.umich.eecs.tac.props.BankStatus;
-//import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
+import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -43,17 +43,9 @@ import tau.tac.adx.users.properties.Income;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
-//import org.apache.commons.math3.stat.*;
-
-/**
- * Temporary include to write a CSV for learning data
- * TODO: Remove these includes along with the relevant code
- * (alun): I don't think we should remove the includes, we can have them as a data stream.
- */
-// import java.io.FileWriter;
-// import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.apache.commons.math3.stat.*;
 
 /**
  * 
@@ -212,6 +204,7 @@ public class AgentNAMM extends Agent {
 	 */
 	protected void handleStartInfo(StartInfo startInfo) {
 		this.startInfo = startInfo;
+		System.out.println("!!!!!!!!!!!!!!!!!!" + startInfo);
 	}
 
 	/**
@@ -267,13 +260,15 @@ public class AgentNAMM extends Agent {
 	 */
 	private void handleICampaignOpportunityMessage(
 			CampaignOpportunityMessage com) {
-
-		day = com.getDay();
+		System.out.println("WORKING!");
+			day = com.getDay();
 
 		// For campaigns that finished yesterday set performance metrics.
 		for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
 			CampaignData campaign = entry.getValue();
+			System.out.println("working here");
 			if ((entry.getValue().dayEnd == day - 1)) {
+				System.out.println("...");
 				long imps = (long)(campaign.stats.getOtherImps() + campaign.stats.getTargetedImps());
 				double revenue = campaign.budget * ERRcalc(campaign, imps);
 				campaign.setRevenue(revenue);
@@ -295,7 +290,8 @@ public class AgentNAMM extends Agent {
 
 				System.out.printf(
 					"Day %d: Campaign(%d) Completed________________________________\n" +
-					"    Reach:%d Impression Target:%d \n" +
+					"    Day Start:%d End:%d Duration:%d days \n" +
+					"    Reach:%d (per day:%.2f) Impression Target:%d \n" +
 					"    Impressions:%d Targeted:%d Untargeted:%d \n" +
 					"    Target Fulfillment:%d%% Reach Fulfillment:%d%% \n" +
 					"    Revenue:%.3f Budget:%.3f Bid:%.3f \n" +
@@ -306,7 +302,8 @@ public class AgentNAMM extends Agent {
 					"    Profit: Estimated:%.2f Accuracy:%d%% | uncorrected:%.2f Accuracy:%d%%)\n" +
 					"    Quality Change:%.2f Estimate:%.2f Accuracy:%d%% \n",
 					day, campaign.id,
-					campaign.reachImps, campaign.impressionTarget,
+					campaign.dayStart, campaign.dayEnd, campaign.dayEnd - campaign.dayStart,
+					campaign.reachImps, (double)(campaign.reachImps / (campaign.dayEnd - campaign.dayStart)), campaign.impressionTarget,
 					(long)(campaign.stats.getTargetedImps() + campaign.stats.getOtherImps()),
 					(long)campaign.stats.getTargetedImps(), (long)campaign.stats.getOtherImps(),
 					(long)(campaign.impTargetFulfillment*100), (long)(campaign.reachFulfillment*100),
@@ -319,7 +316,7 @@ public class AgentNAMM extends Agent {
 					(long)(campaign.uncorrectedProfitAcc*100),
 					campaign.qualityChange, campaign.estQualityChange, (long)(campaign.estQualityChangeAcc*100));
 
-				System.out.printf(
+				/*System.out.printf(
 					"Day %d: Performance Report (%d Campaigns complete)_____________________________\n" +
 					"    Revenue:%.3f \n" +
 					"    Profit:%.3f (per Imp(millis):%.3f) Estimated profit accuracy:%.3f (uncorrected:%.3f)\n" +
@@ -329,16 +326,18 @@ public class AgentNAMM extends Agent {
 					day,performanceData.numCamps,
 					performanceData.revenue,
 					performanceData.profit, performanceData.profitPerImpression*1000, performanceData.estProfitAcc, performanceData.uncorrectedProfitEstimateAcc,
-					performanceData.bidVs2ndRatio,
+					performanceData.avBidVs2ndRatio,
 					(long)(performanceData.estCostAcc*100), (long)(performanceData.estImpCostAcc*100), (long)(performanceData.estUcsCostAcc*100),
 					(long)(performanceData.impTargetFulfillment*100), (long)(performanceData.reachFulfillment*100)
-					);
+					);*/
 			}
 		}
+		System.out.println("working afterwards?");
 
 
 		pendingCampaign = new CampaignData(com);
 		System.out.println("Day " + day + ": Campaign opportunity - " + pendingCampaign);
+		System.out.println("working afterwards??");
 
 		/*
 		*  ALUN: Decide which of the 4 campaign strategies to use
@@ -464,10 +463,10 @@ public class AgentNAMM extends Agent {
 	 * to the AdX.
 	 */
 	private void handleSimulationStatus(SimulationStatus simulationStatus) {
-		/*System.out.println("Day " + day + " : Simulation Status Received");
+		System.out.println("Day " + day + " : Simulation Status Received");
         System.out.println("###SIMSTAT### " + simulationStatus.toString());
 		sendBidAndAds();
-		System.out.println("Day " + day + " ended. Starting next day"); */
+		System.out.println("Day " + day + " ended. Starting next day");
 		++day;
 	}
 
@@ -540,7 +539,7 @@ public class AgentNAMM extends Agent {
 					}
 					bidBundle.addQuery(query, rbid, new Ad(null), currCampaign.id, 1);
 
-					// csvLine.append(query.getPublisher() + "," + query.getTransportName() + "," + query.getAdType() + "," + query.getDevice() + "," + query.getMarketSegments() + "," + currCampaign.id + '\n');
+					//csvLine.append(query.getPublisher() + "," + query.getTransportName() + "," + query.getAdType() + "," + query.getDevice() + "," + query.getMarketSegments() + "," + currCampaign.id + '\n');
 				}
 			}
 
@@ -617,7 +616,7 @@ public class AgentNAMM extends Agent {
         for (AdNetworkKey adKey : adnetReport.keys()) {
             repEntry = adnetReport.getEntry(adKey);
             impressionBidHistory.impressionList.add(new ImpressionRecord(repEntry));
-            System.out.println("#####ADNETREPORTENTRY#####" + repEntry.toString());
+            //System.out.println("#####ADNETREPORTENTRY#####" + repEntry.toString());
         }
         /*System.out.println("#####BIDIMPRHISTORY##### NItems" + impressionBidHistory.impressionList.size() +
                             ", Male mean: " + impressionBidHistory.getMeanPerSegmentGender(Gender.male) +
@@ -640,6 +639,7 @@ public class AgentNAMM extends Agent {
 	@Override
 	protected void simulationFinished() {
         impressionBidHistory.saveFile();
+		campaignSaveFile();
 		campaignReports.clear();
 		bidBundle = null;
 	}
@@ -823,7 +823,6 @@ public class AgentNAMM extends Agent {
 			quality = adNetworkDailyNotification.getQualityScore();
 
 		}
-
 		public void setEstQualityChangeAcc() {
 			estQualityChangeAcc = estQualityChange / qualityChange;
 		}
@@ -892,18 +891,26 @@ public class AgentNAMM extends Agent {
 					+ " coefs: (v=" + videoCoef + ", m=" + mobileCoef + ")";
 		}
 
+		public String toWrite() {
+			return id + "," + dayStart + "," + dayEnd + "," + reachImps + "," + targetSegment + "," + videoCoef + ","
+				+ mobileCoef + "," + stats.getCost() + "," + stats.getTargetedImps() + "," + stats.getOtherImps() + ","
+				+ budget + "," + revenue  + "," + profitEstimate  + "," + cmpBid + "," + impressionTarget  + "," +
+				uncorrectedProfitEstimate + "," + costEstimate + "," + costEstimate  + "," + estImpCost  + "," +
+				estUcsCost  + "," + qualityChange  + "," + estQualityChange  + "," + ucsCost  + "," + estCostAcc
+				+ "," +estProfitAcc  + "," + uncorrectedProfitAcc + "," + estQualityChangeAcc + "," + impTargetFulfillment
+				+ "," + bidVs2ndRatio + "," + profit + "," + profitPerImpression + "," + reachFulfillment  + "," +
+				estUcsCostAcc;
+		}
+
 		int impsTogo() {
 			return (int) Math.max(0, reachImps - stats.getTargetedImps());
 		}
-
 		void setStats(CampaignStats s) {
 			stats.setValues(s);
 		}
-
 		public AdxQuery[] getCampaignQueries() {
 			return campaignQueries;
 		}
-
 		public void setCampaignQueries(AdxQuery[] campaignQueries) {
 			this.campaignQueries = campaignQueries;
 		}
@@ -1220,7 +1227,7 @@ public class AgentNAMM extends Agent {
 			estProfitAcc = 0.0;
 			impTargetFulfillment = 0.0;
 			reachFulfillment = 0.0;
-			bidVs2ndRatio= 0.0;
+			avBidVs2ndRatio= 0.0;
 			profit = 0.0;
 			profitPerImpression = 0.0;
 			revenue= 0.0;
@@ -1253,7 +1260,7 @@ public class AgentNAMM extends Agent {
 		}
 		public void setBidVs2ndRatio(CampaignData d) {
 			if (d.budget != d.cmpBid){
-				bidVs2ndRatio = (bidVs2ndRatio * (numCamps - 1) + d.bidVs2ndRatio) / numCamps;
+				avBidVs2ndRatio = (avBidVs2ndRatio * (numCamps - 1) + d.bidVs2ndRatio) / numCamps;
 			}
 		}
 		public void setProfit(CampaignData e){
@@ -1368,7 +1375,7 @@ public class AgentNAMM extends Agent {
             impressionList = new ArrayList<ImpressionRecord>();
         }
 
-        /*public double getMeanPerSegmentGender(Gender sGender){
+        public double getMeanPerSegmentGender(Gender sGender){
             DescriptiveStatistics statsCalc = new DescriptiveStatistics();
             double mean = 0;
 
@@ -1380,7 +1387,7 @@ public class AgentNAMM extends Agent {
             mean = statsCalc.getMean();
             System.out.println("#####STATMEAN##### Historic mean per gender " + sGender + ":" + mean);
             return mean;
-        }*/
+        }
 
         public void saveFile(){
             String workingDir = System.getProperty("user.dir");
@@ -1451,4 +1458,33 @@ public class AgentNAMM extends Agent {
                     bidCount + "," + winCount + "," + costImpr;
         }
     }
+
+
+	public void campaignSaveFile(){
+		String workingDir = System.getProperty("user.dir");
+		String fName = workingDir + "\\Cmp" + System.currentTimeMillis() + ".csv";
+
+		//CSV file header
+		final String FILE_HEADER = "id,dayStart,dayEnd,reachImps,targetSegment,videoCoef,mobileCoef," +
+				"adxCost,targetedImps,untargetedImps,budget,revenue,profitEstimate,cmpBid,impressionTarget," +
+				"uncorrectedProfitEstimate,costEstimate,estImpCost,estUcsCost,qualityChange,estQualityChange," +
+				"ucsCost,estCostAcc,estProfitAcc,uncorrectedProfficAcc,estQualityChangeAcc,impTargetFulfillment," +
+				"bidVs2ndRatio,profit,profitPerImpression,reachFulfillment,estUcsCostAcc";
+
+		try {
+			FileWriter csvFw = new FileWriter(fName, true);
+			csvFw.write(FILE_HEADER + System.lineSeparator());
+
+			//Add a new line separator after the header
+			for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
+				CampaignData campaign = entry.getValue();
+				csvFw.append(campaign.toWrite() + System.lineSeparator());
+			}
+
+			csvFw.close();
+			System.out.println("Printed campaign csv successfully");
+		} catch(IOException ex){
+			System.out.println("##### ERR Writing the CSV File #####");
+		}
+	}
 }

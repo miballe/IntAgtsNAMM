@@ -3,6 +3,8 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/adx-1.2.8.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/commons-lang3-3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-math3-3.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/AgentNAMM.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
