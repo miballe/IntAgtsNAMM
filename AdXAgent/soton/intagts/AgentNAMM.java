@@ -1,5 +1,8 @@
 package soton.intagts;
 
+import edu.umich.eecs.tac.props.Ad;
+import edu.umich.eecs.tac.props.BankStatus;
+import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -25,19 +28,24 @@ import tau.tac.adx.props.AdxBidBundle;
 import tau.tac.adx.props.AdxQuery;
 import tau.tac.adx.props.PublisherCatalog;
 import tau.tac.adx.props.PublisherCatalogEntry;
+import tau.tac.adx.report.adn.AdNetworkKey;
 import tau.tac.adx.report.adn.AdNetworkReport;
+import tau.tac.adx.report.adn.AdNetworkReportEntry;
 import tau.tac.adx.report.adn.MarketSegment;
-import tau.tac.adx.report.demand.AdNetBidMessage;
-import tau.tac.adx.report.demand.AdNetworkDailyNotification;
-import tau.tac.adx.report.demand.CampaignOpportunityMessage;
-import tau.tac.adx.report.demand.CampaignReport;
-import tau.tac.adx.report.demand.CampaignReportKey;
-import tau.tac.adx.report.demand.InitialCampaignMessage;
+import tau.tac.adx.report.demand.*;
 import tau.tac.adx.report.demand.campaign.auction.CampaignAuctionReport;
 import tau.tac.adx.report.publisher.AdxPublisherReport;
 import tau.tac.adx.report.publisher.AdxPublisherReportEntry;
-import edu.umich.eecs.tac.props.Ad;
-import edu.umich.eecs.tac.props.BankStatus;
+import tau.tac.adx.users.properties.Age;
+import tau.tac.adx.users.properties.Gender;
+import tau.tac.adx.users.properties.Income;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.apache.commons.math3.stat.*;
 
 /**
  * Temporary include to write a CSV for learning data
@@ -132,10 +140,15 @@ public class AgentNAMM extends Agent {
 	private String[] publisherNames;
 	private CampaignData currCampaign;
 
-
+    /**
+     * This property is the instance of a new NAMM class to keep record of all Ad-Net reports during a game execution.
+     * The idea is to use historic data as reference to estimate new bid prices or provide values for some strategies.
+     */
+    private ImpressionHistory impressionBidHistory;
 
 	public AgentNAMM() {
-		campaignReports = new LinkedList<CampaignReport>();
+        campaignReports = new LinkedList<CampaignReport>();
+        impressionBidHistory = new ImpressionHistory();
 	}
 
 
@@ -146,7 +159,7 @@ public class AgentNAMM extends Agent {
 		try {
 			Transportable content = message.getContent();
 
-			// Dumps all recieved messages to log
+			// Dumps all received messages to log
 			log.fine(message.getContent().getClass().toString());
 			this.log.log(Level.ALL, message.getContent().getClass().toString());
 
@@ -455,6 +468,7 @@ public class AgentNAMM extends Agent {
 	 */
 	private void handleSimulationStatus(SimulationStatus simulationStatus) {
 		System.out.println("Day " + day + " : Simulation Status Received");
+        System.out.println("###SIMSTAT### " + simulationStatus.toString());
 		sendBidAndAds();
 		System.out.println("Day " + day + " ended. Starting next day");
 		++day;
@@ -506,6 +520,7 @@ public class AgentNAMM extends Agent {
 			 */
 			for (AdxQuery query : currCampaign.campaignQueries) {
 				if (currCampaign.impsTogo() - entCount > 0) {
+                    System.out.println("###QUERY### " + query.toString());
 					/**
 					 * among matching entries with the same campaign id, the AdX
 					 * randomly chooses an entry according to the designated
@@ -600,15 +615,16 @@ public class AgentNAMM extends Agent {
 	 * @param //AdNetworkReport
 	 */
 	private void handleAdNetworkReport(AdNetworkReport adnetReport) {
-
-		System.out.println("Day " + day + " : AdNetworkReport");
-		/*
-		 * for (AdNetworkKey adnetKey : adnetReport.keys()) {
-		 *
-		 * double rnd = Math.random(); if (rnd > 0.95) { AdNetworkReportEntry
-		 * entry = adnetReport .getAdNetworkReportEntry(adnetKey);
-		 * System.out.println(adnetKey + " " + entry); } }
-		 */
+        AdNetworkReportEntry repEntry;
+		System.out.println("Day " + day + " : AdNetworkReport:   ");
+        for (AdNetworkKey adKey : adnetReport.keys()) {
+            repEntry = adnetReport.getEntry(adKey);
+            impressionBidHistory.impressionList.add(new ImpressionRecord(repEntry));
+            System.out.println("#####ADNETREPORTENTRY#####" + repEntry.toString());
+        }
+        System.out.println("#####BIDIMPRHISTORY##### NItems" + impressionBidHistory.impressionList.size() +
+                            ", Male mean: " + impressionBidHistory.getMeanPerSegmentGender(Gender.male) +
+                            ", Female mean: " + impressionBidHistory.getMeanPerSegmentGender(Gender.female));
 	}
 
 	@Override
@@ -626,6 +642,7 @@ public class AgentNAMM extends Agent {
 
 	@Override
 	protected void simulationFinished() {
+        impressionBidHistory.saveFile();
 		campaignReports.clear();
 		bidBundle = null;
 	}
@@ -973,12 +990,12 @@ public class AgentNAMM extends Agent {
 		double ERR = (2/a) * (( Math.atan((a*fracComplete) - b )) - Math.atan(-b));
 		return ERR;
 	}
-		/*
-		Goes through historical (previously trained) data and evaluates when the bid is too low to be profitable
-		at a confidence level given.
-		Does not take into account environmental factors (is not a prediction of profitability) just a lower bound.
-		Therefore keep the confidence high
-		NOTE: this function should be turned off while training historical data
+    /**
+    Goes through historical (previously trained) data and evaluates when the bid is too low to be profitable
+    at a confidence level given.
+    Does not take into account environmental factors (is not a prediction of profitability) just a lower bound.
+    Therefore keep the confidence high
+    NOTE: this function should be turned off while training historical data
 	*/
 	private double bidTooLow(long cmpimps, int confidence) {
 		// TODO Historic Data
@@ -993,9 +1010,9 @@ public class AgentNAMM extends Agent {
 		return bidLow;
 	}
 
-	/*
+	/**
 	* Goes through all previously successful bids, models it as a normal distribution (which it may not be)
-	* And evaluates through a t-test a bid with the required failure confidence to consider it too high to succeeed.
+	* And evaluates through a t-test a bid with the required failure confidence to consider it too high to succeed.
 	*/
 	private double bidTooHigh(long cmpimps, int percentFailure) {
 		// At the moment models as uniform distribution.
@@ -1013,7 +1030,7 @@ public class AgentNAMM extends Agent {
 		return bidHigh;
 	}
 
-	/*
+	/**
 	 * Method for computing campaign bid to maximise profit
 	 * Currently just bids randomly between min and max as before
 	 * In progress: version will bid the average successful second price.
@@ -1146,10 +1163,12 @@ public class AgentNAMM extends Agent {
 		return totalCost;
 	}
 
+	/**
 	// Write a class of performance metrics which update daily throughout the game (and print out)
 	// Print these performance metrics to a file so they can be manually inspected.
 	// estimated cost accuracy, estimated profit accuracy, impression target fulfillment, price bid vs second price.
 	// Profit, profit per impression.
+    */
 	private class PerformanceData {
 		double estCostAcc;
 		double estUcsCostAcc;
@@ -1234,9 +1253,6 @@ public class AgentNAMM extends Agent {
 	}
 
 
-
-
-
 	/*
 	 *  Manu: Impression cost estimate
 	 *  This method takes an impression target as an input and evaluates the estimated cost to achieve that value given
@@ -1253,7 +1269,7 @@ public class AgentNAMM extends Agent {
 		return 0.0006 * impTarget; // default value 0.0006 per impression
 	}
 
-	/*
+	/**
 	 * Nicola: UCS cost estimate
 	 * This function estimates the cost to achieve a specific ucs tier. Note that ucsTarget is the integer tier not the
 	 * percentage of users classified. (1 = 100%, 2 = 90%, 3 = 81% ...).
@@ -1264,7 +1280,7 @@ public class AgentNAMM extends Agent {
 		return 0.15;  // default bidding is random (and so are dummy agents)
 	}
 
-	/*
+	/**
 	 * Nicola: Best UCS impression cost combination
 	 * This function queries impression and UCS cost estimations over the entire range of UCS costs to evaluate the
 	 * cheapest cost to achieve our impression target.
@@ -1274,7 +1290,7 @@ public class AgentNAMM extends Agent {
 		return 1; // default desire to get first place (100%)
 	}
 
-	/*
+	/**
 	 * Nicola: UCS bid
 	 * This method takes a UCS target and tries to evaluate the bid required to reach that target.
 	 * Expansion: include a sense of risk aversion to this function. i.e. when it is more important to achieve a
@@ -1286,7 +1302,7 @@ public class AgentNAMM extends Agent {
 		return 0;
 	}
 
-	/*
+	/**
 	 * Miguel: This method calculates how to bid for unknown users.
 	 */
 	private double untargetedImpressionBidCalculator(double impressionTarget){
@@ -1294,7 +1310,7 @@ public class AgentNAMM extends Agent {
 		return 0;
 	}
 
-	/*
+	/**
 	 * Miguel: This method evaluates the bid for each impression query.
 	 */
 	private double ImpressionBidCalculator(double impressionTarget, AdxQuery query){
@@ -1303,4 +1319,104 @@ public class AgentNAMM extends Agent {
 		// e.g. pendingCampaign.impressionTarget
 		return 0;
 	}
+
+    /**
+     * Class to keep a record of all historic bid results coming from the server. This ie useful for
+     * future estimates and support in general the campaigns and impressions bidding strategy.
+     */
+    private class ImpressionHistory {
+        // Main collection. Record list of type ImpressionRecord defined below
+        public List<ImpressionRecord> impressionList;
+
+        /**
+         * Constructor method. Basically initializes the ArrayList at the beginning of the game when
+         * an instance of AgentNAMM is
+         */
+        public ImpressionHistory(){
+            impressionList = new ArrayList<ImpressionRecord>();
+        }
+
+        public double getMeanPerSegmentGender(Gender sGender){
+            DescriptiveStatistics statsCalc = new DescriptiveStatistics();
+            double mean = 0;
+
+            for(ImpressionRecord rEntry : impressionList) {
+                if(rEntry.segGender == sGender) {
+                    statsCalc.addValue(rEntry.costImpr);
+                }
+            }
+            mean = statsCalc.getMean();
+            System.out.println("#####STATMEAN##### Historic mean per gender " + sGender + ":" + mean);
+            return mean;
+        }
+
+        public void saveFile(){
+            String workingDir = System.getProperty("user.dir");
+            String fName = workingDir + "\\BH" + System.currentTimeMillis() + ".csv";
+            try {
+                FileWriter csvFw = new FileWriter(fName);
+                csvFw.write("BidDay,CampId,AdType,Device,Publisher,Gender,Income,Age,BidCount,WinCount,CostImpr" + System.lineSeparator());
+                for(ImpressionRecord sRecord : impressionList){
+                    csvFw.write(sRecord.toString() + System.lineSeparator());
+                }
+                csvFw.close();
+            } catch(IOException ex){
+                System.out.println("##### ERR Writing the CSV File #####");
+            }
+        }
+    }
+
+    /**
+     * Class to store a single line of data coming from the AdNet Report.
+     * This class is used within Impression History to have a collection of historic records. This allows the
+     * calculation of statistics and other indices to take decisions during the trading.
+     */
+    private class ImpressionRecord {
+        public int bidDay = 0;
+        public int campId = 0;
+        public AdType adType = AdType.text;
+        public Device dev = Device.pc;
+        public String pub = "";
+        public Gender segGender = Gender.male;
+        public Income segIncome = Income.medium;
+        public Age segAge = Age.Age_18_24;
+        public int bidCount = 0;
+        public int winCount = 0;
+        public double costImpr = 0;
+
+        public ImpressionRecord(int pBidDay, int pCampId, AdType pAdType, Device pDev, String pPub, Gender pSegGender,
+                                Income pSegIncome, Age pSegAge, int pBidCount, int pWinCount, double pCostImpr){
+            bidDay = pBidDay;
+            campId = pCampId;
+            adType = pAdType;
+            dev = pDev;
+            pub = pPub;
+            segGender = pSegGender;
+            segIncome = pSegIncome;
+            segAge = pSegAge;
+            bidCount = pBidCount;
+            winCount = pWinCount;
+            costImpr = pCostImpr;
+        }
+
+        public ImpressionRecord(AdNetworkReportEntry pReportEntry){
+            bidDay = day -1;
+            campId = pReportEntry.getKey().getCampaignId();
+            adType = pReportEntry.getKey().getAdType();
+            dev = pReportEntry.getKey().getDevice();
+            pub = pReportEntry.getKey().getPublisher();
+            segGender = pReportEntry.getKey().getGender();
+            segIncome = pReportEntry.getKey().getIncome();
+            segAge = pReportEntry.getKey().getAge();
+            bidCount = pReportEntry.getBidCount();
+            winCount = pReportEntry.getWinCount();
+            costImpr = pReportEntry.getCost();
+        }
+
+        public String toString(){
+            return bidDay + "," + campId + "," + adType.toString() + "," + dev.toString() + "," + pub + "," +
+                    segGender.toString() + "," + segIncome.toString() + "," + segAge.toString() + "," +
+                    bidCount + "," + winCount + "," + costImpr;
+        }
+    }
 }

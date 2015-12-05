@@ -37,6 +37,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" exported="" name="adx-1.2.8" level="project" />
+    <orderEntry type="library" name="adx-1.2.8" level="project" />
+    <orderEntry type="library" name="commons-math3-3.5" level="project" />
   </component>
 </module>
