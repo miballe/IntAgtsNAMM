@@ -1,4 +1,4 @@
-//package soton.intagts;
+package soton.intagts;
 
 import edu.umich.eecs.tac.props.Ad;
 import edu.umich.eecs.tac.props.BankStatus;
@@ -260,13 +260,11 @@ public class AgentNAMM extends Agent {
 	 */
 	private void handleICampaignOpportunityMessage(
 			CampaignOpportunityMessage com) {
-		System.out.println("WORKING!");
 			day = com.getDay();
 
 		// For campaigns that finished yesterday set performance metrics.
 		for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
 			CampaignData campaign = entry.getValue();
-			System.out.println("working here");
 			if ((entry.getValue().dayEnd == day - 1)) {
 				System.out.println("...");
 				long imps = (long)(campaign.stats.getOtherImps() + campaign.stats.getTargetedImps());
@@ -332,12 +330,10 @@ public class AgentNAMM extends Agent {
 					);*/
 			}
 		}
-		System.out.println("working afterwards?");
 
 
 		pendingCampaign = new CampaignData(com);
-		System.out.println("Day " + day + ": Campaign opportunity - " + pendingCampaign);
-		System.out.println("working afterwards??");
+		System.out.println("Day " + day + ": Campaign oppppportunity - " + pendingCampaign);
 
 		/*
 		*  ALUN: Decide which of the 4 campaign strategies to use

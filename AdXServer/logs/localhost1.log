@@ -1,12 +1,19 @@
-05/12 16:52:12 INFO file.FileDatabase|infodb: database opened as C:\Users\Alun\Documents\Work\DataScience\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXServer\infodb
-05/12 16:52:12 INFO common.BlockingViewerServer|viewer server started at *:4042
-05/12 16:52:13 INFO sim.Admin|adding manager for simulation type tac13adx
-05/12 16:52:13 INFO server.TACTGateway|TACT Server started at *:6502
-05/12 16:54:23 INFO server.TACTChannel|user namm logged in as namm@tact-1 with version 0.9.6 from 127.0.0.1
-05/12 16:54:23 INFO sim.Admin|created simulation 174
-05/12 16:55:00 FINE sim.Admin|Entering log for simulation 175
+05/12 20:59:05 INFO file.FileDatabase|infodb: database opened as C:\Users\Alun\Documents\Work\DataScience\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXServer\infodb
+05/12 20:59:05 INFO common.BlockingViewerServer|viewer server started at *:4042
+05/12 20:59:06 INFO sim.Admin|adding manager for simulation type tac13adx
+05/12 20:59:06 INFO server.TACTGateway|TACT Server started at *:6502
+05/12 20:59:09 INFO server.TACTChannel|user namm logged in as namm@tact-1 with version 0.9.6 from 127.0.0.1
+05/12 20:59:09 INFO sim.Admin|created simulation 192
+05/12 21:00:00 FINE sim.Admin|Entering log for simulation 193
 ************************************************************
-* Entering log for simulation 175
+* Entering log for simulation 193
+************************************************************
+
+
+05/12 21:10:01 INFO is.TACAAResultManager|generating results for simulation 193 to public_html\localhost\history\193\index.html
+05/12 21:11:00 FINE sim.Admin|Entering log for simulation 194
+************************************************************
+* Entering log for simulation 194
 ************************************************************
 
 

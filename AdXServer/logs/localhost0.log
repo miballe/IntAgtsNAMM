@@ -1,20 +1,20 @@
-05/12 16:55:43 INFO file.FileDatabase|infodb: database opened as C:\Users\Alun\Documents\Work\DataScience\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXServer\infodb
-05/12 16:55:43 INFO common.BlockingViewerServer|viewer server started at *:4042
-05/12 16:55:43 INFO sim.Admin|adding manager for simulation type tac13adx
-05/12 16:55:44 INFO server.TACTGateway|TACT Server started at *:6502
-05/12 16:55:48 INFO server.TACTChannel|user namm logged in as namm@tact-1 with version 0.9.6 from 127.0.0.1
-05/12 16:55:48 INFO sim.Admin|created simulation 175
-05/12 16:56:00 FINE sim.Admin|Entering log for simulation 176
+05/12 21:52:29 INFO file.FileDatabase|infodb: database opened as C:\Users\Alun\Documents\Work\DataScience\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXServer\infodb
+05/12 21:52:29 INFO common.BlockingViewerServer|viewer server started at *:4042
+05/12 21:52:30 INFO sim.Admin|adding manager for simulation type tac13adx
+05/12 21:52:30 INFO server.TACTGateway|TACT Server started at *:6502
+05/12 21:52:50 INFO server.TACTChannel|user namm logged in as namm@tact-1 with version 0.9.6 from 127.0.0.1
+05/12 21:52:50 INFO sim.Admin|created simulation 194
+05/12 21:53:00 FINE sim.Admin|Entering log for simulation 195
 ************************************************************
-* Entering log for simulation 176
-************************************************************
-
-
-05/12 17:06:00 INFO is.TACAAResultManager|generating results for simulation 176 to public_html\localhost\history\176\index.html
-05/12 17:07:00 FINE sim.Admin|Entering log for simulation 177
-************************************************************
-* Entering log for simulation 177
+* Entering log for simulation 195
 ************************************************************
 
 
-05/12 17:17:00 INFO is.TACAAResultManager|generating results for simulation 177 to public_html\localhost\history\177\index.html
+05/12 22:03:00 INFO sim.Admin|created simulation 195
+05/12 22:03:01 INFO is.TACAAResultManager|generating results for simulation 195 to public_html\localhost\history\195\index.html
+05/12 22:04:00 FINE sim.Admin|Entering log for simulation 196
+************************************************************
+* Entering log for simulation 196
+************************************************************
+
+
