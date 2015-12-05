@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 05/12 15:00:15 INFO file.FileDatabase|infodb: database opened as C:\Users\Miguel\Documents\GitHub\IntAgtsNAMM\AdXServer\infodb
 05/12 15:00:15 INFO common.BlockingViewerServer|viewer server started at *:4042
 05/12 15:00:16 INFO sim.Admin|adding manager for simulation type tac13adx
@@ -19,3 +20,17 @@ java.net.SocketException: Connection reset
 	at java.net.SocketInputStream.read(Unknown Source)
 	at java.io.DataInputStream.readInt(Unknown Source)
 	at se.sics.isl.tact.TACTConnection$TACTReader.run(TACTConnection.java:405)
+=======
+04/12 18:33:51 INFO file.FileDatabase|infodb: database opened as C:\Users\Alun\Documents\Work\DataScience\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXServer\infodb
+04/12 18:33:51 INFO common.BlockingViewerServer|viewer server started at *:4042
+04/12 18:33:52 INFO sim.Admin|adding manager for simulation type tac13adx
+04/12 18:33:52 INFO server.TACTGateway|TACT Server started at *:6502
+04/12 18:33:54 INFO server.TACTChannel|user namm logged in as namm@tact-1 with version 0.9.6 from 127.0.0.1
+04/12 18:33:55 INFO sim.Admin|created simulation 145
+04/12 18:34:00 FINE sim.Admin|Entering log for simulation 145
+************************************************************
+* Entering log for simulation 145
+************************************************************
+
+
+>>>>>>> 80e4939443a3e0ead5ce20f67bf25f55f3c262a2
