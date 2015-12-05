@@ -117,6 +117,7 @@ public class AgentNAMM extends Agent {
 	 * The targeted service level for the user classification service
 	 */
 	int ucsTargetLevel;
+	double quality = 1;
 	private PerformanceData performanceData;
 	/*
 	 *  The bid campaign bid we send.
@@ -265,25 +266,32 @@ public class AgentNAMM extends Agent {
 				campaign.setRevenue(revenue);
 				campaign.setProfit();
 				campaign.setEstCostAcc();
+				campaign.setUncorrectedProfitAcc();
 				campaign.setEstProfitAcc();
 				campaign.setImpTargetFulfillment();
 				campaign.setProfitPerImpression();
 				campaign.setReachFulfillment();
 				campaign.setBidVs2ndRatio();
+				campaign.setQualityChange();
+				campaign.setEstQualityChangeAcc();
+				campaign.setEstUcsCostAcc();
 
 				// Update performance data
 				performanceData.updateData(campaign);
 				//todo add estimate quality change
+
 				System.out.printf(
-					"Day %d: Campaign(%d) Completed________________________________\n" +
-					"    Reach:%d Impression Target:%d \n" +
-					"    Impressions:%d Targeted:%d Untargeted:%d \n" +
-					"    Impression Fulfillment:%d%% Reach Fulfillment:%d%% \n" +
-					"    Revenue:%.3f Budget:%.3f Bid:%.3f \n" +
-					"    Bid:2nd Ratio: %.2f \n" +
-					"    Impression Cost:%.2f Estimated Imp Cost Accuracy:%d%% \n" +
-					"    Profit:%.2f Profit Per Impression:%.2f \n" +
-					"    Estimated Profit Accuracy:%d \n",
+						"Day %d: Campaign(%d) Completed________________________________\n" +
+								"    Reach:%d Impression Target:%d \n" +
+								"    Impressions:%d Targeted:%d Untargeted:%d \n" +
+								"    Target Fulfillment:%d%% Reach Fulfillment:%d%% \n" +
+								"    Revenue:%.3f Budget:%.3f Bid:%.3f \n" +
+								"    Bid:2nd Ratio: %.2f \n" +
+								"    Impression Cost:%.2f Estimate:%.2f Accuracy:%d%% \n" +
+								"    UCS Cost:%.2f Estimated:%.2f Accuracy:%d%% \n" + /* UCS cost estimate approximates with non-overlapping campaigns */
+								"    Profit:%.2f  (Per Impression, millis:%d) \n" +   /* Above gives underestimate for profit */
+								"    Profit: Estimated:%.2f Accuracy:%d%% | uncorrected:%.2f Accuracy:%d%%)\n" +
+								"    Quality Change:%.2f Estimate:%.2f Accuracy:%d%% \n",
 						day, campaign.id,
 						campaign.reachImps, campaign.impressionTarget,
 						(long)(campaign.stats.getTargetedImps() + campaign.stats.getOtherImps()),
@@ -291,9 +299,12 @@ public class AgentNAMM extends Agent {
 						(long)(campaign.impTargetFulfillment*100), (long)(campaign.reachFulfillment*100),
 						campaign.revenue, campaign.budget, campaign.cmpBid,
 						campaign.bidVs2ndRatio,
-						campaign.stats.getCost(),(long)(campaign.estCostAcc*100),
-						campaign.profit, (campaign.profit/campaign.reachImps),
-						(long)(campaign.estProfitAcc*100));
+						campaign.stats.getCost(), campaign.estImpCost ,(long)(campaign.estCostAcc*100),
+						campaign.ucsCost, campaign.estUcsCost, (long)(campaign.estUcsCostAcc*100),
+						campaign.profit, (long)((campaign.profit/(campaign.stats.getOtherImps() + campaign.stats.getTargetedImps()))*1000),
+						campaign.profitEstimate, (long)(campaign.estProfitAcc*100), campaign.uncorrectedProfitEstimate,
+						(long)(campaign.uncorrectedProfitAcc*100),
+						campaign.qualityChange, campaign.estQualityChange, (long)(campaign.estQualityChangeAcc*100));
 
 				System.out.printf(
 					"Day %d: Performance Report (%d Campaigns complete)_____________________________\n" +
@@ -417,6 +428,24 @@ public class AgentNAMM extends Agent {
 				+ " at price " + notificationMessage.getPrice()
 				+ " Quality Score is: " + notificationMessage.getQualityScore());
 
+		// Attribute the ucs cost to any running campaigns.
+		int ongoingCamps = 0;
+		// count the number of ongoing campaigns
+		for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
+			CampaignData campaign = entry.getValue();
+			if( (day <= campaign.dayEnd) && (day >= campaign.dayStart)){
+				ongoingCamps ++;
+			}
+		}
+		// send each campaign an even split of ucs cost
+		for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
+			CampaignData campaign = entry.getValue();
+			if( (day <= campaign.dayEnd) && (day >= campaign.dayStart)){
+				campaign.ucsCost += notificationMessage.getPrice() / ongoingCamps;
+			}
+		}
+
+
 	}
 
 	/**
@@ -508,7 +537,7 @@ public class AgentNAMM extends Agent {
 			bidBundle.setCampaignDailyLimit(currCampaign.id,
 					(int) impressionLimit, budgetLimit);
 
-			System.out.println("Day " + day + " ###BIDBUNDLE###: Updated " + entCount
+			System.out.println("Day " + day + " Bid Bundle: Updated " + entCount
 					+ " Bid Bundle entries for Campaign id " + currCampaign.id);
 			log.log(Level.ALL, "## Bid Bundle ##; currCampaign: " + currCampaign.id + "; " + (long)currCampaign.budget);
 
@@ -717,15 +746,21 @@ public class AgentNAMM extends Agent {
 		double costEstimate;
 		double estImpCost;
 		double estUcsCost;
+		double qualityChange;
+		double estQualityChange;
+		double ucsCost;
 
 		/* Performance data */
 		double estCostAcc;
 		double estProfitAcc;
+		double uncorrectedProfitAcc;
+		double estQualityChangeAcc;
 		double impTargetFulfillment;
 		double bidVs2ndRatio;
 		double profit;
 		double profitPerImpression;
 		double reachFulfillment;
+		double estUcsCostAcc;
 
 		public CampaignData(InitialCampaignMessage icm) {
 			reachImps = icm.getReachImps();
@@ -740,50 +775,71 @@ public class AgentNAMM extends Agent {
 			impressionTarget = reachImps;
 			revenue = 0;
 			profit = 0.0;
+			ucsCost = 0;
 			profitEstimate = 0.0;
 			uncorrectedProfitEstimate = 0.0;
 			costEstimate = 0.0;
 			estCostAcc = 0.0;
 			estProfitAcc = 0.0;
+			uncorrectedProfitAcc = 0.0;
 			impTargetFulfillment = 0.0;
+			estUcsCostAcc = 0.0;
 			bidVs2ndRatio = 0.0;
 			profit = 0.0;
 			profitPerImpression = 0.0;
 			reachFulfillment = 0.0;
 			estImpCost = 0.0;
 			estUcsCost = 0.0;
+			qualityChange = 0.0;
+			estQualityChange = 0.0;
+			estQualityChangeAcc = 0.0;
 		}
 
+		public void setQualityChange() {
+			// Detects change in quality score from yesterday,
+			// attributes change equally to all campaigns ended in that time
+			System.out.println("Quality:" + adNetworkDailyNotification.getQualityScore() + "yesterday's quality" + quality
+					+ "estimated quality change:" + this.estQualityChange);
+			int count=0;
+			for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
+				long end = entry.getValue().dayEnd;
+				if (end == day - 1) {count++;}
+			}
+			qualityChange = (adNetworkDailyNotification.getQualityScore() - quality)/count;
+			quality = adNetworkDailyNotification.getQualityScore();
+
+		}
+
+		public void setEstQualityChangeAcc() {
+			estQualityChangeAcc = estQualityChange / qualityChange;
+		}
+		public void setEstUcsCostAcc() {
+			estUcsCostAcc = estUcsCost / ucsCost;
+		}
 		public void setBudget(double d) { budget = d; }
-
 		public void setRevenue(double r) { revenue = r; }
-
 		public void setBid(double b) { cmpBid = b; }
-
 		public void setEstCostAcc(){
-			estCostAcc = estImpCost / costEstimate;
+			estCostAcc = estImpCost / stats.getCost();
 		}
-
 		public void setEstProfitAcc(){
 			estProfitAcc = (profitEstimate) / profit;
 		}
-
+		public void setUncorrectedProfitAcc(){
+			uncorrectedProfitAcc = (uncorrectedProfitEstimate) / profit;
+		}
 		public void setReachFulfillment(){
 			reachFulfillment = (stats.getTargetedImps() + stats.getOtherImps()) / reachImps;
 		}
-
 		public void setImpTargetFulfillment(){
 			impTargetFulfillment = (stats.getTargetedImps() + stats.getOtherImps()) / impressionTarget;
 		}
-
 		public void setBidVs2ndRatio(){
 			bidVs2ndRatio = this.cmpBid * adNetworkDailyNotification.getQualityScore() / budget;
 		}
-
 		public void setProfit(){
 			profit = revenue - stats.getCost();
 		}
-
 		public void setProfitPerImpression(){
 			profitPerImpression = profit / (stats.getTargetedImps() + stats.getOtherImps());
 		}
@@ -799,6 +855,7 @@ public class AgentNAMM extends Agent {
 			stats = new CampaignStats(0, 0, 0);
 			budget = 0.0;
 			cmpBid = 0.0;
+			estUcsCostAcc = 0.0;
 			impressionTarget = reachImps;
 			revenue = 0;
 			profit = 0.0;
@@ -807,7 +864,11 @@ public class AgentNAMM extends Agent {
 			costEstimate = 0.0;
 			reachFulfillment = 0.0;
 			estImpCost = 0.0;
+			qualityChange = 0.0;
 			estUcsCost = 0.0;
+			estQualityChange = 0.0;
+			ucsCost = 0;
+			estQualityChangeAcc = 0.0;
 		}
 
 		@Override
@@ -845,7 +906,7 @@ public class AgentNAMM extends Agent {
 				double currentQuality = adNetworkDailyNotification.getQualityScore();
 				double lRate = 0.6, Budget;
 				ERR = ERRcalc(this, target);
-				estQuality = (1 - lRate)*currentQuality + lRate*ERR;
+				double tempEstQuality = (1 - lRate)*currentQuality + lRate*ERR;
 
 				// Decide which impression target is most cost efficient
 				// todo need to change this.budget to a historical average budget per impression
@@ -854,17 +915,18 @@ public class AgentNAMM extends Agent {
 				else Budget = 0; //TODO mean budget/impression from past * impressions;
 				double tempEstCost = campaignCost(this, tempTarget, false);
 				double tempEstProfit = Budget * ERR + qualityEffect(this, estQuality) - tempEstCost;
-				System.out.print("Best: " + target + "-" + estProfit +
-						"  Testing: " + tempTarget + "-" + tempEstProfit);
 				if (tempEstProfit > estProfit) {
 					target = tempTarget;
 					estProfit = tempEstProfit;
 					estCost = tempEstCost;
+					estQuality = tempEstQuality;
 				}
 			}
 
 			// Save ucs cost and impression cost estimates
 			campaignCost(this, target, true);
+			System.out.println("Q: " + adNetworkDailyNotification.getQualityScore() + " estQ: " + estQuality + " ERR: " + ERR);
+			this.estQualityChange = estQuality - adNetworkDailyNotification.getQualityScore();
 
 			// Factor in any bias we may have (adjust for difference in prediction and result)
 			// This multiplier is highly subject to random noise at the start and should incorporate historic data to
@@ -881,19 +943,17 @@ public class AgentNAMM extends Agent {
 			}
 			// error factor
 			double profitError = cumProfit / cumProfitEstimate;
-			uncorrectedProfitEstimate = estProfit;
-			profitEstimate = estProfit * profitError;
+			uncorrectedProfitEstimate = estProfit - qualityEffect(this,estQuality);
+			profitEstimate = uncorrectedProfitEstimate * profitError;
 			impressionTarget = target;
 			costEstimate = estCost;
 
-			System.out.println("ESTIMATED PROFIT: " + estProfit + " | target: " + target + " | Est.cmp cost: " +
+			/* System.out.println("ESTIMATED PROFIT: " + estProfit + " | target: " + target + " | Est.cmp cost: " +
 					campaignCost(this,target/(this.dayEnd-this.dayStart), false) + " | Est.Quality effect: "
 					+ qualityEffect(this, estQuality) + " | Est.ERR: " + ERR + " | cmpRevenue: " + this.budget*ERR
-			+ " | uncorrected profit estimate: " + uncorrectedProfitEstimate);
+			+ " | uncorrected profit estimate: " + uncorrectedProfitEstimate); */
 
 		}
-
-
 
 	}
 
@@ -967,8 +1027,6 @@ public class AgentNAMM extends Agent {
 			for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
 				if (entry.getValue().dayStart != 1) {
 					totalCostPerImp += entry.getValue().budget / entry.getValue().reachImps;
-					System.out.print("Bid vs Budget:  Bid(millis): " + entry.getValue().cmpBid*1000);
-					System.out.println(" Budget(millis): " + entry.getValue().budget*1000 + " ReachImps: " + entry.getValue().reachImps);
 				}
 			}
 			bidFactor = (random.nextInt(40)/100) + 0.8;
@@ -1171,6 +1229,7 @@ public class AgentNAMM extends Agent {
 			setEstImpCostAcc(x);
 			setEstUcsCostAcc(x);
 			setReachFulfillment(x);
+			setEstUcsCostAcc(x);
 		}
 	}
 
