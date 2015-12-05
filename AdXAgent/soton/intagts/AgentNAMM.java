@@ -2,7 +2,7 @@ package soton.intagts;
 
 import edu.umich.eecs.tac.props.Ad;
 import edu.umich.eecs.tac.props.BankStatus;
-import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
+//import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -43,9 +43,9 @@ import tau.tac.adx.users.properties.Income;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.apache.commons.math3.stat.*;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
+//import org.apache.commons.math3.stat.*;
 
 /**
  * Temporary include to write a CSV for learning data
@@ -294,30 +294,30 @@ public class AgentNAMM extends Agent {
 				//todo add estimate quality change
 
 				System.out.printf(
-						"Day %d: Campaign(%d) Completed________________________________\n" +
-								"    Reach:%d Impression Target:%d \n" +
-								"    Impressions:%d Targeted:%d Untargeted:%d \n" +
-								"    Target Fulfillment:%d%% Reach Fulfillment:%d%% \n" +
-								"    Revenue:%.3f Budget:%.3f Bid:%.3f \n" +
-								"    Bid:2nd Ratio: %.2f \n" +
-								"    Impression Cost:%.2f Estimate:%.2f Accuracy:%d%% \n" +
-								"    UCS Cost:%.2f Estimated:%.2f Accuracy:%d%% \n" + /* UCS cost estimate approximates with non-overlapping campaigns */
-								"    Profit:%.2f  (Per Impression, millis:%d) \n" +   /* Above gives underestimate for profit */
-								"    Profit: Estimated:%.2f Accuracy:%d%% | uncorrected:%.2f Accuracy:%d%%)\n" +
-								"    Quality Change:%.2f Estimate:%.2f Accuracy:%d%% \n",
-						day, campaign.id,
-						campaign.reachImps, campaign.impressionTarget,
-						(long)(campaign.stats.getTargetedImps() + campaign.stats.getOtherImps()),
-						(long)campaign.stats.getTargetedImps(), (long)campaign.stats.getOtherImps(),
-						(long)(campaign.impTargetFulfillment*100), (long)(campaign.reachFulfillment*100),
-						campaign.revenue, campaign.budget, campaign.cmpBid,
-						campaign.bidVs2ndRatio,
-						campaign.stats.getCost(), campaign.estImpCost ,(long)(campaign.estCostAcc*100),
-						campaign.ucsCost, campaign.estUcsCost, (long)(campaign.estUcsCostAcc*100),
-						campaign.profit, (long)((campaign.profit/(campaign.stats.getOtherImps() + campaign.stats.getTargetedImps()))*1000),
-						campaign.profitEstimate, (long)(campaign.estProfitAcc*100), campaign.uncorrectedProfitEstimate,
-						(long)(campaign.uncorrectedProfitAcc*100),
-						campaign.qualityChange, campaign.estQualityChange, (long)(campaign.estQualityChangeAcc*100));
+					"Day %d: Campaign(%d) Completed________________________________\n" +
+					"    Reach:%d Impression Target:%d \n" +
+					"    Impressions:%d Targeted:%d Untargeted:%d \n" +
+					"    Target Fulfillment:%d%% Reach Fulfillment:%d%% \n" +
+					"    Revenue:%.3f Budget:%.3f Bid:%.3f \n" +
+					"    Bid:2nd Ratio: %.2f \n" +
+					"    Impression Cost:%.2f Estimate:%.2f Accuracy:%d%% \n" +
+					"    UCS Cost:%.2f Estimated:%.2f Accuracy:%d%% \n" + /* UCS cost estimate approximates with non-overlapping campaigns */
+					"    Profit:%.2f  (Per Impression, millis:%d) \n" +   /* Above gives underestimate for profit */
+					"    Profit: Estimated:%.2f Accuracy:%d%% | uncorrected:%.2f Accuracy:%d%%)\n" +
+					"    Quality Change:%.2f Estimate:%.2f Accuracy:%d%% \n",
+					day, campaign.id,
+					campaign.reachImps, campaign.impressionTarget,
+					(long)(campaign.stats.getTargetedImps() + campaign.stats.getOtherImps()),
+					(long)campaign.stats.getTargetedImps(), (long)campaign.stats.getOtherImps(),
+					(long)(campaign.impTargetFulfillment*100), (long)(campaign.reachFulfillment*100),
+					campaign.revenue, campaign.budget, campaign.cmpBid,
+					campaign.bidVs2ndRatio,
+					campaign.stats.getCost(), campaign.estImpCost ,(long)(campaign.estCostAcc*100),
+					campaign.ucsCost, campaign.estUcsCost, (long)(campaign.estUcsCostAcc*100),
+					campaign.profit, (long)((campaign.profit/(campaign.stats.getOtherImps() + campaign.stats.getTargetedImps()))*1000),
+					campaign.profitEstimate, (long)(campaign.estProfitAcc*100), campaign.uncorrectedProfitEstimate,
+					(long)(campaign.uncorrectedProfitAcc*100),
+					campaign.qualityChange, campaign.estQualityChange, (long)(campaign.estQualityChangeAcc*100));
 
 				System.out.printf(
 					"Day %d: Performance Report (%d Campaigns complete)_____________________________\n" +
@@ -326,17 +326,14 @@ public class AgentNAMM extends Agent {
 					"    bid vs 2nd price ratio: %.2f \n" +
 					"    Estimated cost accuracy: %d%% (impressions:%d%%. Ucs:%d%%) \n" +
 					"    Impression Target Fulfillment:%d%% Reach Fulfillment:%d%% \n",
-						day,performanceData.numCamps,
-						performanceData.revenue,
-						performanceData.profit, performanceData.profitPerImpression*1000, performanceData.estProfitAcc, performanceData.uncorrectedProfitEstimateAcc,
-						performanceData.bidVs2ndRatio,
-						(long)(performanceData.estCostAcc*100), (long)(performanceData.estImpCostAcc*100), (long)(performanceData.estUcsCostAcc*100),
-						(long)(performanceData.impTargetFulfillment*100), (long)(performanceData.reachFulfillment*100)
+					day,performanceData.numCamps,
+					performanceData.revenue,
+					performanceData.profit, performanceData.profitPerImpression*1000, performanceData.estProfitAcc, performanceData.uncorrectedProfitEstimateAcc,
+					performanceData.bidVs2ndRatio,
+					(long)(performanceData.estCostAcc*100), (long)(performanceData.estImpCostAcc*100), (long)(performanceData.estUcsCostAcc*100),
+					(long)(performanceData.impTargetFulfillment*100), (long)(performanceData.reachFulfillment*100)
 					);
-
 			}
-
-
 		}
 
 
@@ -383,7 +380,7 @@ public class AgentNAMM extends Agent {
 		 * Adjust ucs bid s.t. target level is achieved. Note: The bid for the
 		 * user classification service is piggybacked
 		 */
-		// TODO: UCS bid calculation here
+		// TODO: Nikola UCS bid calculation here
 		Random random = new Random();
 		if (adNetworkDailyNotification != null) {
 			double ucsLevel = adNetworkDailyNotification.getServiceLevel();
@@ -467,10 +464,10 @@ public class AgentNAMM extends Agent {
 	 * to the AdX.
 	 */
 	private void handleSimulationStatus(SimulationStatus simulationStatus) {
-		System.out.println("Day " + day + " : Simulation Status Received");
+		/*System.out.println("Day " + day + " : Simulation Status Received");
         System.out.println("###SIMSTAT### " + simulationStatus.toString());
 		sendBidAndAds();
-		System.out.println("Day " + day + " ended. Starting next day");
+		System.out.println("Day " + day + " ended. Starting next day"); */
 		++day;
 	}
 
@@ -520,7 +517,7 @@ public class AgentNAMM extends Agent {
 			 */
 			for (AdxQuery query : currCampaign.campaignQueries) {
 				if (currCampaign.impsTogo() - entCount > 0) {
-                    System.out.println("###QUERY### " + query.toString());
+                    //System.out.println("###QUERY### " + query.toString());
 					/**
 					 * among matching entries with the same campaign id, the AdX
 					 * randomly chooses an entry according to the designated
@@ -622,9 +619,9 @@ public class AgentNAMM extends Agent {
             impressionBidHistory.impressionList.add(new ImpressionRecord(repEntry));
             System.out.println("#####ADNETREPORTENTRY#####" + repEntry.toString());
         }
-        System.out.println("#####BIDIMPRHISTORY##### NItems" + impressionBidHistory.impressionList.size() +
+        /*System.out.println("#####BIDIMPRHISTORY##### NItems" + impressionBidHistory.impressionList.size() +
                             ", Male mean: " + impressionBidHistory.getMeanPerSegmentGender(Gender.male) +
-                            ", Female mean: " + impressionBidHistory.getMeanPerSegmentGender(Gender.female));
+                            ", Female mean: " + impressionBidHistory.getMeanPerSegmentGender(Gender.female));*/
 	}
 
 	@Override
@@ -1170,18 +1167,53 @@ public class AgentNAMM extends Agent {
 	// Profit, profit per impression.
     */
 	private class PerformanceData {
+		// averages over campaigns
+		double avBidVs2ndRatio;
+		double avReachImps;
+		double profitPerImpression;
+		double reachFulfillment;
+		long daystart; // Average day we bought campaigns in the game.
+		double perDayUcsCost;
+		double perImpImpCost;
+		double perImpTargetedImpCost;
+		double perImpUntargetedImpCos;
+		double perDayImp;
+		double perDayTargetedImp;
+		double perDayUntargetedImp;
+		double cmpProportionShort;
+		double cmpProportionMedium;
+		double cmpProportionLong;
+		double cmpProportionLowReach;
+		double cmpProportionMedReach;
+		double getCmpProportionHighReach;
+		double cmpBudget;
+		double cmpBid;
+		double cmpRevenue;
+		double targetPerReach; // impression target set per impression in the campaign
+
+		// Estimates
+		double profitEstimate;
+		double getUncorrectedProfitEstimate;
+
+		// Prediction ability
+		double impTargetFulfillment;
 		double estCostAcc;
 		double estUcsCostAcc;
 		double estImpCostAcc;
 		double estProfitAcc;
 		double uncorrectedProfitEstimateAcc;
-		double impTargetFulfillment;
-		double bidVs2ndRatio;
-		double profit;
-		double profitPerImpression;
+
+		// Running totals
 		double revenue;
+		double profit;
 		int numCamps;
-		double reachFulfillment;
+		double ucsCost;
+		double impCost;
+
+		/* Possible additions
+		 * Overlapping segments (average number of competitors & average % of user population bid for)
+		 *
+		 */
 
 		public PerformanceData() {
 			estCostAcc = 0.0;
@@ -1336,7 +1368,7 @@ public class AgentNAMM extends Agent {
             impressionList = new ArrayList<ImpressionRecord>();
         }
 
-        public double getMeanPerSegmentGender(Gender sGender){
+        /*public double getMeanPerSegmentGender(Gender sGender){
             DescriptiveStatistics statsCalc = new DescriptiveStatistics();
             double mean = 0;
 
@@ -1348,7 +1380,7 @@ public class AgentNAMM extends Agent {
             mean = statsCalc.getMean();
             System.out.println("#####STATMEAN##### Historic mean per gender " + sGender + ":" + mean);
             return mean;
-        }
+        }*/
 
         public void saveFile(){
             String workingDir = System.getProperty("user.dir");

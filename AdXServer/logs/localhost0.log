@@ -1,27 +1,20 @@
-05/12 16:01:39 INFO file.FileDatabase|infodb: database opened as C:\Users\inbre\Documents\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXServer\infodb
-05/12 16:01:39 INFO common.BlockingViewerServer|viewer server started at *:4042
-05/12 16:01:40 INFO sim.Admin|adding manager for simulation type tac13adx
-05/12 16:01:40 INFO server.TACTGateway|TACT Server started at *:6502
-05/12 16:01:47 INFO server.TACTChannel|user namm logged in as namm@tact-1 with version 0.9.6 from 127.0.0.1
-05/12 16:01:47 INFO sim.Admin|created simulation 171
-05/12 16:02:00 FINE sim.Admin|Entering log for simulation 172
+05/12 16:55:43 INFO file.FileDatabase|infodb: database opened as C:\Users\Alun\Documents\Work\DataScience\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXServer\infodb
+05/12 16:55:43 INFO common.BlockingViewerServer|viewer server started at *:4042
+05/12 16:55:43 INFO sim.Admin|adding manager for simulation type tac13adx
+05/12 16:55:44 INFO server.TACTGateway|TACT Server started at *:6502
+05/12 16:55:48 INFO server.TACTChannel|user namm logged in as namm@tact-1 with version 0.9.6 from 127.0.0.1
+05/12 16:55:48 INFO sim.Admin|created simulation 175
+05/12 16:56:00 FINE sim.Admin|Entering log for simulation 176
 ************************************************************
-* Entering log for simulation 172
-************************************************************
-
-
-05/12 16:12:00 INFO is.TACAAResultManager|generating results for simulation 172 to public_html\localhost\history\172\index.html
-05/12 16:12:00 WARNING sim.Admin|could not use simple rename to move simulation log 172 from sim172.slg to C:\Users\inbre\Documents\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXServer\logs\sims\localhost_sim172.slg
-05/12 16:13:00 FINE sim.Admin|Entering log for simulation 173
-************************************************************
-* Entering log for simulation 173
+* Entering log for simulation 176
 ************************************************************
 
 
-05/12 16:23:01 INFO is.TACAAResultManager|generating results for simulation 173 to public_html\localhost\history\173\index.html
-05/12 16:24:00 FINE sim.Admin|Entering log for simulation 174
+05/12 17:06:00 INFO is.TACAAResultManager|generating results for simulation 176 to public_html\localhost\history\176\index.html
+05/12 17:07:00 FINE sim.Admin|Entering log for simulation 177
 ************************************************************
-* Entering log for simulation 174
+* Entering log for simulation 177
 ************************************************************
 
 
+05/12 17:17:00 INFO is.TACAAResultManager|generating results for simulation 177 to public_html\localhost\history\177\index.html

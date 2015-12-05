@@ -1,31 +1,12 @@
-<<<<<<< HEAD
-05/12 14:07:06 INFO file.FileDatabase|infodb: database opened as C:\Users\Miguel\Documents\GitHub\IntAgtsNAMM\AdXServer\infodb
-05/12 14:07:07 INFO common.BlockingViewerServer|viewer server started at *:4042
-05/12 14:07:08 INFO sim.Admin|adding manager for simulation type tac13adx
-05/12 14:07:08 INFO server.TACTGateway|TACT Server started at *:6502
-05/12 14:07:22 INFO server.TACTChannel|user namm logged in as namm@tact-1 with version 0.9.6 from 127.0.0.1
-05/12 14:07:22 INFO sim.Admin|created simulation 194
-05/12 14:08:00 FINE sim.Admin|Entering log for simulation 193
+05/12 16:52:12 INFO file.FileDatabase|infodb: database opened as C:\Users\Alun\Documents\Work\DataScience\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXServer\infodb
+05/12 16:52:12 INFO common.BlockingViewerServer|viewer server started at *:4042
+05/12 16:52:13 INFO sim.Admin|adding manager for simulation type tac13adx
+05/12 16:52:13 INFO server.TACTGateway|TACT Server started at *:6502
+05/12 16:54:23 INFO server.TACTChannel|user namm logged in as namm@tact-1 with version 0.9.6 from 127.0.0.1
+05/12 16:54:23 INFO sim.Admin|created simulation 174
+05/12 16:55:00 FINE sim.Admin|Entering log for simulation 175
 ************************************************************
-* Entering log for simulation 193
-************************************************************
-
-
-05/12 14:18:02 INFO is.TACAAResultManager|generating results for simulation 193 to public_html\localhost\history\193\index.html
-05/12 14:19:00 FINE sim.Admin|Entering log for simulation 194
-************************************************************
-* Entering log for simulation 194
-=======
-04/12 18:30:40 INFO file.FileDatabase|infodb: database opened as C:\Users\Alun\Documents\Work\DataScience\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXServer\infodb
-04/12 18:30:40 INFO common.BlockingViewerServer|viewer server started at *:4042
-04/12 18:30:40 INFO sim.Admin|adding manager for simulation type tac13adx
-04/12 18:30:40 INFO server.TACTGateway|TACT Server started at *:6502
-04/12 18:31:54 INFO server.TACTChannel|user namm logged in as namm@tact-1 with version 0.9.6 from 127.0.0.1
-04/12 18:31:54 INFO sim.Admin|created simulation 144
-04/12 18:32:00 FINE sim.Admin|Entering log for simulation 144
-************************************************************
-* Entering log for simulation 144
->>>>>>> 80e4939443a3e0ead5ce20f67bf25f55f3c262a2
+* Entering log for simulation 175
 ************************************************************
 
 
