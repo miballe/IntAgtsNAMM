@@ -2,13 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bdda3306-a315-4c5f-8e0f-77b534bca9f3" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/BH1449328261074.csv" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingparticipants.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingparticipants.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingsimulations.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingsimulations.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_state.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_state.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soton/intagts/AgentNAMM.java" afterPath="$PROJECT_DIR$/soton/intagts/AgentNAMM.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm0.log.1" afterPath="$PROJECT_DIR$/logs/namm0.log.1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm1.log.1" afterPath="$PROJECT_DIR$/logs/namm1.log.1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm2.log.1" afterPath="$PROJECT_DIR$/logs/namm2.log.1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm3.log.1" afterPath="$PROJECT_DIR$/logs/namm3.log.1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm4.log.1" afterPath="$PROJECT_DIR$/logs/namm4.log.1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm5.log.1" afterPath="$PROJECT_DIR$/logs/namm5.log.1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm6.log.1" afterPath="$PROJECT_DIR$/logs/namm6.log.1" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/logs/localhost0.log" afterPath="$PROJECT_DIR$/../AdXServer/logs/localhost0.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/logs/localhost1.log" afterPath="$PROJECT_DIR$/../AdXServer/logs/localhost1.log" />
     </list>
     <ignored path="adx-agent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,14 +40,13 @@
       <file leaf-file-name="AgentNAMM.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/soton/intagts/AgentNAMM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47806525">
-              <caret line="267" column="50" selection-start-line="267" selection-start-column="50" selection-end-line="267" selection-end-column="50" />
+            <state vertical-scroll-proportion="-0.24071991">
+              <caret line="1034" column="17" selection-start-line="1034" selection-start-column="17" selection-end-line="1034" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2505#2532#0" expanded="true" />
                 <element signature="e#24835#24850#0" expanded="true" />
                 <element signature="e#26679#26689#0" expanded="true" />
-                <element signature="class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
                 <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
                 <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
                 <element signature="method#setQualityChange#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
@@ -53,7 +58,6 @@
                 <element signature="e#38340#38341#0" expanded="true" />
                 <element signature="e#38377#38378#0" expanded="true" />
                 <element signature="e#38417#38418#0" expanded="true" />
-                <element signature="class#PerformanceData#0;class#AgentNAMM#0" expanded="false" />
                 <element signature="method#ImpressionRecord#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
                 <element signature="method#ImpressionRecord#1;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
                 <element signature="method#toString#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
@@ -428,7 +432,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449393263176</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Partially complete reader code">
+      <created>1449401630934</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1449401630934</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -476,7 +486,8 @@
     <MESSAGE value="Attempt to log campaign data in csv&#10;" />
     <MESSAGE value="Saved csv of campaign files" />
     <MESSAGE value="tried to use beanReader" />
-    <option name="LAST_COMMIT_MESSAGE" value="tried to use beanReader" />
+    <MESSAGE value="Partially complete reader code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Partially complete reader code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -498,7 +509,6 @@
             <element signature="e#2505#2532#0" expanded="true" />
             <element signature="e#24835#24850#0" expanded="true" />
             <element signature="e#26679#26689#0" expanded="true" />
-            <element signature="class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#setQualityChange#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
@@ -510,7 +520,6 @@
             <element signature="e#38340#38341#0" expanded="true" />
             <element signature="e#38377#38378#0" expanded="true" />
             <element signature="e#38417#38418#0" expanded="true" />
-            <element signature="class#PerformanceData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#ImpressionRecord#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#ImpressionRecord#1;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#toString#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
@@ -527,7 +536,6 @@
             <element signature="e#2505#2532#0" expanded="true" />
             <element signature="e#24835#24850#0" expanded="true" />
             <element signature="e#26679#26689#0" expanded="true" />
-            <element signature="class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#setQualityChange#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
@@ -539,7 +547,6 @@
             <element signature="e#38340#38341#0" expanded="true" />
             <element signature="e#38377#38378#0" expanded="true" />
             <element signature="e#38417#38418#0" expanded="true" />
-            <element signature="class#PerformanceData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#ImpressionRecord#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#ImpressionRecord#1;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#toString#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
@@ -556,7 +563,6 @@
             <element signature="e#2505#2532#0" expanded="true" />
             <element signature="e#24835#24850#0" expanded="true" />
             <element signature="e#26679#26689#0" expanded="true" />
-            <element signature="class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#setQualityChange#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
@@ -568,7 +574,6 @@
             <element signature="e#38340#38341#0" expanded="true" />
             <element signature="e#38377#38378#0" expanded="true" />
             <element signature="e#38417#38418#0" expanded="true" />
-            <element signature="class#PerformanceData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#ImpressionRecord#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#ImpressionRecord#1;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#toString#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
@@ -592,14 +597,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/soton/intagts/AgentNAMM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47806525">
-          <caret line="267" column="50" selection-start-line="267" selection-start-column="50" selection-end-line="267" selection-end-column="50" />
+        <state vertical-scroll-proportion="-0.24071991">
+          <caret line="1034" column="17" selection-start-line="1034" selection-start-column="17" selection-end-line="1034" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2505#2532#0" expanded="true" />
             <element signature="e#24835#24850#0" expanded="true" />
             <element signature="e#26679#26689#0" expanded="true" />
-            <element signature="class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#setQualityChange#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
@@ -611,7 +615,6 @@
             <element signature="e#38340#38341#0" expanded="true" />
             <element signature="e#38377#38378#0" expanded="true" />
             <element signature="e#38417#38418#0" expanded="true" />
-            <element signature="class#PerformanceData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#ImpressionRecord#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#ImpressionRecord#1;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#toString#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
