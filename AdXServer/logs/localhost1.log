@@ -1,14 +1,12 @@
-06/12 11:31:22 INFO file.FileDatabase|infodb: database opened as C:\Users\Alun\Documents\Work\DataScience\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXServer\infodb
-06/12 11:31:22 INFO common.BlockingViewerServer|viewer server started at *:4042
-06/12 11:31:23 INFO sim.Admin|adding manager for simulation type tac13adx
-06/12 11:31:23 INFO server.TACTGateway|TACT Server started at *:6502
-06/12 11:31:27 INFO server.TACTChannel|user namm logged in as namm@tact-1 with version 0.9.6 from 127.0.0.1
-06/12 11:31:27 INFO sim.Admin|created simulation 270
-06/12 11:31:46 WARNING sim.Admin|closing old channel namm due to new connection namm
-06/12 11:31:46 INFO server.TACTChannel|user namm logged in as namm@tact-2 with version 0.9.6 from 127.0.0.1
-06/12 11:32:00 FINE sim.Admin|Entering log for simulation 271
+06/12 21:26:59 INFO file.FileDatabase|infodb: database opened as C:\Users\inbre\Documents\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXServer\infodb
+06/12 21:26:59 INFO common.BlockingViewerServer|viewer server started at *:4042
+06/12 21:27:00 INFO sim.Admin|adding manager for simulation type tac13adx
+06/12 21:27:00 INFO server.TACTGateway|TACT Server started at *:6502
+06/12 21:27:08 INFO server.TACTChannel|user namm logged in as namm@tact-1 with version 0.9.6 from 127.0.0.1
+06/12 21:27:08 INFO sim.Admin|created simulation 327
+06/12 21:28:00 FINE sim.Admin|Entering log for simulation 327
 ************************************************************
-* Entering log for simulation 271
+* Entering log for simulation 327
 ************************************************************
 
 

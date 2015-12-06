@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bdda3306-a315-4c5f-8e0f-77b534bca9f3" name="Default" comment="">
+    <list default="true" id="bdda3306-a315-4c5f-8e0f-77b534bca9f3" name="Default" comment="Completed some reviews and bug fixes for the csv reading&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingparticipants.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingparticipants.dat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingsimulations.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingsimulations.dat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_state.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_state.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soton/intagts/AgentNAMM.java" afterPath="$PROJECT_DIR$/soton/intagts/AgentNAMM.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/logs/localhost0.log" afterPath="$PROJECT_DIR$/../AdXServer/logs/localhost0.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/logs/localhost1.log" afterPath="$PROJECT_DIR$/../AdXServer/logs/localhost1.log" />
     </list>
     <ignored path="adx-agent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -17,6 +22,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/adx-agent$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1449418192813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -29,13 +37,13 @@
       <file leaf-file-name="AgentNAMM.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/soton/intagts/AgentNAMM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.10549451">
-              <caret line="1065" column="94" selection-start-line="1065" selection-start-column="94" selection-end-line="1065" selection-end-column="94" />
+            <state vertical-scroll-proportion="0.3330986">
+              <caret line="1352" column="7" selection-start-line="1352" selection-start-column="7" selection-end-line="1352" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2083#2110#0" expanded="true" />
-                <element signature="e#6618#6619#0" expanded="true" />
-                <element signature="e#6685#6686#0" expanded="true" />
+                <element signature="e#2146#2173#0" expanded="true" />
+                <element signature="e#6936#6937#0" expanded="true" />
+                <element signature="e#7003#7004#0" expanded="true" />
                 <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
                 <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
                 <element signature="method#CampaignData#2;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
@@ -44,8 +52,13 @@
                 <element signature="method#setBidVs2ndRatio#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
                 <element signature="method#setProfitPerImpression#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
                 <element signature="method#update#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+                <element signature="e#39509#39510#0" expanded="true" />
+                <element signature="e#39555#39556#0" expanded="true" />
+                <element signature="e#39592#39593#0" expanded="true" />
+                <element signature="e#39632#39633#0" expanded="true" />
+                <element signature="e#39673#39674#0" expanded="true" />
+                <element signature="e#39713#39714#0" expanded="true" />
                 <element signature="method#ImpressionRecord#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
-                <element signature="method#ImpressionRecord#1;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
                 <element signature="method#toString#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
               </folding>
             </state>
@@ -448,7 +461,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449401630934</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Completed some reviews and bug fixes for the csv reading&#10;">
+      <created>1449409838665</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1449409838665</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView">
@@ -465,51 +484,53 @@
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25490937" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982224" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25510204" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938856" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3897281" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6693122" sideWeight="0.49769887" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.59448224" sideWeight="0.5023011" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18995468" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29427254" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16956194" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29322815" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3340892" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32968277" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982224" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25510204" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938856" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3897281" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6693122" sideWeight="0.49769887" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.59448224" sideWeight="0.5023011" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18995468" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29427254" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16956194" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29322815" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3340892" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -530,7 +551,8 @@
     <MESSAGE value="Saved csv of campaign files" />
     <MESSAGE value="tried to use beanReader" />
     <MESSAGE value="Partially complete reader code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Partially complete reader code" />
+    <MESSAGE value="Completed some reviews and bug fixes for the csv reading&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed some reviews and bug fixes for the csv reading&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -549,9 +571,9 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2083#2110#0" expanded="true" />
-            <element signature="e#6618#6619#0" expanded="true" />
-            <element signature="e#6685#6686#0" expanded="true" />
+            <element signature="e#2146#2173#0" expanded="true" />
+            <element signature="e#6936#6937#0" expanded="true" />
+            <element signature="e#7003#7004#0" expanded="true" />
             <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#2;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
@@ -560,8 +582,13 @@
             <element signature="method#setBidVs2ndRatio#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#setProfitPerImpression#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#update#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+            <element signature="e#39509#39510#0" expanded="true" />
+            <element signature="e#39555#39556#0" expanded="true" />
+            <element signature="e#39592#39593#0" expanded="true" />
+            <element signature="e#39632#39633#0" expanded="true" />
+            <element signature="e#39673#39674#0" expanded="true" />
+            <element signature="e#39713#39714#0" expanded="true" />
             <element signature="method#ImpressionRecord#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#ImpressionRecord#1;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#toString#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
           </folding>
         </state>
@@ -573,9 +600,9 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2083#2110#0" expanded="true" />
-            <element signature="e#6618#6619#0" expanded="true" />
-            <element signature="e#6685#6686#0" expanded="true" />
+            <element signature="e#2146#2173#0" expanded="true" />
+            <element signature="e#6936#6937#0" expanded="true" />
+            <element signature="e#7003#7004#0" expanded="true" />
             <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#2;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
@@ -584,8 +611,13 @@
             <element signature="method#setBidVs2ndRatio#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#setProfitPerImpression#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#update#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+            <element signature="e#39509#39510#0" expanded="true" />
+            <element signature="e#39555#39556#0" expanded="true" />
+            <element signature="e#39592#39593#0" expanded="true" />
+            <element signature="e#39632#39633#0" expanded="true" />
+            <element signature="e#39673#39674#0" expanded="true" />
+            <element signature="e#39713#39714#0" expanded="true" />
             <element signature="method#ImpressionRecord#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#ImpressionRecord#1;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#toString#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
           </folding>
         </state>
@@ -597,9 +629,9 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2083#2110#0" expanded="true" />
-            <element signature="e#6618#6619#0" expanded="true" />
-            <element signature="e#6685#6686#0" expanded="true" />
+            <element signature="e#2146#2173#0" expanded="true" />
+            <element signature="e#6936#6937#0" expanded="true" />
+            <element signature="e#7003#7004#0" expanded="true" />
             <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#2;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
@@ -608,8 +640,13 @@
             <element signature="method#setBidVs2ndRatio#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#setProfitPerImpression#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#update#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+            <element signature="e#39509#39510#0" expanded="true" />
+            <element signature="e#39555#39556#0" expanded="true" />
+            <element signature="e#39592#39593#0" expanded="true" />
+            <element signature="e#39632#39633#0" expanded="true" />
+            <element signature="e#39673#39674#0" expanded="true" />
+            <element signature="e#39713#39714#0" expanded="true" />
             <element signature="method#ImpressionRecord#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#ImpressionRecord#1;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#toString#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
           </folding>
         </state>
@@ -621,9 +658,9 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2083#2110#0" expanded="true" />
-            <element signature="e#6618#6619#0" expanded="true" />
-            <element signature="e#6685#6686#0" expanded="true" />
+            <element signature="e#2146#2173#0" expanded="true" />
+            <element signature="e#6936#6937#0" expanded="true" />
+            <element signature="e#7003#7004#0" expanded="true" />
             <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#2;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
@@ -632,8 +669,13 @@
             <element signature="method#setBidVs2ndRatio#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#setProfitPerImpression#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#update#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+            <element signature="e#39509#39510#0" expanded="true" />
+            <element signature="e#39555#39556#0" expanded="true" />
+            <element signature="e#39592#39593#0" expanded="true" />
+            <element signature="e#39632#39633#0" expanded="true" />
+            <element signature="e#39673#39674#0" expanded="true" />
+            <element signature="e#39713#39714#0" expanded="true" />
             <element signature="method#ImpressionRecord#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#ImpressionRecord#1;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#toString#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
           </folding>
         </state>
@@ -655,13 +697,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/soton/intagts/AgentNAMM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10549451">
-          <caret line="1065" column="94" selection-start-line="1065" selection-start-column="94" selection-end-line="1065" selection-end-column="94" />
+        <state vertical-scroll-proportion="0.3330986">
+          <caret line="1352" column="7" selection-start-line="1352" selection-start-column="7" selection-end-line="1352" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2083#2110#0" expanded="true" />
-            <element signature="e#6618#6619#0" expanded="true" />
-            <element signature="e#6685#6686#0" expanded="true" />
+            <element signature="e#2146#2173#0" expanded="true" />
+            <element signature="e#6936#6937#0" expanded="true" />
+            <element signature="e#7003#7004#0" expanded="true" />
             <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#2;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
@@ -670,8 +712,13 @@
             <element signature="method#setBidVs2ndRatio#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#setProfitPerImpression#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#update#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
+            <element signature="e#39509#39510#0" expanded="true" />
+            <element signature="e#39555#39556#0" expanded="true" />
+            <element signature="e#39592#39593#0" expanded="true" />
+            <element signature="e#39632#39633#0" expanded="true" />
+            <element signature="e#39673#39674#0" expanded="true" />
+            <element signature="e#39713#39714#0" expanded="true" />
             <element signature="method#ImpressionRecord#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#ImpressionRecord#1;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#toString#0;class#ImpressionRecord#0;class#AgentNAMM#0" expanded="false" />
           </folding>
         </state>

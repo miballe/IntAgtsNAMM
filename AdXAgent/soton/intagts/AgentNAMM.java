@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import edu.umich.eecs.tac.util.sampling.SynchronizedMutableSampler;
+import org.apache.commons.math3.stat.descriptive.rank.Median;
 import se.sics.isl.transport.Transportable;
 import se.sics.tasim.aw.Agent;
 import se.sics.tasim.aw.Message;
@@ -50,7 +51,7 @@ import org.apache.commons.math3.stat.*;
 
 
 /**
- * 
+ * `
  * @author Mariano Schain
  * Test plug-in
  * 
@@ -117,6 +118,11 @@ public class AgentNAMM extends Agent {
 	double ucsBid;
 
 	/*
+	 * Defines the minimum fraction of learnt data coming from historic data over game data
+	 */
+	final double HISTORIC_FRAC = 0.5;
+
+	/*
 	 * The targeted service level for the user classification service
 	 */
 	int ucsTargetLevel;
@@ -142,7 +148,11 @@ public class AgentNAMM extends Agent {
 	private String[] publisherNames;
 	private CampaignData currCampaign;
 
-    /**
+	/* Saving Historic Campaigns as global variable */
+	historicCampaignData historicCampaigns = new historicCampaignData();
+
+
+	/**
      * This property is the instance of a new NAMM class to keep record of all Ad-Net reports during a game execution.
      * The idea is to use historic data as reference to estimate new bid prices or provide values for some strategies.
      */
@@ -263,11 +273,10 @@ public class AgentNAMM extends Agent {
 		myCampaigns.put(initialCampaignMessage.getId(), campaignData);
 
 		// Load historic campaigns into a list
-		//TODO ALUN: resolve issue loading this file (cannot find file)
-		System.out.println("attempting to load historic campaigns");
-		historicCampaignData historicCampaignData = new historicCampaignData();
-		historicCampaignData.loadDataFromFile("C:\\Users\\Alun\\Documents\\Work\\DataScience\\Southampton\\IntelligentAgents\\gitRepo\\IntAgtsNAMM\\AdXAgent\\CmpLogTest.csv");
-		System.out.println(historicCampaignData.getNumberOfRecords());
+		String workingDir = System.getProperty("user.dir");
+		System.out.println("Loading Historic Campaigns...");
+		historicCampaigns.loadDataFromFile(workingDir + "\\cmpLog.csv");
+		System.out.println("Number of Campaigns loaded:" + historicCampaigns.getNumberOfRecords());
 	}
 
 	/**
@@ -361,14 +370,14 @@ public class AgentNAMM extends Agent {
 			cmpBid = campaignQualityRecoveryStrategy();
 		}
 		else cmpBid = campaignProfitStrategy();
-		System.out.print("Day " + day + ": Campaign - Bid: " + (long)(cmpBid*1000));
+		System.out.println("Day " + day + ": Campaign - Bid: " + (long)(cmpBid*1000));
 		// If bid is too high, just bid the maximum value.
 		if (cmpBid >= bidTooHigh(cmpimps, 95)) {
 			cmpBid = 0.001 * cmpimps * adNetworkDailyNotification.getQualityScore() - 0.001;
 			System.out.print(" " + (long)(cmpBid*1000) + "-too high!");
 		}
 		// If bid is too low, bid the "minimum value"
-		double lowBid = bidTooLow(cmpimps, 95);
+		double lowBid = bidTooLow(cmpimps, 30);
 		if (cmpBid <= lowBid) {
 			cmpBid = lowBid + 0.001;
 			System.out.println(" " + (long)(cmpBid*1000) + "-too low!");
@@ -752,6 +761,7 @@ public class AgentNAMM extends Agent {
 	 */
 	private class CampaignData {
 		/* campaign attributes as set by server */
+		int game;
 		Long reachImps;
 		long dayStart;
 		long dayEnd;
@@ -820,8 +830,9 @@ public class AgentNAMM extends Agent {
 			qualityChange = 0.0;
 			estQualityChange = 0.0;
 			estQualityChangeAcc = 0.0;
+			game = startInfo.getSimulationID();
 		}
-		public CampaignData(Long reachImps, long dayStart, long dayEnd, Set<MarketSegment> targetSegment,
+		public CampaignData(int game, Long reachImps, long dayStart, long dayEnd, Set<MarketSegment> targetSegment,
 							double videoCoef, double mobileCoef, int id, AdxQuery[] campaignQueries,
 							CampaignStats cstats, double budget, double revenue, double profitEstimate,
 							double cmpBid, long impressionTarget, double uncorrectedProfitEstimate,
@@ -830,6 +841,7 @@ public class AgentNAMM extends Agent {
 							double uncorrectedProfitAcc, double estQualityChangeAcc, double impTargetFulfillment,
 							double bidVs2ndRatio, double profit, double profitPerImpression, double reachFulfillment,
 							double estUcsCostAcc) {
+			this.game = game;
 			this.reachImps = reachImps;
 			this.dayStart = dayStart;
 			this.dayEnd = dayEnd;
@@ -887,9 +899,11 @@ public class AgentNAMM extends Agent {
 			estQualityChange = 0.0;
 			ucsCost = 0;
 			estQualityChangeAcc = 0.0;
+			game = startInfo.getSimulationID();
 		}
 
 		// Setters
+		// TODO ALUN: debug setters
 		public void setQualityChange() {
 			// Detects change in quality score from yesterday,
 			// attributes change equally to all campaigns ended in that time
@@ -995,6 +1009,7 @@ public class AgentNAMM extends Agent {
 			this.campaignQueries = campaignQueries;
 		}
 
+
 		/**
 		 * Calculates an estimate for impression targets (and profit) to maximise estimated profit.
 		 * Considers the effect of short term cost of the campaign, long term effect of quality change
@@ -1065,9 +1080,9 @@ public class AgentNAMM extends Agent {
 	/**
 	 * Class for storing campaign data from previous games to be used in historic calculations
 	 */
-	public class historicCampaignData {
+	private class historicCampaignData {
 
-		private ArrayList<CampaignData> historicCampaigns;
+		public ArrayList<CampaignData> historicCampaigns;
 
 		public historicCampaignData() {
 			historicCampaigns = new ArrayList<>();
@@ -1076,6 +1091,53 @@ public class AgentNAMM extends Agent {
 		public int getNumberOfRecords() {
 			return historicCampaigns.size();
 		}
+
+		public CampaignData getValue(int i) {
+			return historicCampaigns.get(i);
+		}
+
+		// Calculates the Xth% quantile
+		// Allows for flexible conservatism
+		public double expectedLowBid(int confidence){
+			DescriptiveStatistics statsCalc = new DescriptiveStatistics();
+
+			for (CampaignData rEntry : historicCampaigns) {
+				if (rEntry.profit < 0) {
+					statsCalc.addValue(rEntry.cmpBid/(rEntry.stats.getTargetedImps()+rEntry.stats.getOtherImps()));
+				}
+			}
+			double quantile = statsCalc.getPercentile(confidence);
+			double mean = statsCalc.getMean();
+			return quantile*pendingCampaign.reachImps;
+		}
+
+		// Sets the maximum bid price to be 1.1 * the average of top 10% of successful historic campaigns
+		public double expectedHighBid(double confidence){
+			DescriptiveStatistics statsCalc = new DescriptiveStatistics();
+
+			for (CampaignData rEntry : historicCampaigns) {
+				// for non randomly assigned campaigns
+				if((rEntry.budget - rEntry.cmpBid) > 0.001){
+					statsCalc.addValue(rEntry.cmpBid/rEntry.reachImps);
+				}
+			}
+			double quantile = statsCalc.getPercentile(confidence);
+			return quantile*pendingCampaign.reachImps;
+		}
+
+
+		/* DescriptiveStatistics statsCalc = new DescriptiveStatistics();
+		double mean = 0;
+
+		for(ImpressionRecord rEntry : impressionList) {
+			if(rEntry.segGender == sGender) {
+				statsCalc.addValue(rEntry.costImpr);
+			}
+		}
+		mean = statsCalc.getMean();
+		System.out.println("#####STATMEAN##### Historic mean per gender " + sGender + ":" + mean);
+		return mean;
+	} */
 		/**
 		 * Loads the historic campaign data from the csv file in filepath
 		 */
@@ -1085,45 +1147,47 @@ public class AgentNAMM extends Agent {
 				String line;
 				CampaignData record;
 
+				scanner.nextLine();
 				while(scanner.hasNextLine()) {
 					line = scanner.nextLine();
 					String[] results = line.split(",");
 
-					int id = Integer.parseInt(( results[0] ));
-					long dayStart = Long.parseLong(( results[1] ));
-					long dayEnd = Long.parseLong(( results[2] ));
-					Long reachImps = Long.parseLong(( results[3] ));
-					String targetSegment = results[4];
-					double videoCoef = Double.parseDouble((results[5]));
-					double mobileCoef = Double.parseDouble((results[6]));
-					double adxCost = Double.parseDouble((results[7]));
-					double targetedImps = Double.parseDouble((results[8]));
-					double untargetedImps = Double.parseDouble((results[9]));
-					double budget = Double.parseDouble((results[10]));
-					double revenue = Double.parseDouble((results[11]));
-					double profitEstimate = Double.parseDouble((results[12]));
-					double cmpBid = Double.parseDouble((results[13]));
-					long impressionTarget = Long.parseLong(( results[14] ));
-					double uncorrectedProfitEstimate = Double.parseDouble((results[15]));
-					double costEstimate = Double.parseDouble((results[16]));
-					double estImpCost = Double.parseDouble((results[17]));
-					double estUcsCost = Double.parseDouble((results[18]));
-					double qualityChange = Double.parseDouble((results[19]));
-					double estQualityChange = Double.parseDouble((results[20]));
-					double ucsCost = Double.parseDouble((results[21]));
-					double estCostAcc = Double.parseDouble((results[22]));
-					double estProfitAcc = Double.parseDouble((results[23]));
-					double uncorrectedProfitAcc = Double.parseDouble((results[24]));
-					double estQualityChangeAcc = Double.parseDouble((results[25]));
-					double impTargetFulfillment = Double.parseDouble((results[26]));
-					double bidVs2ndRatio = Double.parseDouble((results[27]));
-					double profit = Double.parseDouble((results[28]));
-					double profitPerImpression = Double.parseDouble((results[29]));
-					double reachFulfillment = Double.parseDouble((results[30]));
-					double estUcsCostAcc = Double.parseDouble((results[31]));
+					int game = Integer.parseInt(results[0]);
+					int id = Integer.parseInt( results[1] );
+					long dayStart = Long.parseLong(( results[2] ));
+					long dayEnd = Long.parseLong(( results[3] ));
+					Long reachImps = Long.parseLong(( results[4] ));
+					String targetSegment = results[5]; //TODO ALUN: store target segment as correct type
+					double videoCoef = Double.parseDouble((results[6]));
+					double mobileCoef = Double.parseDouble((results[7]));
+					double adxCost = Double.parseDouble((results[8]));
+					double targetedImps = Double.parseDouble((results[9]));
+					double untargetedImps = Double.parseDouble((results[10]));
+					double budget = Double.parseDouble((results[11]));
+					double revenue = Double.parseDouble((results[12]));
+					double profitEstimate = Double.parseDouble((results[13]));
+					double cmpBid = Double.parseDouble((results[14]));
+					long impressionTarget = Long.parseLong(( results[15] ));
+					double uncorrectedProfitEstimate = Double.parseDouble((results[16]));
+					double costEstimate = Double.parseDouble((results[17]));
+					double estImpCost = Double.parseDouble((results[18]));
+					double estUcsCost = Double.parseDouble((results[19]));
+					double qualityChange = Double.parseDouble((results[20]));
+					double estQualityChange = Double.parseDouble((results[21]));
+					double ucsCost = Double.parseDouble((results[22]));
+					double estCostAcc = Double.parseDouble((results[23]));
+					double estProfitAcc = Double.parseDouble((results[24]));
+					double uncorrectedProfitAcc = Double.parseDouble((results[25]));
+					double estQualityChangeAcc = Double.parseDouble((results[26]));
+					double impTargetFulfillment = Double.parseDouble((results[27]));
+					double bidVs2ndRatio = Double.parseDouble((results[28]));
+					double profit = Double.parseDouble((results[29]));
+					double profitPerImpression = Double.parseDouble((results[30]));
+					double reachFulfillment = Double.parseDouble((results[31]));
+					double estUcsCostAcc = Double.parseDouble((results[32]));
 
-					//todo fix target segment and campaign queries
-					record = new CampaignData(reachImps, dayStart, dayEnd, currCampaign.targetSegment, videoCoef, mobileCoef, id,
+					//TODO ALUN: fix target segment and campaign queries
+					record = new CampaignData(game,reachImps, dayStart, dayEnd, currCampaign.targetSegment, videoCoef, mobileCoef, id,
 							currCampaign.campaignQueries, new CampaignStats(targetedImps,untargetedImps,adxCost),budget, revenue, profitEstimate, cmpBid,
 							impressionTarget, uncorrectedProfitEstimate, costEstimate, estImpCost, estUcsCost,
 							qualityChange, estQualityChange, ucsCost, estCostAcc, estProfitAcc, uncorrectedProfitAcc,
@@ -1149,6 +1213,39 @@ public class AgentNAMM extends Agent {
 	 * ALUN: different methods for each campaign strategy
      */
 
+	public double expectedLowBid(double confidence){
+		DescriptiveStatistics statsCalc = new DescriptiveStatistics();
+		int numUnprofitable = 0;
+
+		// only list unprofitable campaigns
+		for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
+			CampaignData campaign = entry.getValue();
+			if (campaign.profit < 0) {
+				numUnprofitable++;
+				statsCalc.addValue(campaign.cmpBid/campaign.reachImps);
+			}
+		}
+		double lowBid = statsCalc.getPercentile(confidence);
+		// Only returns a value if there are enough datapoints
+		if (numUnprofitable <= 3) {lowBid = 0;}
+		return lowBid*pendingCampaign.reachImps;
+	}
+
+	// Returns maximum value in the current game
+	public double expectedHighBid(){
+		DescriptiveStatistics statsCalc = new DescriptiveStatistics();
+
+		// only list non-randomly given campaigns
+		for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
+			CampaignData campaign = entry.getValue();
+			if (campaign.profit < 0) {
+				statsCalc.addValue(campaign.cmpBid/campaign.reachImps);
+			}
+		}
+		double highBid = statsCalc.getMax();
+		return highBid*pendingCampaign.reachImps;
+	}
+
 	// Method for calculating an ERR value for a specific target.
 	private double ERRcalc(CampaignData campaign, long target) {
 		double a = 4.08577, b = 3.08577, fracComplete = (double)target/(double)campaign.reachImps;
@@ -1163,34 +1260,34 @@ public class AgentNAMM extends Agent {
     NOTE: this function should be turned off while training historical data
 	*/
 	private double bidTooLow(long cmpimps, int confidence) {
-		// TODO Historic Data
-			// stores historic data about campaigns and classifies them as either profitable or non-profitable.
-			// Uses some classifier algorithm to analyse the probability of a bid giving us a profitable campaign.
-			// Sets a minimum bid at X % chance not profitable.
-			// X is a overly conservative value (low ~ 5%) be
-			// and because maximum can move down but not up.
-		// currently just evaluates the reserve price
-		double bidLow = cmpimps * 0.0001 / adNetworkDailyNotification.getQualityScore();
+		// Scales between historic and current values
+		// gets median value of unprofitable campaigns (removes 2 s.d. from that and sets as minimum bid)
+		// Median so outliers don't push it too far, 2 s.d. to be conservative because no other variables being considered
+		double bidLowCurrent = expectedLowBid(confidence);
+		double bidLowHistoric = historicCampaigns.expectedLowBid(confidence);
+		int length = startInfo.getNumberOfDays();
+		if(bidLowCurrent == 0) bidLowCurrent = bidLowHistoric;
+		double bidLow = (HISTORIC_FRAC * bidLowHistoric * (length - day)/length) +
+				((1-HISTORIC_FRAC) * bidLowCurrent * day/length);
+		double reserve = cmpimps * 0.0001 / adNetworkDailyNotification.getQualityScore();
+		if (bidLow < reserve) {bidLow = reserve;}
 		System.out.println(" Min: " + (long)(bidLow*1000));
 		return bidLow;
 	}
 
 	/**
-	* Goes through all previously successful bids, models it as a normal distribution (which it may not be)
-	* And evaluates through a t-test a bid with the required failure confidence to consider it too high to succeed.
+	* Goes through all previously successful bids and evaulates the maximum value to which
+	* a successful bid can be place, either the 90% quantile of previous games, max successful
+	 *campaign in this game (or reserve price).
 	*/
 	private double bidTooHigh(long cmpimps, int percentFailure) {
-		// At the moment models as uniform distribution.
-		// TODO Historic Data
-			// Stores historic data about campaign bids, classifying them as successful or non-sucessful.
-			// Uses some classifier algorithm to analyse the probability of a bid being successful.
-			// Sets a maximum bid at X % chance to succeed.
-			// X is a overly conservative value (low ~ 5%) because you are not taking into account environmental factors
-			// and because maximum can move down but not up.
-		double bidHigh = (0.001*cmpimps*percentFailure)/100;
+		double bidHighHistoric = historicCampaigns.expectedHighBid(percentFailure);
+		double bidHighCurrent = expectedHighBid();
+		double reserve = (0.001*cmpimps*percentFailure)/100;
+		double bidHigh = Math.min(1.1*Math.max(bidHighHistoric, bidHighCurrent), reserve);
 		// Make sure bid is still below maximum price.
 		double bidMax = 0.001 * cmpimps * adNetworkDailyNotification.getQualityScore();
-		if (bidHigh >= bidMax) bidHigh = bidMax;
+		if(bidHigh >= reserve) {bidHigh = bidMax;}
 		System.out.print(" MaxBid: " + (long)(1000*bidMax) + " MinMax: " + (long)(1000*bidHigh));
 		return bidHigh;
 	}
@@ -1236,9 +1333,10 @@ public class AgentNAMM extends Agent {
 	 * the reduced number of won campaigns.
 	 */
 	private double campaignQualityRecoveryStrategy() {
-		double bid =  campaignProfitStrategy() * Math.pow(adNetworkDailyNotification.getQualityScore(),2); //TODO Historic Data
+		double bid =  campaignProfitStrategy() * Math.pow(adNetworkDailyNotification.getQualityScore(),2);
 		System.out.println("Day " + day + ": Campaign - Quality Recovery Strategy");
 		/*
+		TODO ALUN: Historic Data
 		TODO: ferocity of quality recovery should be based on our ability to complete the campaigns and the number of campaigns we currently have.
 		- if impression targets for current campaigns is above average impressions per day then have a negative
 		quality recovery effect.
@@ -1252,7 +1350,7 @@ public class AgentNAMM extends Agent {
 
 	/*
 	 * Method for computing the campaign bid for starting strategy
-	 * TODO: Evaluate how to base these weights.
+	 * TODO ALUN: Evaluate how to base these weights.
 	 */
 	private double campaignStartingStrategy() {
 		double cmpBid;
@@ -1287,7 +1385,7 @@ public class AgentNAMM extends Agent {
 				pastIncome += campaign.budget * (1 - campaign.impsTogo()/campaign.reachImps);
 			}
 		}
-		double historicDailyIncome = 1;// TODO machine learning
+		double historicDailyIncome = 1;// TODO ALUN: machine learning
 		double pastDailyIncome = pastIncome / day;
 		// Linearly reduces reliance on historic data --> dynamic data over time
 		long revenueRemaining = (long)((daysRemaining/60)*daysRemaining*historicDailyIncome
@@ -1318,8 +1416,7 @@ public class AgentNAMM extends Agent {
 				// evaluate best UCS/impression cost combination estimation
 				ucsTargetLevel = bestImpUcsCombination(targetImp);
 				// add the UCS cost to the Impression cost estimate and sum
-				// todo allow flexibility with daily impressions
-					// e.g. increase impression target close to deadline
+				// TODO add desperation coefficient to bid
 				impressionCost += impressionCostEstimate(targetImp/(Campaign.dayEnd-Campaign.dayStart), Day, ucsTargetLevel);
 				ucsCost += ucsCostEstimate(ucsTargetLevel); //todo divide ucs cost by #overlapping campaigns
 			}
@@ -1624,7 +1721,7 @@ public class AgentNAMM extends Agent {
 	public void campaignSaveFile(){
 		String workingDir = System.getProperty("user.dir");
 		String fName = workingDir + "\\CmpLog.csv";
-
+		// TODO ALUN: fix so it doesn't print header every time
 		//CSV file header
 		final String FILE_HEADER = "game,id,dayStart,dayEnd,reachImps,targetSegment,videoCoef,mobileCoef," +
 				"adxCost,targetedImps,untargetedImps,budget,revenue,profitEstimate,cmpBid,impressionTarget," +
@@ -1633,7 +1730,8 @@ public class AgentNAMM extends Agent {
 				"bidVs2ndRatio,profit,profitPerImpression,reachFulfillment,estUcsCostAcc";
 		try {
 			FileWriter csvFw = new FileWriter(fName, true);
-			csvFw.write(FILE_HEADER + System.lineSeparator());
+			// TODO: include FILEHEADER when writing new file
+			//csvFw.write(FILE_HEADER + System.lineSeparator());
 
 			//Add a new line separator after the header
 			for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
