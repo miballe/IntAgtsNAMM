@@ -18,15 +18,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import edu.umich.eecs.tac.util.sampling.SynchronizedMutableSampler;
-import org.supercsv.cellprocessor.*;
-import org.supercsv.cellprocessor.Optional;
-import org.supercsv.cellprocessor.constraint.NotNull;
-import org.supercsv.cellprocessor.constraint.StrRegEx;
-import org.supercsv.cellprocessor.constraint.UniqueHashCode;
-import org.supercsv.cellprocessor.ift.CellProcessor;
-import org.supercsv.io.CsvBeanReader;
-import org.supercsv.io.ICsvBeanReader;
-import org.supercsv.prefs.CsvPreference;
 import se.sics.isl.transport.Transportable;
 import se.sics.tasim.aw.Agent;
 import se.sics.tasim.aw.Message;
@@ -75,6 +66,7 @@ public class AgentNAMM extends Agent {
 	 */
 	@SuppressWarnings("unused")
 	private StartInfo startInfo;
+
 
 	/**
 	 * Messages received:
@@ -128,7 +120,14 @@ public class AgentNAMM extends Agent {
 	 * The targeted service level for the user classification service
 	 */
 	int ucsTargetLevel;
+	/*
+	 * Track the quality of the previous day
+	 */
 	double quality = 1;
+	/*
+	 * Track performance data of whole game
+	 * Currently unused
+	 */
 	private PerformanceData performanceData;
 	/*
 	 *  The bid campaign bid we send.
@@ -154,9 +153,10 @@ public class AgentNAMM extends Agent {
         impressionBidHistory = new ImpressionHistory();
 	}
 
-
-
-
+	/**
+	 * Upon recieving a message from the server handle the information with the appropriate method
+	 * @param message
+     */
 	@Override
 	protected void messageReceived(Message message) {
 		try {
@@ -215,7 +215,7 @@ public class AgentNAMM extends Agent {
 	 */
 	protected void handleStartInfo(StartInfo startInfo) {
 		this.startInfo = startInfo;
-		System.out.println("!!!!!!!!!!!!!!!!!!" + startInfo);
+		System.out.println("Game Starting:" + startInfo);
 	}
 
 	/**
@@ -263,6 +263,7 @@ public class AgentNAMM extends Agent {
 		myCampaigns.put(initialCampaignMessage.getId(), campaignData);
 
 		// Load historic campaigns into a list
+		//TODO ALUN: resolve issue loading this file (cannot find file)
 		System.out.println("attempting to load historic campaigns");
 		historicCampaignData historicCampaignData = new historicCampaignData();
 		historicCampaignData.loadDataFromFile("C:\\Users\\Alun\\Documents\\Work\\DataScience\\Southampton\\IntelligentAgents\\gitRepo\\IntAgtsNAMM\\AdXAgent\\CmpLogTest.csv");
@@ -286,22 +287,13 @@ public class AgentNAMM extends Agent {
 				System.out.println("...");
 				long imps = (long)(campaign.stats.getOtherImps() + campaign.stats.getTargetedImps());
 				double revenue = campaign.budget * ERRcalc(campaign, imps);
-				campaign.setRevenue(revenue);
-				campaign.setProfit();
-				campaign.setEstCostAcc();
-				campaign.setUncorrectedProfitAcc();
-				campaign.setEstProfitAcc();
-				campaign.setImpTargetFulfillment();
-				campaign.setProfitPerImpression();
-				campaign.setReachFulfillment();
-				campaign.setBidVs2ndRatio();
-				campaign.setQualityChange();
-				campaign.setEstQualityChangeAcc();
-				campaign.setEstUcsCostAcc();
+				// Update ended campaign
+				campaign.update(revenue);
 
 				// Update performance data
 				performanceData.updateData(campaign);
 
+				// Print relevant performance statistics
 				System.out.printf(
 					"Day %d: Campaign(%d) Completed________________________________\n" +
 					"    Day Start:%d End:%d Duration:%d days \n" +
@@ -330,7 +322,8 @@ public class AgentNAMM extends Agent {
 					(long)(campaign.uncorrectedProfitAcc*100),
 					campaign.qualityChange, campaign.estQualityChange, (long)(campaign.estQualityChangeAcc*100));
 
-				/*System.out.printf(
+				/* Currently not properly implemented game overview
+				System.out.printf(
 					"Day %d: Performance Report (%d Campaigns complete)_____________________________\n" +
 					"    Revenue:%.3f \n" +
 					"    Profit:%.3f (per Imp(millis):%.3f) Estimated profit accuracy:%.3f (uncorrected:%.3f)\n" +
@@ -348,12 +341,15 @@ public class AgentNAMM extends Agent {
 		}
 
 
-		pendingCampaign = new CampaignData(com);
-		System.out.println("Day " + day + ": Campaign oppppportunity - " + pendingCampaign);
 
-		/*
-		*  ALUN: Decide which of the 4 campaign strategies to use
-		*/
+
+		/**
+		 * React to new campaign opportunity message by choosing an appropriate bidding strategy
+		 * evaluating and sending both campaign and ucs bids
+		 */
+		pendingCampaign = new CampaignData(com);
+		System.out.println("Day " + day + ": Campaign opportunity" + pendingCampaign);
+
 		long cmpimps = com.getReachImps();
 		int startDays = 5;
 		// Starting strategy for first few days
@@ -385,7 +381,6 @@ public class AgentNAMM extends Agent {
 		 * therefore the total number of impressions may be treated as a reserve
 		 * (upper bound) price for the auction.
 		 */
-		System.out.println("Day " + day + ": Campaign - Total budget bid (millis): " + (long)(cmpBid*1000));
 
 		/*
 		 * Adjust ucs bid s.t. target level is achieved. Note: The bid for the
@@ -402,9 +397,11 @@ public class AgentNAMM extends Agent {
 		}
 
 		/* Note: Campaign bid is in millis */
+		System.out.println("Day " + day + ": Submitting Campaign bid (millis): " + (long)(cmpBid*1000));
+		System.out.println("Day " + day + ": Submitting UCS service bid: " + ucsBid);
 		AdNetBidMessage bids = new AdNetBidMessage(ucsBid, pendingCampaign.id, (long)(cmpBid*1000));
 		sendMessage(demandAgentAddress, bids);
-		/* TODO FIx bug where day 0 isn't bid for
+		/* TODO ALUN: Fix bug where day 0 isn't bid for
 		 *	- Harder than expected the error moves position on the first day of each run
 		 */
 	}
@@ -750,6 +747,9 @@ public class AgentNAMM extends Agent {
 		//System.out.println("!!!!!!!!!!!!!!!!!!!!!!"+Arrays.toString(campaignData.campaignQueries)+"!!!!!!!!!!!!!!!!");
 	}
 
+	/**
+	 * Definition of class Campaign Data which stores all variables and statistics associated with campaigns.
+	 */
 	private class CampaignData {
 		/* campaign attributes as set by server */
 		Long reachImps;
@@ -788,6 +788,7 @@ public class AgentNAMM extends Agent {
 		double reachFulfillment;
 		double estUcsCostAcc;
 
+		// Constructors
 		public CampaignData(InitialCampaignMessage icm) {
 			reachImps = icm.getReachImps();
 			dayStart = icm.getDayStart();
@@ -820,7 +821,6 @@ public class AgentNAMM extends Agent {
 			estQualityChange = 0.0;
 			estQualityChangeAcc = 0.0;
 		}
-
 		public CampaignData(Long reachImps, long dayStart, long dayEnd, Set<MarketSegment> targetSegment,
 							double videoCoef, double mobileCoef, int id, AdxQuery[] campaignQueries,
 							CampaignStats cstats, double budget, double revenue, double profitEstimate,
@@ -862,8 +862,34 @@ public class AgentNAMM extends Agent {
 			this.reachFulfillment = reachFulfillment;
 			this.estUcsCostAcc = estUcsCostAcc;
 		}
+		public CampaignData(CampaignOpportunityMessage com) {
+			dayStart = com.getDayStart();
+			dayEnd = com.getDayEnd();
+			id = com.getId();
+			reachImps = com.getReachImps();
+			targetSegment = com.getTargetSegment();
+			mobileCoef = com.getMobileCoef();
+			videoCoef = com.getVideoCoef();
+			stats = new CampaignStats(0, 0, 0);
+			budget = 0.0;
+			cmpBid = 0.0;
+			estUcsCostAcc = 0.0;
+			impressionTarget = reachImps;
+			revenue = 0;
+			profit = 0.0;
+			profitEstimate = 0.0;
+			uncorrectedProfitEstimate = 0.0;
+			costEstimate = 0.0;
+			reachFulfillment = 0.0;
+			estImpCost = 0.0;
+			qualityChange = 0.0;
+			estUcsCost = 0.0;
+			estQualityChange = 0.0;
+			ucsCost = 0;
+			estQualityChangeAcc = 0.0;
+		}
 
-
+		// Setters
 		public void setQualityChange() {
 			// Detects change in quality score from yesterday,
 			// attributes change equally to all campaigns ended in that time
@@ -912,50 +938,49 @@ public class AgentNAMM extends Agent {
 			profitPerImpression = profit / (stats.getTargetedImps() + stats.getOtherImps());
 		}
 
-		public CampaignData(CampaignOpportunityMessage com) {
-			dayStart = com.getDayStart();
-			dayEnd = com.getDayEnd();
-			id = com.getId();
-			reachImps = com.getReachImps();
-			targetSegment = com.getTargetSegment();
-			mobileCoef = com.getMobileCoef();
-			videoCoef = com.getVideoCoef();
-			stats = new CampaignStats(0, 0, 0);
-			budget = 0.0;
-			cmpBid = 0.0;
-			estUcsCostAcc = 0.0;
-			impressionTarget = reachImps;
-			revenue = 0;
-			profit = 0.0;
-			profitEstimate = 0.0;
-			uncorrectedProfitEstimate = 0.0;
-			costEstimate = 0.0;
-			reachFulfillment = 0.0;
-			estImpCost = 0.0;
-			qualityChange = 0.0;
-			estUcsCost = 0.0;
-			estQualityChange = 0.0;
-			ucsCost = 0;
-			estQualityChangeAcc = 0.0;
+
+		// updates campaign statistics after it has ended
+		public void update(double revenue) {
+			this.setRevenue(revenue);
+			this.setProfit();
+			this.setEstCostAcc();
+			this.setUncorrectedProfitAcc();
+			this.setEstProfitAcc();
+			this.setImpTargetFulfillment();
+			this.setProfitPerImpression();
+			this.setReachFulfillment();
+			this.setBidVs2ndRatio();
+			this.setQualityChange();
+			this.setEstQualityChangeAcc();
+			this.setEstUcsCostAcc();
 		}
 
 		@Override
+		// toString returns only the server stored statistics on a campaign
 		public String toString() {
 			return "Campaign ID " + id + ": " + "day " + dayStart + " to "
 					+ dayEnd + " " + targetSegment + ", reach: " + reachImps
 					+ " coefs: (v=" + videoCoef + ", m=" + mobileCoef + ")";
 		}
-
+		// ToWrite returns all the stats for writing to CSV files
 		public String toWrite() {
-			return id + "," + dayStart + "," + dayEnd + "," + reachImps + "," + targetSegment.toString().replace(',','-') + "," + videoCoef + ","
+			return startInfo.getSimulationID() + "," + id + "," + dayStart + "," + dayEnd + "," + reachImps + ","
+				+ targetSegment.toString().replace(',',':') + "," + videoCoef + ","
 				+ mobileCoef + "," + stats.getCost() + "," + stats.getTargetedImps() + "," + stats.getOtherImps() + ","
 				+ budget + "," + revenue  + "," + profitEstimate  + "," + cmpBid + "," + impressionTarget  + "," +
-				uncorrectedProfitEstimate + "," + costEstimate + "," + costEstimate  + "," + estImpCost  + "," +
+				uncorrectedProfitEstimate + "," + costEstimate  + "," + estImpCost  + "," +
 				estUcsCost  + "," + qualityChange  + "," + estQualityChange  + "," + ucsCost  + "," + estCostAcc
 				+ "," +estProfitAcc  + "," + uncorrectedProfitAcc + "," + estQualityChangeAcc + "," + impTargetFulfillment
 				+ "," + bidVs2ndRatio + "," + profit + "," + profitPerImpression + "," + reachFulfillment  + "," +
 				estUcsCostAcc;
 		}
+
+		//CSV file header
+		final String FILE_HEADER = "id,dayStart,dayEnd,reachImps,targetSegment,videoCoef,mobileCoef," +
+				"adxCost,targetedImps,untargetedImps,budget,revenue,profitEstimate,cmpBid,impressionTarget," +
+				"uncorrectedProfitEstimate,costEstimate,estImpCost,estUcsCost,qualityChange,estQualityChange," +
+				"ucsCost,estCostAcc,estProfitAcc,uncorrectedProffitAcc,estQualityChangeAcc,impTargetFulfillment," +
+				"bidVs2ndRatio,profit,profitPerImpression,reachFulfillment,estUcsCostAcc";
 
 		int impsTogo() {
 			return (int) Math.max(0, reachImps - stats.getTargetedImps());
@@ -970,27 +995,40 @@ public class AgentNAMM extends Agent {
 			this.campaignQueries = campaignQueries;
 		}
 
-		// Calculates an estimate for impression targets (and profit) to maximise estimated profit.
-		// Considers the effect of short term cost of the campaign, long term effect of quality change and inaccuracies in previous predictions.
-		private void setImpressionTargets() {
+		/**
+		 * Calculates an estimate for impression targets (and profit) to maximise estimated profit.
+		 * Considers the effect of short term cost of the campaign, long term effect of quality change
+		 * and inaccuracies in previous predictions. By evaluating estimated profits for a variety of
+		 * different impression targets.
+		 */
+		 private void setImpressionTargets() {
 			long target = 0;
-			double estProfit = -99999, ERR = 0, estQuality = 0, estCost = 0;
+			double estProfit = -99999, ERR, estQuality = 0, estCost = 0;
 			// Consider a range of possible impression targets
 			for (double multiplier = 0.6; multiplier <= 2; multiplier+= 0.02){ // loop over range of impression targets
 				long tempTarget = (long)(this.reachImps*multiplier);
 
+				// Estimate quality change
 				double currentQuality = adNetworkDailyNotification.getQualityScore();
 				double lRate = 0.6, Budget;
 				ERR = ERRcalc(this, target);
 				double tempEstQuality = (1 - lRate)*currentQuality + lRate*ERR;
 
-				// Decide which impression target is most cost efficient
-				// todo need to change this.budget to a historical average budget per impression
-				// so this can be used to set the budget bid for. (but if budget already set then use it)
+				// If we haven't won the campaign yet estimate the budget.
 				if (this.budget != 0){ Budget = this.budget; }
-				else Budget = 0; //TODO mean budget/impression from past * impressions;
+				else Budget = 0; //TODO ALUN: mean budget/impression from past * impressions;
+				// Budget = sliding scale of historic average budget to game average budget
+					// Go from 100% historical to 50% historical
+				// Evaluate per impression then multiply by number of impressions
+					// Loop over entries in the game and calculate an average
+					// Loop over entries in the history and take an average
+
+
+				// Estimate cost to run campaign at this level
 				double tempEstCost = campaignCost(this, tempTarget, false);
 				double tempEstProfit = Budget * ERR + qualityEffect(this, estQuality) - tempEstCost;
+
+				// Decide which impression target is most cost efficient
 				if (tempEstProfit > estProfit) {
 					target = tempTarget;
 					estProfit = tempEstProfit;
@@ -999,14 +1037,11 @@ public class AgentNAMM extends Agent {
 				}
 			}
 
-			// Save ucs cost and impression cost estimates
+			// Save ucs cost and impression cost estimate to the campaign.
 			campaignCost(this, target, true);
-			System.out.println("Q: " + adNetworkDailyNotification.getQualityScore() + " estQ: " + estQuality + " ERR: " + ERR);
-			this.estQualityChange = estQuality - adNetworkDailyNotification.getQualityScore();
 
 			// Factor in any bias we may have (adjust for difference in prediction and result)
-			// This multiplier is highly subject to random noise at the start and should incorporate historic data to
-			// help smooth this: TODO historic data
+			// TODO historic data
 			double cumProfitEstimate = 0.0;
 			double cumProfit = 0.0;
 			// calculate total profit and estimated profit from ended campaigns.
@@ -1017,21 +1052,19 @@ public class AgentNAMM extends Agent {
 					cumProfitEstimate += campaign.uncorrectedProfitEstimate;
 				}
 			}
-			// error factor
+			// error factor: ratio between average profit and average estimated profit
 			double profitError = cumProfit / cumProfitEstimate;
 			uncorrectedProfitEstimate = estProfit - qualityEffect(this,estQuality);
 			profitEstimate = uncorrectedProfitEstimate * profitError;
 			impressionTarget = target;
 			costEstimate = estCost;
 
-			/* System.out.println("ESTIMATED PROFIT: " + estProfit + " | target: " + target + " | Est.cmp cost: " +
-					campaignCost(this,target/(this.dayEnd-this.dayStart), false) + " | Est.Quality effect: "
-					+ qualityEffect(this, estQuality) + " | Est.ERR: " + ERR + " | cmpRevenue: " + this.budget*ERR
-			+ " | uncorrected profit estimate: " + uncorrectedProfitEstimate); */
-
 		}
 	}
 
+	/**
+	 * Class for storing campaign data from previous games to be used in historic calculations
+	 */
 	public class historicCampaignData {
 
 		private ArrayList<CampaignData> historicCampaigns;
@@ -1593,7 +1626,7 @@ public class AgentNAMM extends Agent {
 		String fName = workingDir + "\\CmpLog.csv";
 
 		//CSV file header
-		final String FILE_HEADER = "id,dayStart,dayEnd,reachImps,targetSegment,videoCoef,mobileCoef," +
+		final String FILE_HEADER = "game,id,dayStart,dayEnd,reachImps,targetSegment,videoCoef,mobileCoef," +
 				"adxCost,targetedImps,untargetedImps,budget,revenue,profitEstimate,cmpBid,impressionTarget," +
 				"uncorrectedProfitEstimate,costEstimate,estImpCost,estUcsCost,qualityChange,estQualityChange," +
 				"ucsCost,estCostAcc,estProfitAcc,uncorrectedProffitAcc,estQualityChangeAcc,impTargetFulfillment," +
