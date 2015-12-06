@@ -3,6 +3,8 @@ package soton.intagts;
 import edu.umich.eecs.tac.props.Ad;
 import edu.umich.eecs.tac.props.BankStatus;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
+
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -16,6 +18,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import edu.umich.eecs.tac.util.sampling.SynchronizedMutableSampler;
+import org.supercsv.cellprocessor.*;
+import org.supercsv.cellprocessor.Optional;
+import org.supercsv.cellprocessor.constraint.NotNull;
+import org.supercsv.cellprocessor.constraint.StrRegEx;
+import org.supercsv.cellprocessor.constraint.UniqueHashCode;
+import org.supercsv.cellprocessor.ift.CellProcessor;
+import org.supercsv.io.CsvBeanReader;
+import org.supercsv.io.ICsvBeanReader;
+import org.supercsv.prefs.CsvPreference;
 import se.sics.isl.transport.Transportable;
 import se.sics.tasim.aw.Agent;
 import se.sics.tasim.aw.Message;
@@ -39,13 +50,13 @@ import tau.tac.adx.report.publisher.AdxPublisherReportEntry;
 import tau.tac.adx.users.properties.Age;
 import tau.tac.adx.users.properties.Gender;
 import tau.tac.adx.users.properties.Income;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.commons.math3.stat.*;
+
 
 /**
  * 
@@ -284,7 +295,6 @@ public class AgentNAMM extends Agent {
 
 				// Update performance data
 				performanceData.updateData(campaign);
-				//todo add estimate quality change
 
 				System.out.printf(
 					"Day %d: Campaign(%d) Completed________________________________\n" +
@@ -1458,15 +1468,14 @@ public class AgentNAMM extends Agent {
 
 	public void campaignSaveFile(){
 		String workingDir = System.getProperty("user.dir");
-		String fName = workingDir + "\\Cmp" + System.currentTimeMillis() + ".csv";
+		String fName = workingDir + "\\CmpLog.csv";
 
 		//CSV file header
 		final String FILE_HEADER = "id,dayStart,dayEnd,reachImps,targetSegment,videoCoef,mobileCoef," +
 				"adxCost,targetedImps,untargetedImps,budget,revenue,profitEstimate,cmpBid,impressionTarget," +
 				"uncorrectedProfitEstimate,costEstimate,estImpCost,estUcsCost,qualityChange,estQualityChange," +
-				"ucsCost,estCostAcc,estProfitAcc,uncorrectedProfficAcc,estQualityChangeAcc,impTargetFulfillment," +
+				"ucsCost,estCostAcc,estProfitAcc,uncorrectedProffitAcc,estQualityChangeAcc,impTargetFulfillment," +
 				"bidVs2ndRatio,profit,profitPerImpression,reachFulfillment,estUcsCostAcc";
-
 		try {
 			FileWriter csvFw = new FileWriter(fName, true);
 			csvFw.write(FILE_HEADER + System.lineSeparator());
@@ -1483,4 +1492,71 @@ public class AgentNAMM extends Agent {
 			System.out.println("##### ERR Writing the CSV File #####");
 		}
 	}
+
+	/**
+	 * Sets up processors for csv Bean reader
+	 * @return the cell processors
+	 */
+
+	private static CellProcessor[] getProcessors() {
+
+		final CellProcessor[] processors = new CellProcessor[]{
+				new NotNull(new ParseLong()), //id
+				new Optional(new ParseLong()), //dayStart
+				new Optional(new ParseLong()), // dayEnd
+				new Optional(new ParseLong()), // reachImps
+				new Optional(), // targetSegment
+				new Optional(), // videoCoef
+				new Optional(), // mobileCoef
+				new Optional(), // adxCost
+				new Optional(), // targetedImps
+				new Optional(), // untargetedImps
+				new Optional(), // budget
+				new Optional(), // revenue
+				new Optional(), // profitEstimate
+				new Optional(), // cmpBid
+				new Optional(), // impressionTarget
+				new Optional(), // uncorrectedProfitEstimate
+				new Optional(), // costEstimate
+				new Optional(), // estImpCost
+				new Optional(), // estUcsCost
+				new Optional(), // qualityChange
+				new Optional(), // estQualityChange
+				new Optional(), // ucsCost
+				new Optional(), // estCostAcc
+				new Optional(), // estProfitAcc
+				new Optional(), // uncorrectedProfitAcc
+				new Optional(), // estQualityChangeAcc
+				new Optional(), // impTargetFulfillment
+				new Optional(), // bid2Second Ratio
+				new Optional(), // profit
+				new Optional(), // profitPerImpression
+				new Optional(), // reachFulfillment
+				new Optional() // estUcsCostAcc
+		};
+				return processors;
+	}
+
+
+	private static void CsvBeanReader() throws Exception {
+
+		ICsvBeanReader beanReader = null;
+		try {
+			beanReader = new CsvBeanReader( new FileReader(System.getProperty("user.dir") + "\\CmpLog.csv"), CsvPreference.STANDARD_PREFERENCE);
+
+			final String[] header = beanReader.getHeader(true);
+			final CellProcessor[] processors = getProcessors();
+
+			CampaignData campaign;
+			while (( campaign = beanReader.read(CampaignData , header, processors)) !=null){
+				System.out.println(String.format("lineNo=%s, rowNo=%s, campaignID=%s", beanReader.getLineNumber(),
+						beanReader.getRowNumber(),campaign));
+			}
+		}
+		finally {
+			if(beanReader != null) {
+				beanReader.close();
+			}
+		}
+		}
 }

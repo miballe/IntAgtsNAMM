@@ -5,17 +5,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingparticipants.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingparticipants.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingsimulations.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingsimulations.dat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_state.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_state.dat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/adx_1_2_8.xml" afterPath="$PROJECT_DIR$/.idea/libraries/adx_1_2_8.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm0.log.1" afterPath="$PROJECT_DIR$/logs/namm0.log.1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm1.log.1" afterPath="$PROJECT_DIR$/logs/namm1.log.1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm2.log.1" afterPath="$PROJECT_DIR$/logs/namm2.log.1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm3.log.1" afterPath="$PROJECT_DIR$/logs/namm3.log.1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm4.log.1" afterPath="$PROJECT_DIR$/logs/namm4.log.1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm5.log.1" afterPath="$PROJECT_DIR$/logs/namm5.log.1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm6.log.1" afterPath="$PROJECT_DIR$/logs/namm6.log.1" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soton/intagts/AgentNAMM.java" afterPath="$PROJECT_DIR$/soton/intagts/AgentNAMM.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/logs/localhost0.log" afterPath="$PROJECT_DIR$/../AdXServer/logs/localhost0.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/logs/localhost1.log" afterPath="$PROJECT_DIR$/../AdXServer/logs/localhost1.log" />
     </list>
     <ignored path="adx-agent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,8 +34,8 @@
       <file leaf-file-name="AgentNAMM.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/soton/intagts/AgentNAMM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.9505062">
-              <caret line="1390" column="15" selection-start-line="1390" selection-start-column="15" selection-end-line="1390" selection-end-column="15" />
+            <state vertical-scroll-proportion="0.12035996">
+              <caret line="1468" column="0" selection-start-line="1468" selection-start-column="0" selection-end-line="1560" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
@@ -51,7 +44,6 @@
                 <element signature="method#setBidVs2ndRatio#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
                 <element signature="method#setProfitPerImpression#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
                 <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-                <element signature="method#setImpressionTargets#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -79,8 +71,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-2" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -111,7 +102,7 @@
     <panes />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/AgentNAMM.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/super-csv/super-csv-2.4.0-javadoc.jar!/" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -411,11 +402,17 @@
       <option name="project" value="LOCAL" />
       <updated>1449347923760</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Saved csv of campaign files">
+      <created>1449353044496</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1449353044496</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-2" y="0" width="1936" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -457,7 +454,8 @@
     <MESSAGE value="Completed debugging of campaign data summary statistics printed to console on completion of a campaign... Game summary statistics are still buggy (revenue is certainly accurate)." />
     <MESSAGE value="Adding to performancedata class&#10;" />
     <MESSAGE value="Attempt to log campaign data in csv&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Attempt to log campaign data in csv&#10;" />
+    <MESSAGE value="Saved csv of campaign files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Saved csv of campaign files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -482,7 +480,6 @@
             <element signature="method#setBidVs2ndRatio#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#setProfitPerImpression#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setImpressionTargets#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -499,7 +496,6 @@
             <element signature="method#setBidVs2ndRatio#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#setProfitPerImpression#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setImpressionTargets#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -516,7 +512,6 @@
             <element signature="method#setBidVs2ndRatio#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#setProfitPerImpression#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setImpressionTargets#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -537,8 +532,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/soton/intagts/AgentNAMM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.9505062">
-          <caret line="1390" column="15" selection-start-line="1390" selection-start-column="15" selection-end-line="1390" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.12035996">
+          <caret line="1468" column="0" selection-start-line="1468" selection-start-column="0" selection-end-line="1560" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
@@ -547,7 +542,6 @@
             <element signature="method#setBidVs2ndRatio#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#setProfitPerImpression#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
             <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setImpressionTargets#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
           </folding>
         </state>
       </provider>
