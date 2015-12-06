@@ -261,6 +261,12 @@ public class AgentNAMM extends Agent {
 		 */
 		System.out.println("Day " + day + ": Allocated campaign - " + campaignData);
 		myCampaigns.put(initialCampaignMessage.getId(), campaignData);
+
+		// Load historic campaigns into a list
+		System.out.println("attempting to load historic campaigns");
+		historicCampaignData historicCampaignData = new historicCampaignData();
+		historicCampaignData.loadDataFromFile("C:\\Users\\Alun\\Documents\\Work\\DataScience\\Southampton\\IntelligentAgents\\gitRepo\\IntAgtsNAMM\\AdXAgent\\CmpLogTest.csv");
+		System.out.println(historicCampaignData.getNumberOfRecords());
 	}
 
 	/**
@@ -815,6 +821,49 @@ public class AgentNAMM extends Agent {
 			estQualityChangeAcc = 0.0;
 		}
 
+		public CampaignData(Long reachImps, long dayStart, long dayEnd, Set<MarketSegment> targetSegment,
+							double videoCoef, double mobileCoef, int id, AdxQuery[] campaignQueries,
+							CampaignStats cstats, double budget, double revenue, double profitEstimate,
+							double cmpBid, long impressionTarget, double uncorrectedProfitEstimate,
+							double costEstimate, double estImpCost, double estUcsCost, double qualityChange,
+							double estQualityChange, double ucsCost, double estCostAcc, double estProfitAcc,
+							double uncorrectedProfitAcc, double estQualityChangeAcc, double impTargetFulfillment,
+							double bidVs2ndRatio, double profit, double profitPerImpression, double reachFulfillment,
+							double estUcsCostAcc) {
+			this.reachImps = reachImps;
+			this.dayStart = dayStart;
+			this.dayEnd = dayEnd;
+			this.targetSegment = targetSegment;
+			this.videoCoef = videoCoef;
+			this.mobileCoef = mobileCoef;
+			this.id = id;
+			this.campaignQueries = campaignQueries;
+			this.stats = cstats;
+			this.budget = budget;
+			this.revenue = revenue;
+			this.profitEstimate = profitEstimate;
+			this.cmpBid = cmpBid;
+			this.impressionTarget = impressionTarget;
+			this.uncorrectedProfitEstimate = uncorrectedProfitEstimate;
+			this.costEstimate = costEstimate;
+			this.estImpCost = estImpCost;
+			this.estUcsCost = estUcsCost;
+			this.qualityChange = qualityChange;
+			this.estQualityChange = estQualityChange;
+			this.ucsCost = ucsCost;
+			this.estCostAcc = estCostAcc;
+			this.estProfitAcc = estProfitAcc;
+			this.uncorrectedProfitAcc = uncorrectedProfitAcc;
+			this.estQualityChangeAcc = estQualityChangeAcc;
+			this.impTargetFulfillment = impTargetFulfillment;
+			this.bidVs2ndRatio = bidVs2ndRatio;
+			this.profit = profit;
+			this.profitPerImpression = profitPerImpression;
+			this.reachFulfillment = reachFulfillment;
+			this.estUcsCostAcc = estUcsCostAcc;
+		}
+
+
 		public void setQualityChange() {
 			// Detects change in quality score from yesterday,
 			// attributes change equally to all campaigns ended in that time
@@ -898,7 +947,7 @@ public class AgentNAMM extends Agent {
 		}
 
 		public String toWrite() {
-			return id + "," + dayStart + "," + dayEnd + "," + reachImps + "," + targetSegment + "," + videoCoef + ","
+			return id + "," + dayStart + "," + dayEnd + "," + reachImps + "," + targetSegment.toString().replace(',','-') + "," + videoCoef + ","
 				+ mobileCoef + "," + stats.getCost() + "," + stats.getTargetedImps() + "," + stats.getOtherImps() + ","
 				+ budget + "," + revenue  + "," + profitEstimate  + "," + cmpBid + "," + impressionTarget  + "," +
 				uncorrectedProfitEstimate + "," + costEstimate + "," + costEstimate  + "," + estImpCost  + "," +
@@ -981,9 +1030,82 @@ public class AgentNAMM extends Agent {
 			+ " | uncorrected profit estimate: " + uncorrectedProfitEstimate); */
 
 		}
-
 	}
 
+	public class historicCampaignData {
+
+		private ArrayList<CampaignData> historicCampaigns;
+
+		public historicCampaignData() {
+			historicCampaigns = new ArrayList<>();
+		}
+
+		public int getNumberOfRecords() {
+			return historicCampaigns.size();
+		}
+		/**
+		 * Loads the historic campaign data from the csv file in filepath
+		 */
+		public void loadDataFromFile(String filepath) {
+			try {
+				Scanner scanner = new Scanner(new FileReader(filepath));
+				String line;
+				CampaignData record;
+
+				while(scanner.hasNextLine()) {
+					line = scanner.nextLine();
+					String[] results = line.split(",");
+
+					int id = Integer.parseInt(( results[0] ));
+					long dayStart = Long.parseLong(( results[1] ));
+					long dayEnd = Long.parseLong(( results[2] ));
+					Long reachImps = Long.parseLong(( results[3] ));
+					String targetSegment = results[4];
+					double videoCoef = Double.parseDouble((results[5]));
+					double mobileCoef = Double.parseDouble((results[6]));
+					double adxCost = Double.parseDouble((results[7]));
+					double targetedImps = Double.parseDouble((results[8]));
+					double untargetedImps = Double.parseDouble((results[9]));
+					double budget = Double.parseDouble((results[10]));
+					double revenue = Double.parseDouble((results[11]));
+					double profitEstimate = Double.parseDouble((results[12]));
+					double cmpBid = Double.parseDouble((results[13]));
+					long impressionTarget = Long.parseLong(( results[14] ));
+					double uncorrectedProfitEstimate = Double.parseDouble((results[15]));
+					double costEstimate = Double.parseDouble((results[16]));
+					double estImpCost = Double.parseDouble((results[17]));
+					double estUcsCost = Double.parseDouble((results[18]));
+					double qualityChange = Double.parseDouble((results[19]));
+					double estQualityChange = Double.parseDouble((results[20]));
+					double ucsCost = Double.parseDouble((results[21]));
+					double estCostAcc = Double.parseDouble((results[22]));
+					double estProfitAcc = Double.parseDouble((results[23]));
+					double uncorrectedProfitAcc = Double.parseDouble((results[24]));
+					double estQualityChangeAcc = Double.parseDouble((results[25]));
+					double impTargetFulfillment = Double.parseDouble((results[26]));
+					double bidVs2ndRatio = Double.parseDouble((results[27]));
+					double profit = Double.parseDouble((results[28]));
+					double profitPerImpression = Double.parseDouble((results[29]));
+					double reachFulfillment = Double.parseDouble((results[30]));
+					double estUcsCostAcc = Double.parseDouble((results[31]));
+
+					//todo fix target segment and campaign queries
+					record = new CampaignData(reachImps, dayStart, dayEnd, currCampaign.targetSegment, videoCoef, mobileCoef, id,
+							currCampaign.campaignQueries, new CampaignStats(targetedImps,untargetedImps,adxCost),budget, revenue, profitEstimate, cmpBid,
+							impressionTarget, uncorrectedProfitEstimate, costEstimate, estImpCost, estUcsCost,
+							qualityChange, estQualityChange, ucsCost, estCostAcc, estProfitAcc, uncorrectedProfitAcc,
+							estQualityChangeAcc, impTargetFulfillment, bidVs2ndRatio, profit, profitPerImpression,
+							reachFulfillment, estUcsCostAcc);
+
+					historicCampaigns.add(record);
+				}
+				scanner.close();
+			} catch (Exception e) {
+				System.out.println("Error: " + e.getMessage());
+			}
+		}
+
+	}
 
 
 	/**
@@ -1493,70 +1615,4 @@ public class AgentNAMM extends Agent {
 		}
 	}
 
-	/**
-	 * Sets up processors for csv Bean reader
-	 * @return the cell processors
-	 */
-
-	private static CellProcessor[] getProcessors() {
-
-		final CellProcessor[] processors = new CellProcessor[]{
-				new NotNull(new ParseLong()), //id
-				new Optional(new ParseLong()), //dayStart
-				new Optional(new ParseLong()), // dayEnd
-				new Optional(new ParseLong()), // reachImps
-				new Optional(), // targetSegment
-				new Optional(), // videoCoef
-				new Optional(), // mobileCoef
-				new Optional(), // adxCost
-				new Optional(), // targetedImps
-				new Optional(), // untargetedImps
-				new Optional(), // budget
-				new Optional(), // revenue
-				new Optional(), // profitEstimate
-				new Optional(), // cmpBid
-				new Optional(), // impressionTarget
-				new Optional(), // uncorrectedProfitEstimate
-				new Optional(), // costEstimate
-				new Optional(), // estImpCost
-				new Optional(), // estUcsCost
-				new Optional(), // qualityChange
-				new Optional(), // estQualityChange
-				new Optional(), // ucsCost
-				new Optional(), // estCostAcc
-				new Optional(), // estProfitAcc
-				new Optional(), // uncorrectedProfitAcc
-				new Optional(), // estQualityChangeAcc
-				new Optional(), // impTargetFulfillment
-				new Optional(), // bid2Second Ratio
-				new Optional(), // profit
-				new Optional(), // profitPerImpression
-				new Optional(), // reachFulfillment
-				new Optional() // estUcsCostAcc
-		};
-				return processors;
-	}
-
-
-	private static void CsvBeanReader() throws Exception {
-
-		ICsvBeanReader beanReader = null;
-		try {
-			beanReader = new CsvBeanReader( new FileReader(System.getProperty("user.dir") + "\\CmpLog.csv"), CsvPreference.STANDARD_PREFERENCE);
-
-			final String[] header = beanReader.getHeader(true);
-			final CellProcessor[] processors = getProcessors();
-
-			CampaignData campaign;
-			while (( campaign = beanReader.read(CampaignData , header, processors)) !=null){
-				System.out.println(String.format("lineNo=%s, rowNo=%s, campaignID=%s", beanReader.getLineNumber(),
-						beanReader.getRowNumber(),campaign));
-			}
-		}
-		finally {
-			if(beanReader != null) {
-				beanReader.close();
-			}
-		}
-		}
 }
