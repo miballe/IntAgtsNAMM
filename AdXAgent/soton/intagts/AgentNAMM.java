@@ -22,12 +22,10 @@ import se.sics.tasim.aw.Message;
 import se.sics.tasim.props.SimulationStatus;
 import se.sics.tasim.props.StartInfo;
 import tau.tac.adx.ads.properties.AdType;
+import tau.tac.adx.demand.Campaign;
 import tau.tac.adx.demand.CampaignStats;
 import tau.tac.adx.devices.Device;
-import tau.tac.adx.props.AdxBidBundle;
-import tau.tac.adx.props.AdxQuery;
-import tau.tac.adx.props.PublisherCatalog;
-import tau.tac.adx.props.PublisherCatalogEntry;
+import tau.tac.adx.props.*;
 import tau.tac.adx.report.adn.AdNetworkKey;
 import tau.tac.adx.report.adn.AdNetworkReport;
 import tau.tac.adx.report.adn.AdNetworkReportEntry;
@@ -103,6 +101,13 @@ public class AgentNAMM extends Agent {
 	 * by our agent.
 	 */
 	private Map<Integer, CampaignData> myCampaigns;
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Collection of campaigns thrown in the game
+	//private List<CampaignData> campaignsInGame;
+	private Map<Integer, CampaignData> campaignsInGame;
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	/*
 	 * the bidBundle to be sent daily to the AdX
 	 */
@@ -141,6 +146,7 @@ public class AgentNAMM extends Agent {
 	public AgentNAMM() {
         campaignReports = new LinkedList<CampaignReport>();
         impressionBidHistory = new ImpressionHistory();
+		//campaignsInGame = new ArrayList<CampaignData>();
 	}
 
 
@@ -183,6 +189,8 @@ public class AgentNAMM extends Agent {
 			}
 
 		} catch (NullPointerException e) {
+		System.out.println(e.getMessage());
+		e.printStackTrace();
 			this.log.log(Level.SEVERE,
 					"Exception thrown while trying to parse message." + e);
 		}
@@ -250,6 +258,9 @@ public class AgentNAMM extends Agent {
 		 */
 		System.out.println("Day " + day + ": Allocated campaign - " + campaignData);
 		myCampaigns.put(initialCampaignMessage.getId(), campaignData);
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		campaignsInGame.put(initialCampaignMessage.getId(), campaignData);
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	}
 
 	/**
@@ -261,7 +272,9 @@ public class AgentNAMM extends Agent {
 	private void handleICampaignOpportunityMessage(
 			CampaignOpportunityMessage com) {
 			day = com.getDay();
-
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		    //campaignsInGame.add(pendingCampaign);
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// For campaigns that finished yesterday set performance metrics.
 		for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
 			CampaignData campaign = entry.getValue();
@@ -402,6 +415,10 @@ public class AgentNAMM extends Agent {
 	private void handleAdNetworkDailyNotification(
 			AdNetworkDailyNotification notificationMessage) {
 
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		campaignsInGame.put(pendingCampaign.id, pendingCampaign);
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 		adNetworkDailyNotification = notificationMessage;
 		System.out.println("Day " + day + ": Daily notification for campaign "
 				+ adNetworkDailyNotification.getCampaignId());
@@ -462,6 +479,7 @@ public class AgentNAMM extends Agent {
 		System.out.println("Day " + day + " : Simulation Status Received");
         System.out.println("###SIMSTAT### " + simulationStatus.toString());
 		sendBidAndAds();
+		ImpressionCostEstimator();
 		System.out.println("Day " + day + " ended. Starting next day");
 		++day;
 	}
@@ -471,6 +489,7 @@ public class AgentNAMM extends Agent {
 	 *
 	 */
 	protected void sendBidAndAds() {
+
 
 		/**
 		 * TODO: MB, Remove this block for final version
@@ -561,6 +580,15 @@ public class AgentNAMM extends Agent {
 		if (bidBundle != null) {
 			System.out.println("Day " + day + ": Sending BidBundle");
 			sendMessage(adxAgentAddress, bidBundle);
+
+			/*for (Map.Entry<Integer, CampaignData> campaign : myCampaigns.entrySet()) {
+				System.out.println("-----------------------------------------------------------------------------------------------------------------");
+				System.out.println("CAMPAIGN" + campaign.getValue().id + "-->"+ "reachImps = "+campaign.getValue().reachImps +";  dayStart = " + campaign.getValue().dayStart + ";  dayEnd = "+ campaign.getValue().dayEnd + ";  TargetSegmentSize = " + MarketSegment.usersInMarketSegments().get(campaign.getValue().targetSegment));//  campaign.getValue().targetSegment.hashCode() );
+				System.out.println("----CAMPAIGN" + campaign.getValue().id + "-->  Popularity:" + campaign.getValue().popInSegmentOfOurCampaign + ". ReservePrice Estimated:" + campaign.getValue().ReservePriceEstimated + ", ReservePrice Today" + campaign.getValue().ReservePriceThisDay + ". IMPRESSION COST ESTIMATE TODAY:" + campaign.getValue().impCostEstThisDay + "------");
+				System.out.println("-----------------------------------------------------------------------------------------------------------------");
+			}*/
+
+
 		}
 
 		// }	catch(IOException e) {
@@ -629,6 +657,7 @@ public class AgentNAMM extends Agent {
 		ucsBid = 0.2;
 
 		myCampaigns = new HashMap<Integer, CampaignData>();
+		campaignsInGame = new HashMap<Integer, CampaignData>();
 		log.fine("AdNet " + getName() + " simulationSetup");
 	}
 
@@ -772,6 +801,13 @@ public class AgentNAMM extends Agent {
 		double reachFulfillment;
 		double estUcsCostAcc;
 
+		double popInSegmentOfOurCampaign;
+		double impCostAvg;
+		double ReservePriceEstimated;
+		double ReservePriceThisDay;
+		double impressionCostEstimate;
+		double impCostEstThisDay;
+
 		public CampaignData(InitialCampaignMessage icm) {
 			reachImps = icm.getReachImps();
 			dayStart = icm.getDayStart();
@@ -803,6 +839,13 @@ public class AgentNAMM extends Agent {
 			qualityChange = 0.0;
 			estQualityChange = 0.0;
 			estQualityChangeAcc = 0.0;
+
+			popInSegmentOfOurCampaign = 0;
+			impCostAvg = 0;
+			ReservePriceEstimated = 0;
+			ReservePriceThisDay = 0;
+			impCostEstThisDay = 0;
+			impressionCostEstimate = 0;
 		}
 
 		public void setQualityChange() {
@@ -878,6 +921,13 @@ public class AgentNAMM extends Agent {
 			estQualityChange = 0.0;
 			ucsCost = 0;
 			estQualityChangeAcc = 0.0;
+
+			popInSegmentOfOurCampaign = 0;
+			impCostAvg = 0;
+			ReservePriceEstimated = 0;
+			ReservePriceThisDay = 0;
+			impCostEstThisDay = 0;
+			impressionCostEstimate = 0;
 		}
 
 		@Override
@@ -1286,7 +1336,8 @@ public class AgentNAMM extends Agent {
 			setEstUcsCostAcc(x);
 		}
 	}
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 	 *  Manu: Impression cost estimate
@@ -1298,12 +1349,321 @@ public class AgentNAMM extends Agent {
 	 *  all days of the prospective campaign to evaluate total cost to complete campaign.
 	 */
 	private double impressionCostEstimate(long impTarget, long day, int ucsTargetLevel) {
+	return 0.0006*impTarget;
+	}
+	private double ImpressionCostEstimator() {
+		double EstimateCostOfImpressionsToday = 0;
+		CampaignData itemFor1, itemFor2;
 		// TODO;
-		// You can now access impression targets from campaign data;
-		// e.g. pendingCampaign.impressionTarget
-		return 0.0006 * impTarget; // default value 0.0006 per impression
+		try {
+			/*for (CampaignData itemFor2 : campaignsInGame) {
+				System.out.println("##################################3   " + day);
+
+				System.out.println(itemFor2);
+			}*/
+			/*for (Map.Entry<Integer, CampaignData> campaignInGame : campaignsInGame.entrySet()) {
+				System.out.println("algo???");
+				System.out.println(campaignInGame.getValue().dayStart);
+			}*/
+
+			for (Map.Entry<Integer, CampaignData> campaign : myCampaigns.entrySet()) {
+
+				itemFor1 = campaign.getValue();
+				if (itemFor1.dayStart <= day) {
+					if (itemFor1.dayEnd >= day) {
+						itemFor1.popInSegmentOfOurCampaign = 1;
+						itemFor1.popInSegmentOfOurCampaign = itemFor1.reachImps / ((double) (itemFor1.dayEnd - itemFor1.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+						//System.out.println("Popularity of our campaign: " + itemFor1.popInSegmentOfOurCampaign);
+						/*itemFor1.popInSegmentOfOurCampaign = itemFor1.reachImps / ((itemFor1.dayEnd - itemFor1.dayStart));
+						System.out.println("Popularity of our campaign (1): "  + itemFor1.popInSegmentOfOurCampaign);
+						itemFor1.popInSegmentOfOurCampaign = itemFor1.reachImps / (MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+						System.out.println("Popularity of our campaign (2): "  + itemFor1.popInSegmentOfOurCampaign);
+						itemFor1.popInSegmentOfOurCampaign = 1 / ((double)(itemFor1.dayEnd - itemFor1.dayStart) * (double)MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+						System.out.println("Popularity of our campaign (3): "  + itemFor1.popInSegmentOfOurCampaign);
+					*/
+						for (Map.Entry<Integer, CampaignData> campInGame : campaignsInGame.entrySet()) {
+
+							itemFor2 = campInGame.getValue();
+							/*System.out.println("Campaigns thrown by the game  " + itemFor2.id);*/
+							if (itemFor2.dayStart <= day) {
+								if (itemFor2.dayEnd >= day) {
+									if (itemFor2.id != itemFor1.id) {
+										if (itemFor1.targetSegment.contains(MarketSegment.MALE)) {
+											if (!itemFor2.targetSegment.contains(MarketSegment.FEMALE)) {
+												//System.out.println("Competing campaign: " + itemFor2.id + "not female");
+												if (itemFor1.targetSegment.contains(MarketSegment.OLD)) {
+													if (!itemFor2.targetSegment.contains(MarketSegment.YOUNG)) {
+
+														if (itemFor1.targetSegment.contains(MarketSegment.HIGH_INCOME)) {
+															if (!itemFor2.targetSegment.contains(MarketSegment.LOW_INCOME)) {
+																itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+																/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+																System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+															*/
+															}
+														} else if (itemFor1.targetSegment.contains(MarketSegment.LOW_INCOME)) {
+															if (!itemFor2.targetSegment.contains(MarketSegment.HIGH_INCOME)) {
+																itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+																/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+																System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+															*/
+															}
+														} else {
+															itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+															/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+															System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+														*/
+														}
+
+													}
+												} else if (itemFor1.targetSegment.contains(MarketSegment.YOUNG)) {
+													if (!itemFor2.targetSegment.contains(MarketSegment.OLD)) {
+
+														if (itemFor1.targetSegment.contains(MarketSegment.HIGH_INCOME)) {
+															if (!itemFor2.targetSegment.contains(MarketSegment.LOW_INCOME)) {
+																itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+																/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+																System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+															*/
+															}
+														} else if (itemFor1.targetSegment.contains(MarketSegment.LOW_INCOME)) {
+															if (!itemFor2.targetSegment.contains(MarketSegment.HIGH_INCOME)) {
+																itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+																/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+																System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+															*/
+															}
+														} else {
+															itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+															/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+															System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+														*/
+														}
+
+													}
+												} else {
+													if (itemFor1.targetSegment.contains(MarketSegment.HIGH_INCOME)) {
+														if (!itemFor2.targetSegment.contains(MarketSegment.LOW_INCOME)) {
+															itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+															/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+															System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+														*/
+														}
+													} else if (itemFor1.targetSegment.contains(MarketSegment.LOW_INCOME)) {
+														if (!itemFor2.targetSegment.contains(MarketSegment.HIGH_INCOME)) {
+															itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+															/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+															System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+														*/
+														}
+													} else {
+
+														itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+														/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+														System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+													*/
+													}
+												}
+											}
+										} else if (itemFor1.targetSegment.contains(MarketSegment.FEMALE)) {
+											if (!itemFor2.targetSegment.contains(MarketSegment.MALE)) {
+
+												if (itemFor1.targetSegment.contains(MarketSegment.OLD)) {
+													if (!itemFor2.targetSegment.contains(MarketSegment.YOUNG)) {
+
+														if (itemFor1.targetSegment.contains(MarketSegment.HIGH_INCOME)) {
+															if (!itemFor2.targetSegment.contains(MarketSegment.LOW_INCOME)) {
+																itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+																/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+																System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+															*/
+															}
+														} else if (itemFor1.targetSegment.contains(MarketSegment.LOW_INCOME)) {
+															if (!itemFor2.targetSegment.contains(MarketSegment.HIGH_INCOME)) {
+																itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+																/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+																System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+															*/
+															}
+														} else {
+															itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+															/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA               F,O nuestra,    notM, notY");
+															System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+														*/
+														}
+													}
+												} else if (itemFor1.targetSegment.contains(MarketSegment.YOUNG)) {
+													if (!itemFor2.targetSegment.contains(MarketSegment.OLD)) {
+
+														if (itemFor1.targetSegment.contains(MarketSegment.HIGH_INCOME)) {
+															if (!itemFor2.targetSegment.contains(MarketSegment.LOW_INCOME)) {
+																itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+																/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+																System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+															*/
+															}
+														} else if (itemFor1.targetSegment.contains(MarketSegment.LOW_INCOME)) {
+															if (!itemFor2.targetSegment.contains(MarketSegment.HIGH_INCOME)) {
+																itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+																/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+																System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+															*/
+															}
+														} else {
+															itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+															/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+															System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+														*/
+														}
+													}
+												} else {
+													if (itemFor1.targetSegment.contains(MarketSegment.HIGH_INCOME)) {
+														if (!itemFor2.targetSegment.contains(MarketSegment.LOW_INCOME)) {
+															itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+															/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+															System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+														*/
+														}
+													} else if (itemFor1.targetSegment.contains(MarketSegment.LOW_INCOME)) {
+														if (!itemFor2.targetSegment.contains(MarketSegment.HIGH_INCOME)) {
+															itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+															/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+															System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+														*/
+														}
+													} else {
+
+														itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+														/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+														System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+													*/
+													}
+												}
+											}
+										} else {
+											if (itemFor1.targetSegment.contains(MarketSegment.OLD)) {
+												if (!itemFor2.targetSegment.contains(MarketSegment.YOUNG)) {
+
+													if (itemFor1.targetSegment.contains(MarketSegment.HIGH_INCOME)) {
+														if (!itemFor2.targetSegment.contains(MarketSegment.LOW_INCOME)) {
+															itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+															/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA    O,H nuestra,  notY,notL");
+															System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+														*/
+														}
+													} else if (itemFor1.targetSegment.contains(MarketSegment.LOW_INCOME)) {
+														if (!itemFor2.targetSegment.contains(MarketSegment.HIGH_INCOME)) {
+															itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+															/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA     O,L nuestra,   notY, not H");
+															System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+														*/
+														}
+													} else {
+
+														itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+														/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA          O nuestra,     notY");
+														System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+													*/
+													}
+												}
+											} else if (itemFor1.targetSegment.contains(MarketSegment.YOUNG)) {
+												if (!itemFor2.targetSegment.contains(MarketSegment.OLD)) {
+
+													if (itemFor1.targetSegment.contains(MarketSegment.HIGH_INCOME)) {
+														if (!itemFor2.targetSegment.contains(MarketSegment.LOW_INCOME)) {
+															itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+															/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+															System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+														*/
+														}
+													} else if (itemFor1.targetSegment.contains(MarketSegment.LOW_INCOME)) {
+														if (!itemFor2.targetSegment.contains(MarketSegment.HIGH_INCOME)) {
+															itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+															/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+															System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+														*/
+														}
+													} else {
+														itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+
+														/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+														System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+													*/
+													}
+												}
+											} else {
+												if (itemFor1.targetSegment.contains(MarketSegment.HIGH_INCOME)) {
+													if (!itemFor2.targetSegment.contains(MarketSegment.LOW_INCOME)) {
+
+														itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+														/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+														System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+													*/
+													}
+												} else if (itemFor1.targetSegment.contains(MarketSegment.LOW_INCOME)) {
+													if (!itemFor2.targetSegment.contains(MarketSegment.HIGH_INCOME)) {
+
+														itemFor1.popInSegmentOfOurCampaign = itemFor1.popInSegmentOfOurCampaign + itemFor2.reachImps / ((double) (itemFor2.dayEnd - itemFor2.dayStart) * (double) MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment));
+														/*System.out.println("PRUEBA PRUEBA PRUEBA PRUEBA PRUEAB PRUEBA");
+														System.out.println("Campaign competing: " + campInGame + "size of MARKET SEGMENT" + MarketSegment.usersInMarketSegments().get(itemFor2.targetSegment) + "; with OUR campaign: " + campaign + "size of OUR marketSegment" + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+													*/
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+
+						if (itemFor1.dayStart == day) {
+							///// Initial Reserve Price (between 0 and 0.005) -> Set as Maximum
+							itemFor1.ReservePriceEstimated = 0.005;
+						} else {
+							//   Trying with average value of impressions in a game:  0.0012
+							itemFor1.ReservePriceEstimated = (0.2 * (double) itemFor1.ReservePriceEstimated + 0.8 * (0.0012) * (double) itemFor1.popInSegmentOfOurCampaign);
+						}
+						//int randomNumber = random.nextInt(2) - 1;  add random number between 0.04 and -0.04 -> Set as Maximum
+						itemFor1.ReservePriceThisDay = itemFor1.ReservePriceEstimated + 0.04;
+
+						// Cost Estimate by a factor of 0.0012
+						itemFor1.impCostEstThisDay = itemFor1.ReservePriceEstimated + (0.1) * itemFor1.popInSegmentOfOurCampaign / adNetworkDailyNotification.getServiceLevel();
+						//itemFor1.impressionCostEstimate = itemFor1.impCostEstThisDay*(60-day)/60 + itemFor1.impCostAvg*(day)/60;
+
+						EstimateCostOfImpressionsToday = EstimateCostOfImpressionsToday + itemFor1.impCostEstThisDay;
+						// Correct with days: at the end there is less competence *60/(60+day)
+
+						System.out.println("####################################################################");
+						System.out.println("Campañas activas de NAMM: " + campaign.getValue().id +";  Estimation: " +itemFor1.impCostEstThisDay);
+						System.out.println("####################################################################");
+
+
+						/*System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+						System.out.println("CAMPAIGN" + itemFor1.id + "-->" + "reachImps = " + itemFor1.reachImps + ";  dayStart = " + itemFor1.dayStart + ";  dayEnd = " + itemFor1.dayEnd + ";  TargetSegmentSize = " + MarketSegment.usersInMarketSegments().get(itemFor1.targetSegment));
+						System.out.println("----CAMPAIGN" + itemFor1.id + "-->  Popularity:" + itemFor1.popInSegmentOfOurCampaign + ". IMPRESSION COST ESTIMATE TODAY:" +itemFor1.impCostEstThisDay + "------");
+						System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+					*/
+
+
+
+					}
+				}
+
+				/*System.out.println("################################################  Prueba 2");
+				System.out.println("Campañas activas de NAMM: " + campaign.getValue().id);
+				*/
+			}
+		}
+		catch(Exception ex){
+			System.out.println(ex.getMessage());
+			ex.printStackTrace();
+		}
+		System.out.println("Estimate Cost of all impressions: " + EstimateCostOfImpressionsToday);
+		return EstimateCostOfImpressionsToday;
 	}
 
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/**
 	 * Nicola: UCS cost estimate
 	 * This function estimates the cost to achieve a specific ucs tier. Note that ucsTarget is the integer tier not the
