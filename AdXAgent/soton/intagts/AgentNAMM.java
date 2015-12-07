@@ -284,18 +284,16 @@ public class AgentNAMM extends Agent {
 		 */
 		System.out.println("Day " + day + ": Allocated campaign - " + campaignData);
 		myCampaigns.put(initialCampaignMessage.getId(), campaignData);
-<<<<<<< HEAD
+
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		campaignsInGame.put(initialCampaignMessage.getId(), campaignData);
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-=======
 
 		// Load historic campaigns into a list
 		String workingDir = System.getProperty("user.dir");
 		System.out.println("Loading Historic Campaigns...");
 		historicCampaigns.loadDataFromFile(workingDir + "\\cmpLog.csv");
 		System.out.println("Number of Campaigns loaded:" + historicCampaigns.getNumberOfRecords());
->>>>>>> 11bfcd113528206aa17ce1e62c58247858fa11a1
 	}
 
 	/**
@@ -417,14 +415,16 @@ public class AgentNAMM extends Agent {
 		 * user classification service is piggybacked
 		 */
 		// TODO: Nikola UCS bid calculation here
-		Random random = new Random();
+		// Random random = new Random();
+		
 		if (adNetworkDailyNotification != null) {
 			double ucsLevel = adNetworkDailyNotification.getServiceLevel();
-			ucsBid = 0.1 + random.nextDouble()/10.0;
+			//ucsBid = 0.1 + random.nextDouble()/10.0;
+			ucsBid = ucsBidCalculator(1);
 			System.out.println("Day " + day + ": ucs level reported: " + ucsLevel);
 		} else {
 			System.out.println("Day " + day + ": Initial ucs bid is " + ucsBid);
-		}
+		//}
 
 		/* Note: Campaign bid is in millis */
 		System.out.println("Day " + day + ": Submitting Campaign bid (millis): " + (long)(cmpBid*1000));
@@ -434,6 +434,7 @@ public class AgentNAMM extends Agent {
 		/* TODO ALUN: Fix bug where day 0 isn't bid for
 		 *	- Harder than expected the error moves position on the first day of each run
 		 */
+		}
 	}
 
 	/**
@@ -520,8 +521,6 @@ public class AgentNAMM extends Agent {
 	 */
 	protected void sendBidAndAds() {
 
-<<<<<<< HEAD
-
 		/**
 		 * TODO: MB, Remove this block for final version
 		 */
@@ -530,9 +529,6 @@ public class AgentNAMM extends Agent {
 		// csvWriter = new FileWriter("c:\\temp\\queries.csv");
 		// StringBuilder csvLine = new StringBuilder();
 
-
-=======
->>>>>>> 11bfcd113528206aa17ce1e62c58247858fa11a1
 		bidBundle = new AdxBidBundle();
 		int dayBiddingFor = day + 1;
 		double rbid = 10000.0;
@@ -580,6 +576,7 @@ public class AgentNAMM extends Agent {
                     rbid = ImpressionBidCalculator(entCount - qryCount, query);
 					bidBundle.addQuery(query, rbid, new Ad(null), currCampaign.id, 1);
                     System.out.println("#####SENDBIDANDADS##### BidVal:" + rbid + " PPM:" + rbid/(entCount-qryCount));
+                    //System.out.println("###QUERY### " + query.toString() + ", CampaingId: " + currCampaign.id);
                     qryCount = entCount;
 				}
 			}
@@ -822,7 +819,6 @@ public class AgentNAMM extends Agent {
 		double reachFulfillment;
 		double estUcsCostAcc;
 
-<<<<<<< HEAD
 		double popInSegmentOfOurCampaign;
 		double impCostAvg;
 		double ReservePriceEstimated;
@@ -830,9 +826,6 @@ public class AgentNAMM extends Agent {
 		double impressionCostEstimate;
 		double impCostEstThisDay;
 
-=======
-		// Constructors
->>>>>>> 11bfcd113528206aa17ce1e62c58247858fa11a1
 		public CampaignData(InitialCampaignMessage icm) {
 			reachImps = icm.getReachImps();
 			dayStart = icm.getDayStart();
@@ -864,15 +857,12 @@ public class AgentNAMM extends Agent {
 			qualityChange = 0.0;
 			estQualityChange = 0.0;
 			estQualityChangeAcc = 0.0;
-<<<<<<< HEAD
-
 			popInSegmentOfOurCampaign = 0;
 			impCostAvg = 0;
 			ReservePriceEstimated = 0;
 			ReservePriceThisDay = 0;
 			impCostEstThisDay = 0;
 			impressionCostEstimate = 0;
-=======
 			game = startInfo.getSimulationID();
 		}
 		public CampaignData(int game, Long reachImps, long dayStart, long dayEnd, Set<MarketSegment> targetSegment,
@@ -943,9 +933,31 @@ public class AgentNAMM extends Agent {
 			ucsCost = 0;
 			estQualityChangeAcc = 0.0;
 			game = startInfo.getSimulationID();
->>>>>>> 11bfcd113528206aa17ce1e62c58247858fa11a1
+
+			popInSegmentOfOurCampaign = 0;
+			impCostAvg = 0;
+			ReservePriceEstimated = 0;
+			ReservePriceThisDay = 0;
+			impCostEstThisDay = 0;
+			impressionCostEstimate = 0;
 		}
 
+		// updates campaign statistics after it has ended
+		public void update(double revenue) {
+			this.setRevenue(revenue);
+			this.setProfit();
+			this.setEstCostAcc();
+			this.setUncorrectedProfitAcc();
+			this.setEstProfitAcc();
+			this.setImpTargetFulfillment();
+			this.setProfitPerImpression();
+			this.setReachFulfillment();
+			this.setBidVs2ndRatio();
+			this.setQualityChange();
+			this.setEstQualityChangeAcc();
+			this.setEstUcsCostAcc();
+		}
+		
 		// Setters
 		// TODO ALUN: debug setters
 		public void setQualityChange() {
@@ -994,58 +1006,6 @@ public class AgentNAMM extends Agent {
 		}
 		public void setProfitPerImpression(){
 			profitPerImpression = profit / (stats.getTargetedImps() + stats.getOtherImps());
-		}
-
-<<<<<<< HEAD
-		public CampaignData(CampaignOpportunityMessage com) {
-			dayStart = com.getDayStart();
-			dayEnd = com.getDayEnd();
-			id = com.getId();
-			reachImps = com.getReachImps();
-			targetSegment = com.getTargetSegment();
-			mobileCoef = com.getMobileCoef();
-			videoCoef = com.getVideoCoef();
-			stats = new CampaignStats(0, 0, 0);
-			budget = 0.0;
-			cmpBid = 0.0;
-			estUcsCostAcc = 0.0;
-			impressionTarget = reachImps;
-			revenue = 0;
-			profit = 0.0;
-			profitEstimate = 0.0;
-			uncorrectedProfitEstimate = 0.0;
-			costEstimate = 0.0;
-			reachFulfillment = 0.0;
-			estImpCost = 0.0;
-			qualityChange = 0.0;
-			estUcsCost = 0.0;
-			estQualityChange = 0.0;
-			ucsCost = 0;
-			estQualityChangeAcc = 0.0;
-
-			popInSegmentOfOurCampaign = 0;
-			impCostAvg = 0;
-			ReservePriceEstimated = 0;
-			ReservePriceThisDay = 0;
-			impCostEstThisDay = 0;
-			impressionCostEstimate = 0;
-=======
-
-		// updates campaign statistics after it has ended
-		public void update(double revenue) {
-			this.setRevenue(revenue);
-			this.setProfit();
-			this.setEstCostAcc();
-			this.setUncorrectedProfitAcc();
-			this.setEstProfitAcc();
-			this.setImpTargetFulfillment();
-			this.setProfitPerImpression();
-			this.setReachFulfillment();
-			this.setBidVs2ndRatio();
-			this.setQualityChange();
-			this.setEstQualityChangeAcc();
-			this.setEstUcsCostAcc();
->>>>>>> 11bfcd113528206aa17ce1e62c58247858fa11a1
 		}
 
 		@Override
@@ -1641,7 +1601,6 @@ public class AgentNAMM extends Agent {
 	 *  all days of the prospective campaign to evaluate total cost to complete campaign.
 	 */
 	private double impressionCostEstimate(long impTarget, long day, int ucsTargetLevel) {
-<<<<<<< HEAD
 	return 0.0006*impTarget;
 	}
 	private double ImpressionCostEstimator() {
@@ -1953,13 +1912,6 @@ public class AgentNAMM extends Agent {
 		}
 		System.out.println("Estimate Cost of all impressions: " + EstimateCostOfImpressionsToday);
 		return EstimateCostOfImpressionsToday;
-=======
-
-
-		// You can now access impression targets from campaign data;
-		// e.g. pendingCampaign.impressionTarget
-		return 0.0006 * impTarget; // default value 0.0006 per impression
->>>>>>> 11bfcd113528206aa17ce1e62c58247858fa11a1
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1994,7 +1946,20 @@ public class AgentNAMM extends Agent {
 	 */
 	private double ucsBidCalculator(int ucsTargetLevel){
 		// TODO;
-		return 0;
+		return ucsBid();
+	}
+	
+	private double ucsBid(){
+		double initbid = 0.9999;
+		double scale = 0.4371;
+		double ucsbid;
+
+		if(day <= 10)
+		 {ucsbid = initbid;}
+		else
+		    {ucsbid = scale*Math.cbrt(myCampaigns.size());}  // avg n of campaigns 60/8=7.5   cbrt(7.5)=1.957434
+
+		return ucsbid;    // avg bid = 0.8556
 	}
 
 	/**
