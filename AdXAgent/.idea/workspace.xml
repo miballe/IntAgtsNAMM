@@ -1,26 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bdda3306-a315-4c5f-8e0f-77b534bca9f3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingparticipants.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingparticipants.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingsimulations.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_comingsimulations.dat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/infodb/localhost_state.dat" afterPath="$PROJECT_DIR$/../AdXServer/infodb/localhost_state.dat" />
+    <list default="true" id="b8d47181-fdd7-4794-be3c-277d03d0c306" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm0.log.1" afterPath="$PROJECT_DIR$/logs/namm0.log.1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm1.log.1" afterPath="$PROJECT_DIR$/logs/namm1.log.1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm2.log.1" afterPath="$PROJECT_DIR$/logs/namm2.log.1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm3.log.1" afterPath="$PROJECT_DIR$/logs/namm3.log.1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm4.log.1" afterPath="$PROJECT_DIR$/logs/namm4.log.1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm5.log.1" afterPath="$PROJECT_DIR$/logs/namm5.log.1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/namm6.log.1" afterPath="$PROJECT_DIR$/logs/namm6.log.1" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/soton/intagts/AgentNAMM.java" afterPath="$PROJECT_DIR$/soton/intagts/AgentNAMM.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/logs/localhost0.log" afterPath="$PROJECT_DIR$/../AdXServer/logs/localhost0.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../AdXServer/logs/localhost1.log" afterPath="$PROJECT_DIR$/../AdXServer/logs/localhost1.log" />
     </list>
     <ignored path="adx-agent.iws" />
     <ignored path=".idea/workspace.xml" />
-    <ignored path="$PROJECT_DIR$/.idea/" />
-    <ignored path="$PROJECT_DIR$/logs/" />
+    <ignored path="$PROJECT_DIR$/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,21 +26,14 @@
     <favorites_list name="adx-agent" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
       <file leaf-file-name="AgentNAMM.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/soton/intagts/AgentNAMM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.9505062">
-              <caret line="1390" column="15" selection-start-line="1390" selection-start-column="15" selection-end-line="1390" selection-end-column="15" />
+            <state vertical-scroll-proportion="0.8484849">
+              <caret line="1862" column="36" selection-start-line="1862" selection-start-column="36" selection-end-line="1862" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-                <element signature="method#setQualityChange#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-                <element signature="method#setImpTargetFulfillment#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-                <element signature="method#setBidVs2ndRatio#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-                <element signature="method#setProfitPerImpression#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-                <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-                <element signature="method#setImpressionTargets#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -60,10 +42,7 @@
     </leaf>
   </component>
   <component name="Git.Settings">
-    <option name="UPDATE_TYPE" value="MERGE" />
-    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-    <option name="AUTO_COMMIT_ON_CHERRY_PICK" value="true" />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -73,7 +52,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/soton/intagts/AgentNAMM.java" />
       </list>
     </option>
@@ -84,7 +62,7 @@
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -95,7 +73,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -108,15 +86,88 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adx-agent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adx-agent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AdXAgent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adx-agent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AdXAgent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="soton" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="intagts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adx-agent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AdXAgent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <option name="show-excluded-files" value="false" />
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adx-agent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adx-agent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/AgentNAMM.jar!/" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor" />
-    <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/commons-lang3-3.1.jar!/" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/soton/intagts" />
   </component>
   <component name="RunManager" selected="Application.Unnamed">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -367,10 +418,10 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="tau.tac.adx.agentware.Main" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="-config config/agent1.conf" />
+      <option name="PROGRAM_PARAMETERS" value="-config config/namm1.conf" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="ALTERNATIVE_JRE_PATH" value="C:\Program Files\Java\jdk1.8.0_60\jre" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
@@ -388,58 +439,48 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bdda3306-a315-4c5f-8e0f-77b534bca9f3" name="Default" comment="" />
-      <created>1449091116736</created>
+      <changelist id="b8d47181-fdd7-4794-be3c-277d03d0c306" name="Default" comment="" />
+      <created>1448831644023</created>
       <option name="number" value="Default" />
-      <updated>1449091116736</updated>
+      <updated>1448831644023</updated>
     </task>
-    <task id="LOCAL-00001" summary="Completed debugging of campaign data summary statistics printed to console on completion of a campaign... Game summary statistics are still buggy (revenue is certainly accurate).">
-      <created>1449254563043</created>
-      <option name="number" value="00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1449254563043</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Adding to performancedata class&#10;">
-      <created>1449337018218</created>
-      <option name="number" value="00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1449337018219</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Attempt to log campaign data in csv&#10;">
-      <created>1449347923760</created>
-      <option name="number" value="00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1449347923760</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="false" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970768" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32834807" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36197916" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19010417" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16979167" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29492602" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3261105" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1988273" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -453,16 +494,8 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Completed debugging of campaign data summary statistics printed to console on completion of a campaign... Game summary statistics are still buggy (revenue is certainly accurate)." />
-    <MESSAGE value="Adding to performancedata class&#10;" />
-    <MESSAGE value="Attempt to log campaign data in csv&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Attempt to log campaign data in csv&#10;" />
-  </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="2" />
-    </breakpoint-manager>
+    <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -476,13 +509,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setQualityChange#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setImpTargetFulfillment#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setBidVs2ndRatio#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setProfitPerImpression#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setImpressionTargets#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -493,13 +519,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setQualityChange#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setImpTargetFulfillment#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setBidVs2ndRatio#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setProfitPerImpression#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setImpressionTargets#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -510,44 +529,16 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setQualityChange#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setImpTargetFulfillment#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setBidVs2ndRatio#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setProfitPerImpression#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setImpressionTargets#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55689657">
-          <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/adx-1.2.8.jar!/tau/tac/adx/report/demand/CampaignReport.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03626943">
-          <caret line="11" column="51" selection-start-line="6" selection-start-column="0" selection-end-line="11" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/soton/intagts/AgentNAMM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.9505062">
-          <caret line="1390" column="15" selection-start-line="1390" selection-start-column="15" selection-end-line="1390" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.8484849">
+          <caret line="1862" column="36" selection-start-line="1862" selection-start-column="36" selection-end-line="1862" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#CampaignData#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setQualityChange#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setImpTargetFulfillment#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setBidVs2ndRatio#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setProfitPerImpression#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#CampaignData#1;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
-            <element signature="method#setImpressionTargets#0;class#CampaignData#0;class#AgentNAMM#0" expanded="false" />
           </folding>
         </state>
       </provider>

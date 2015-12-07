@@ -1,20 +1,31 @@
-05/12 21:52:29 INFO file.FileDatabase|infodb: database opened as C:\Users\Alun\Documents\Work\DataScience\Southampton\IntelligentAgents\gitRepo\IntAgtsNAMM\AdXServer\infodb
-05/12 21:52:29 INFO common.BlockingViewerServer|viewer server started at *:4042
-05/12 21:52:30 INFO sim.Admin|adding manager for simulation type tac13adx
-05/12 21:52:30 INFO server.TACTGateway|TACT Server started at *:6502
-05/12 21:52:50 INFO server.TACTChannel|user namm logged in as namm@tact-1 with version 0.9.6 from 127.0.0.1
-05/12 21:52:50 INFO sim.Admin|created simulation 194
-05/12 21:53:00 FINE sim.Admin|Entering log for simulation 195
+07/12 03:49:36 INFO file.FileDatabase|infodb: database opened as C:\Users\Miguel\Documents\GitHub\IntAgtsNAMM\AdXServer\infodb
+07/12 03:49:36 FINEST file.FileDatabase|infodb: loaded table users
+07/12 03:49:36 INFO common.BlockingViewerServer|viewer server started at *:4042
+07/12 03:49:37 FINEST file.FileDatabase|infodb: loaded table localhost_state
+07/12 03:49:37 FINEST file.FileDatabase|infodb: loaded table localhost_comingparticipants
+07/12 03:49:37 FINEST file.FileDatabase|infodb: loaded table localhost_comingsimulations
+07/12 03:49:37 FINEST file.FileDatabase|infodb: loaded table localhost_competitionparts
+07/12 03:49:37 FINEST file.FileDatabase|infodb: loaded table localhost_competitions
+07/12 03:49:37 FINEST file.FileDatabase|infodb: loaded table localhost_competitionresults
+07/12 03:49:37 INFO sim.Admin|adding manager for simulation type tac13adx
+07/12 03:49:37 INFO server.TACTGateway|TACT Server started at *:6502
+07/12 03:49:42 FINEST tact.TACTConnection|tact-1: new connection from 127.0.0.1:63822
+07/12 03:49:42 INFO server.TACTChannel|user namm logged in as namm@tact-1 with version 0.9.6 from 127.0.0.1
+07/12 03:49:43 INFO sim.Admin|created simulation 221
+07/12 03:50:00 FINE sim.Admin|Entering log for simulation 221
 ************************************************************
-* Entering log for simulation 195
+* Entering log for simulation 221
 ************************************************************
 
 
-05/12 22:03:00 INFO sim.Admin|created simulation 195
-05/12 22:03:01 INFO is.TACAAResultManager|generating results for simulation 195 to public_html\localhost\history\195\index.html
-05/12 22:04:00 FINE sim.Admin|Entering log for simulation 196
-************************************************************
-* Entering log for simulation 196
-************************************************************
-
-
+07/12 04:00:02 FINER sim.MessageDispatcher|message dispatcher sim221 stopped
+07/12 04:00:03 INFO is.TACAAResultManager|generating results for simulation 221 to public_html\localhost\history\221\index.html
+07/12 04:00:03 FINEST common.SimServer|adding simulation 221 to public_html\localhost\history\simtable-12.html
+07/12 04:00:08 SEVERE tact.TACTConnection|namm@tact-1: reading error 
+java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.net.SocketInputStream.read(Unknown Source)
+	at java.io.DataInputStream.readInt(Unknown Source)
+	at se.sics.isl.tact.TACTConnection$TACTReader.run(TACTConnection.java:405)
+07/12 04:00:08 FINEST tact.TACTConnection|namm@tact-1: connection closed from 127.0.0.1

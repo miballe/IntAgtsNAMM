@@ -1,0 +1,1 @@
+GameId,BidDay,CampId,AdType,Device,Publisher,Gender,Income,Age,BidCount,WinCount,TotalCost,CostImpr
