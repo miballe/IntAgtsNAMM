@@ -7,7 +7,9 @@ import edu.umich.eecs.tac.props.Query;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileReader;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -43,8 +45,7 @@ import tau.tac.adx.report.publisher.AdxPublisherReportEntry;
 import tau.tac.adx.users.properties.Age;
 import tau.tac.adx.users.properties.Gender;
 import tau.tac.adx.users.properties.Income;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -121,6 +122,16 @@ public class AgentNAMM extends Agent {
 	private AdxBidBundle bidBundle;
 
 	/*
+	*  Perceptrons
+	 */
+	// TODO ALUN ALUN
+	double ucsPerceptron;
+	double ucsAlpha = 0.01;
+	double profitablePerceptron;
+	double profitAlpha = 50;
+	double reachPerceptron = 1;
+	double reachAlpha = 50;
+	/*
 	 * The current bid level for the user classification service
 	 */
 	double ucsBid;
@@ -148,6 +159,7 @@ public class AgentNAMM extends Agent {
 	 *  Note it is not reset each day on purpose so there is a default value in case we fail to calculate a bid in time.
 	 */
 	double cmpBid;
+	double cmpBidPerImp = 0.8;
 
 	/*
 	 * current day of simulation
@@ -292,7 +304,7 @@ public class AgentNAMM extends Agent {
 		// Load historic campaigns into a list
 		String workingDir = System.getProperty("user.dir");
 		System.out.println("Loading Historic Campaigns...");
-		historicCampaigns.loadDataFromFile(workingDir + "\\cmpLog.csv");
+		historicCampaigns.loadDataFromFile(workingDir + "/cmpLog.csv");
 		System.out.println("Number of Campaigns loaded:" + historicCampaigns.getNumberOfRecords());
 	}
 
@@ -320,6 +332,24 @@ public class AgentNAMM extends Agent {
 
 				// Update performance data
 				performanceData.updateData(campaign);
+				// TODO: ALUN ALUN
+				// update perceptrons
+				//profitablePerceptron *= profitAlpha*(campaign.revenue - campaign.stats.getCost() - 0.2);
+				//reachPerceptron += reachAlpha*campaign.reachFulfillment;
+				profitablePerceptron = 1;
+				reachPerceptron = (1 + ((1 - campaign.impTargetFulfillment) / 10));
+				if(reachPerceptron > 2){
+					reachPerceptron = 2;
+				}
+				else if (reachPerceptron < 0.5) {
+					reachPerceptron = 0.5;
+				}
+				else{
+					reachPerceptron = 1;
+				}
+				ucsPerceptron += ucsAlpha*campaign.ucsCost;
+				
+				System.out.println("### PERCEPTRON - ProfPerceptron: " + profitablePerceptron + ", reachPerceptron:" + reachPerceptron + ", UCSPerceptron:" + ucsPerceptron);
 
 				// Print relevant performance statistics
 				System.out.printf(
@@ -378,6 +408,13 @@ public class AgentNAMM extends Agent {
 		pendingCampaign = new CampaignData(com);
 		System.out.println("Day " + day + ": Campaign opportunity" + pendingCampaign);
 
+		ImpressionCostEstimator();
+
+		// TODO ALUN ALUN
+		ucsPerceptron += ucsAlpha*(0.8-adNetworkDailyNotification.getServiceLevel())/0.8;
+
+
+		System.out.println(" ~~ UCS perceptron: " + ucsPerceptron + " Reach perceptron: " + reachPerceptron + " Profitable Perceptron: " + profitablePerceptron);
 		long cmpimps = com.getReachImps();
 		int startDays = 5;
 		// Starting strategy for first few days
@@ -424,7 +461,7 @@ public class AgentNAMM extends Agent {
 			System.out.println("Day " + day + ": ucs level reported: " + ucsLevel);
 		} else {
 			System.out.println("Day " + day + ": Initial ucs bid is " + ucsBid);
-		//}
+		}
 
 		/* Note: Campaign bid is in millis */
 		System.out.println("Day " + day + ": Submitting Campaign bid (millis): " + (long)(cmpBid*1000));
@@ -434,7 +471,7 @@ public class AgentNAMM extends Agent {
 		/* TODO ALUN: Fix bug where day 0 isn't bid for
 		 *	- Harder than expected the error moves position on the first day of each run
 		 */
-		}
+
 	}
 
 	/**
@@ -510,7 +547,6 @@ public class AgentNAMM extends Agent {
 		System.out.println("Day " + day + " : Simulation Status Received");
         System.out.println("###SIMSTAT### " + simulationStatus.toString());
 		sendBidAndAds();
-		ImpressionCostEstimator();
 		System.out.println("Day " + day + " ended. Starting next day");
 		++day;
 	}
@@ -573,18 +609,61 @@ public class AgentNAMM extends Agent {
 							entCount += currCampaign.videoCoef + currCampaign.mobileCoef;
 						}
 					}
-                    rbid = ImpressionBidCalculator(entCount - qryCount, query);
-					bidBundle.addQuery(query, rbid, new Ad(null), currCampaign.id, 1);
-                    System.out.println("#####SENDBIDANDADS##### BidVal:" + rbid + " PPM:" + rbid/(entCount-qryCount));
-                    //System.out.println("###QUERY### " + query.toString() + ", CampaingId: " + currCampaign.id);
+					/*
+					// Lookup past campaigns
+					// if unprofitable bid lower
+					// if reach ratio < 1 bid higher.
+					double numProfit = 0;
+					double numUnprofit = 0;
+					for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
+						CampaignData campaign = entry.getValue();
+						if (campaign.dayEnd < day){
+							if (campaign.profit > 0) { numProfit++;}
+							else numUnprofit++;
+						}
+					}
+					double proportionprofit = numProfit/numUnprofit;
+
+					// Lookup past campaigns
+					// if unprofitable bid lower
+					// if reach ratio < 1 bid higher.
+					double reachMet = 0;
+					double reachUnmet = 0;
+					for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
+						CampaignData campaign = entry.getValue();
+						if (campaign.dayEnd < day){
+							if (campaign.profit > 0) { numProfit++;}
+							else numUnprofit++;
+						}
+					}
+					double proportionReachMet = reachMet/reachUnmet; */
+
+
+
+						for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
+						CampaignData campaign = entry.getValue();
+						if ((campaign.dayStart <= day) & (campaign.dayEnd >= day)) {
+							double rbidOld = ImpressionBidCalculator(entCount - qryCount, query);
+							rbid = campaign.impCostEstThisDay * 500;
+							// TODO: ALUN ALUN
+							//rbid = rbid * (reachPerceptron * profitablePerceptron);
+							rbid = rbidOld;
+							System.out.println("old " + rbidOld + " new " + rbid);
+							bidBundle.addQuery(query, rbid, new Ad(null), campaign.id, 1);
+							System.out.println("#####SENDBIDANDADS##### BidVal:" + rbid + " PPM:" + rbid / (entCount - qryCount) + ", IMPCOSTEST:" + campaign.impCostEstThisDay);
+
+							double impressionLimit = campaign.impsTogo();
+							double budgetLimit = campaign.budget;
+							bidBundle.setCampaignDailyLimit(campaign.id,
+									(int) impressionLimit, budgetLimit);
+
+						}
+					}
+						//System.out.println("###QUERY### " + query.toString() + ", CampaingId: " + currCampaign.id);
                     qryCount = entCount;
 				}
 			}
 
-			double impressionLimit = currCampaign.impsTogo();
-			double budgetLimit = currCampaign.budget;
-			bidBundle.setCampaignDailyLimit(currCampaign.id,
-					(int) impressionLimit, budgetLimit);
 
 			System.out.println("Day " + day + " Bid Bundle: Updated " + entCount
 					+ " Bid Bundle entries for Campaign id " + currCampaign.id);
@@ -672,7 +751,6 @@ public class AgentNAMM extends Agent {
 		log.fine("AdNet " + getName() + " simulationSetup");
 
         impressionBidHistory.loadFile();
-        impressionBidHistory.saveFile();
 	}
 
 	@Override
@@ -1321,14 +1399,20 @@ public class AgentNAMM extends Agent {
 	 *campaign in this game (or reserve price).
 	*/
 	private double bidTooHigh(long cmpimps, int percentFailure) {
-		double bidHighHistoric = historicCampaigns.expectedHighBid(percentFailure);
-		double bidHighCurrent = expectedHighBid();
+		double bidHighCurrent;
+		double bidHighHistoric;
+		if (historicCampaigns.expectedHighBid(percentFailure) > 0){
+			bidHighHistoric = historicCampaigns.expectedHighBid(percentFailure);
+		} else bidHighHistoric = 0;
+		if (expectedHighBid() > 0) {bidHighCurrent = expectedHighBid();}
+		else bidHighCurrent = 0;
 		double reserve = (0.001*cmpimps*percentFailure)/100;
 		double bidHigh = Math.min(1.1*Math.max(bidHighHistoric, bidHighCurrent), reserve);
+		System.out.println("bidHighHistoric, " + bidHighHistoric + " bidHighCurrent " + bidHighCurrent + " reserve, " + reserve);
 		// Make sure bid is still below maximum price.
 		double bidMax = 0.001 * cmpimps * adNetworkDailyNotification.getQualityScore();
 		if(bidHigh >= reserve) {bidHigh = bidMax;}
-		System.out.print(" MaxBid: " + (long)(1000*bidMax) + " MinMax: " + (long)(1000*bidHigh));
+		System.out.print(" MaxBid: " + (long)(1000*bidMax) + " MinMax: " + (long)(1000*reserve) + " Bid " + bidHigh + "@@@");
 		return bidHigh;
 	}
 
@@ -1342,7 +1426,7 @@ public class AgentNAMM extends Agent {
 		Random random = new Random();
 		double bid, bidFactor;
 		double totalCostPerImp = 0.0;
-		if (myCampaigns.size() > 1) {
+		if (myCampaigns.size() >= 3) {
 			for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
 				if (entry.getValue().dayStart != 1) {
 					totalCostPerImp += entry.getValue().budget / entry.getValue().reachImps;
@@ -1351,8 +1435,11 @@ public class AgentNAMM extends Agent {
 			bidFactor = (random.nextInt(40)/100) + 0.8;
 			bid = pendingCampaign.reachImps * totalCostPerImp / (myCampaigns.size() -1) * bidFactor;
 		}
-		else bid = (double)random.nextInt(pendingCampaign.reachImps.intValue())/1000; //Random bid initially
-
+		//else bid = (double)random.nextInt(pendingCampaign.reachImps.intValue())/1000; //Random bid initially
+		else {
+			cmpBidPerImp *= 0.9;
+			bid = cmpBidPerImp * pendingCampaign.reachImps;
+		}
 		System.out.println("Day " + day + ": Campaign - Base bid(millis): " + (long)(1000*bid));
 		return bid;
 
@@ -1885,9 +1972,9 @@ public class AgentNAMM extends Agent {
 						EstimateCostOfImpressionsToday = EstimateCostOfImpressionsToday + itemFor1.impCostEstThisDay;
 						// Correct with days: at the end there is less competence *60/(60+day)
 
-						System.out.println("####################################################################");
-						System.out.println("Campañas activas de NAMM: " + campaign.getValue().id +";  Estimation: " +itemFor1.impCostEstThisDay);
-						System.out.println("####################################################################");
+						//System.out.println("####################################################################");
+						System.out.println("Active Campaigns NAMM: " + campaign.getValue().id +";  Estimation: " +itemFor1.impCostEstThisDay);
+						//System.out.println("####################################################################");
 
 
 						/*System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
@@ -1948,16 +2035,28 @@ public class AgentNAMM extends Agent {
 		// TODO;
 		return ucsBid();
 	}
-	
-	private double ucsBid(){
-		double initbid = 0.9999;
-		double scale = 0.4371;
-		double ucsbid;
 
-		if(day <= 10)
-		 {ucsbid = initbid;}
-		else
-		    {ucsbid = scale*Math.cbrt(myCampaigns.size());}  // avg n of campaigns 60/8=7.5   cbrt(7.5)=1.957434
+	//TODO ALUN ALUN
+	private double ucsBid(){
+		double initbid = 0.25;
+		double scale = 0.17;
+		double ucsbid = 0;
+		int numRunningCampaings = 0;
+		for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
+			if ((entry.getValue().dayEnd >= day) & (entry.getValue().dayStart <= day))	{
+				numRunningCampaings ++;
+			}
+		}
+		if (numRunningCampaings != 0)
+		{
+			if (day <= 10)
+			 {ucsbid = initbid;}
+			else
+			{
+			ucsbid = scale*Math.cbrt(numRunningCampaings);
+			}  // avg n of campaigns 60/8=7.5   cbrt(7.5)=1.957434
+			ucsbid = ucsbid + ucsPerceptron;			
+		}
 
 		return ucsbid;    // avg bid = 0.8556
 	}
@@ -1976,7 +2075,7 @@ public class AgentNAMM extends Agent {
 	private double ImpressionBidCalculator(int impressionTarget, AdxQuery iQuery){
         BasicStatisticValues histImprStats;
         histImprStats = impressionBidHistory.getStatsPerAllCriteria(iQuery);
-		return histImprStats.mean * impressionTarget * 1000;
+		return (histImprStats.mean + (histImprStats.std * 2)) * 1000 * impressionTarget * 1000;
 	}
 
     /**
@@ -2100,15 +2199,16 @@ public class AgentNAMM extends Agent {
                 sIncome = null;
             }
 
-            System.out.println("#####STATSALLCRITERIA##### " + pQuery.toString());
+            // System.out.println("#####STATSALLCRITERIA##### " + pQuery.toString());
 
-            if(sGender != null && sAge != null && sIncome != null){
-                System.out.print("#####STATSALLCRITERIA##### Gender + Age + Income");
+            if(sGender != null || sAge != null || sIncome != null){
+                // System.out.print("#####STATSALLCRITERIA##### Gender + Age + Income");
                 for(ImpressionRecord rEntry : impressionList) {
-                    if(rEntry.mktSegGender == sGender && rEntry.mktSegAge == sAge && rEntry.mktSegIncome == sIncome && rEntry.adType == pQuery.getAdType() && rEntry.dev == pQuery.getDevice()) {
+                    if(rEntry.lostCount == 0) {
+                    	// rEntry.mktSegGender == sGender && rEntry.mktSegAge == sAge && rEntry.mktSegIncome == sIncome && rEntry.adType == pQuery.getAdType() && rEntry.dev == pQuery.getDevice()
                         //  && rEntry.pub == pQuery.getPublisher() && rEntry.lostCount == 0
                         statsCalc.addValue(rEntry.costImpr);
-                        System.out.print(".");
+                        //System.out.print(".");
                     }
                 }
             }
@@ -2167,7 +2267,7 @@ public class AgentNAMM extends Agent {
                 }
             }
 
-            System.out.println("#####STATSALLCRITERIA##### Items added: " + statsCalc.getN());
+            // System.out.println("#####STATSALLCRITERIA##### Items added: " + statsCalc.getN());
             if(statsCalc.getN() > 0) {
                 returnVal.mean = statsCalc.getMean();
                 returnVal.std = statsCalc.getStandardDeviation();
@@ -2191,12 +2291,12 @@ public class AgentNAMM extends Agent {
          */
         public void saveFile(){
             String workingDir = System.getProperty("user.dir");
-            String fName = workingDir + "\\BHFull.csv";
+            String fName = workingDir + "/BHFull.csv";
             String fLine;
             System.out.println("#####SAVEFILE##### Starting file save. Length:" + impressionList.size());
             try {
                 FileWriter csvFw = new FileWriter(fName);
-                csvFw.write("GameId,BidDay,CampId,AdType,Device,Publisher,Gender, MktGender,Income,MktIncome,Age,MktAge,BidCount,WinCount,TotalCost,CostImpr,LostCount" + System.lineSeparator());
+                csvFw.write("GameId,BidDay,CampId,AdType,Device,Publisher,Gender,MktGender,Income,MktIncome,Age,MktAge,BidCount,WinCount,TotalCost,CostImpr,LostCount" + System.lineSeparator());
                 for(ImpressionRecord sRecord : impressionList){
                     fLine = sRecord.toCsv();
                     if(fLine != null) {csvFw.write(fLine + System.lineSeparator());}
@@ -2204,12 +2304,13 @@ public class AgentNAMM extends Agent {
                 csvFw.close();
             } catch(IOException ex){
                 System.out.println("##### ERR Writing the CSV File #####");
+                ex.printStackTrace();
             }
         }
 
         public void loadFile(){
             String workingDir = System.getProperty("user.dir");
-            String fName = workingDir + "\\BHFull.csv";
+            String fName = workingDir + "/BHFullStart.csv";
             String fLine;
             BufferedReader br;
             ImpressionRecord iRecord;
@@ -2218,31 +2319,36 @@ public class AgentNAMM extends Agent {
             Gender fGender;
             Income fIncome;
             Age fAge;
-            String[] fValues;
+            String readValue;
+            
             try {
-                br = new BufferedReader(new FileReader(fName));
-                fLine = br.readLine(); // Ignores the first line that contains the headers
-                while ((fLine = br.readLine()) != null) {
-                    fValues = fLine.split(",");
+                File fileDir = new File(fName);
+                BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fileDir), "UTF8"));
+            	
+                fLine = in.readLine(); // Ignores the first line that contains the headers
+                while ((fLine = in.readLine()) != null) {
+                	String[] fValues = fLine.split(",");
                     // 0:GameId,1:BidDay,2:CampId,3:AdType,4:Device,5:Publisher,6:Gender,7:MktGender,8:Income,9:MktIncome,10:Age,11:MktAge,12:BidCount,13:WinCount,14:TotalCost,15:CostImpr,16:LostCount
-                    if(fValues[3].toString() == "text") { fAdType = AdType.text; } else { fAdType = AdType.video; }
-                    if(fValues[4].toString() == "pc") { fDevice = Device.pc; } else { fDevice = Device.mobile; }
-                    if(fValues[6].toString() == "male") { fGender = Gender.male; } else { fGender = Gender.female; }
-                    if(fValues[8].toString() == "low") { fIncome = Income.low; } else if(fValues[8].toString() == "medium") { fIncome = Income.medium; }
-                    else if(fValues[8].toString() == "high") { fIncome = Income.high; } else { fIncome = Income.very_high; }
-                    if(fValues[10].toString() == "Age_18_24") { fAge = Age.Age_18_24; } else if(fValues[10].toString() == "Age_25_34") { fAge = Age.Age_25_34; }
-                    else if(fValues[10].toString() == "Age_35_44") { fAge = Age.Age_35_44; } else if(fValues[10].toString() == "Age_45_54") { fAge = Age.Age_45_54; }
-                    else if(fValues[10].toString() == "Age_55_64") { fAge = Age.Age_55_64; } else { fAge = Age.Age_65_PLUS; }
+                    if(fValues[3].equals("text")) { fAdType = AdType.text; } else { fAdType = AdType.video; }
+                    if(fValues[4].equals("pc")) { fDevice = Device.pc; } else { fDevice = Device.mobile; }
+                    if(fValues[6].equals("male")) { fGender = Gender.male; } else { fGender = Gender.female; }
+                    if(fValues[8].equals("low")) { fIncome = Income.low; } else if(fValues[8].equals("medium")) { fIncome = Income.medium; }
+                    else if(fValues[8].equals("high")) { fIncome = Income.high; } else { fIncome = Income.very_high; }
+                    if(fValues[10].equals("Age_18_24")) { fAge = Age.Age_18_24; } else if(fValues[10].equals("Age_25_34")) { fAge = Age.Age_25_34; }
+                    else if(fValues[10].equals("Age_35_44")) { fAge = Age.Age_35_44; } else if(fValues[10].equals("Age_45_54")) { fAge = Age.Age_45_54; }
+                    else if(fValues[10].equals("Age_55_64")) { fAge = Age.Age_55_64; } else { fAge = Age.Age_65_PLUS; }
                     iRecord = new ImpressionRecord(Integer.parseInt(fValues[0]), Integer.parseInt(fValues[1]), Integer.parseInt(fValues[2]),
                             fAdType, fDevice, fValues[5].toString(), fGender, fIncome, fAge, Integer.parseInt(fValues[12]), Integer.parseInt(fValues[13]), Double.parseDouble(fValues[14]));
                     impressionBidHistory.impressionList.add(iRecord);
-                    System.out.println("#####CSVLINE##### - " + fValues[3] + "," + fValues[4] + "," + fValues[6] + "," + fValues[8] + "," + fValues[10]);
+                    // System.out.println("#####CSVLINE##### - " + fValues[3] + "," + fValues[4] + "," + fValues[6] + "," + fValues[8] + "," + fValues[10]);
+                    // System.out.println("#####CSVLINE##### [] " + fAdType.toString() + "," + fDevice.toString() + "," + fGender.toString() + "," + fIncome.toString() + "," + fAge.toString());
                 }
                 System.out.println("#####LOADFILE##### Load file complete: " + impressionBidHistory.impressionList.size());
-                br.close();
+                in.close();
             }
             catch (IOException ex) {
                 System.out.println("#####LOADFILE##### EXCEPTION WHEN READING THE CSV!!!!!!");
+                ex.printStackTrace();
             }
         }
     }
@@ -2313,15 +2419,15 @@ public class AgentNAMM extends Agent {
         }
 
         public String toCsv(){
-            //if(totalCost > 0.000001) {
+            if(totalCost > 0.00000000001) {
                 return simId + "," + bidDay + "," + campId + "," + adType.toString() + "," +
                         dev.toString() + "," + pub + "," + segGender.toString() + "," + mktSegGender.toString() + "," +
                         segIncome.toString() + "," + mktSegIncome.toString() + "," + segAge.toString() + "," +
                         mktSegAge.toString() + "," + bidCount + "," + winCount + "," + totalCost + "," + costImpr + "," + lostCount;
-            //}
-            //else {
-            //    return null;
-            //}
+            }
+            else {
+                return null;
+            }
         }
     }
 
