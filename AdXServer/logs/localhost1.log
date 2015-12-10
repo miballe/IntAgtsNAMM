@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 10/12 14:44:32 INFO file.FileDatabase|infodb: database opened as C:\Users\Miguel\Documents\GitHub\IntAgtsNAMM\AdXServer\infodb
 10/12 14:44:32 FINEST file.FileDatabase|infodb: loaded table users
 10/12 14:44:32 INFO common.BlockingViewerServer|viewer server started at *:4042
@@ -15,6 +16,25 @@
 10/12 14:45:00 FINE sim.Admin|Entering log for simulation 225
 ************************************************************
 * Entering log for simulation 225
+=======
+07/12 17:01:01 INFO file.FileDatabase|infodb: database opened as /home/mabm1e15/github/IntAgtsNAMM/AdXServer/infodb
+07/12 17:01:01 FINEST file.FileDatabase|infodb: loaded table users
+07/12 17:01:01 INFO common.BlockingViewerServer|viewer server started at *:4042
+07/12 17:01:02 FINEST file.FileDatabase|infodb: loaded table localhost_state
+07/12 17:01:02 FINEST file.FileDatabase|infodb: loaded table localhost_comingparticipants
+07/12 17:01:02 FINEST file.FileDatabase|infodb: loaded table localhost_comingsimulations
+07/12 17:01:02 FINEST file.FileDatabase|infodb: loaded table localhost_competitionparts
+07/12 17:01:02 FINEST file.FileDatabase|infodb: loaded table localhost_competitions
+07/12 17:01:02 FINEST file.FileDatabase|infodb: loaded table localhost_competitionresults
+07/12 17:01:02 INFO sim.Admin|adding manager for simulation type tac13adx
+07/12 17:01:02 INFO server.TACTGateway|TACT Server started at *:6502
+07/12 17:01:09 FINEST tact.TACTConnection|tact-1: new connection from 127.0.0.1:60808
+07/12 17:01:09 INFO server.TACTChannel|user namm logged in as namm@tact-1 with version 0.9.6 from 127.0.0.1
+07/12 17:01:09 INFO sim.Admin|created simulation 253
+07/12 17:02:00 FINE sim.Admin|Entering log for simulation 251
+************************************************************
+* Entering log for simulation 251
+>>>>>>> cc071eddbae121b106bab561758b7babace52643
 ************************************************************
 
 
