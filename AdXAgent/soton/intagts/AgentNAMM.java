@@ -6,10 +6,13 @@ import edu.umich.eecs.tac.props.BankStatus;
 import edu.umich.eecs.tac.props.Query;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
+// Includes for file handling
+import java.io.*;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.InputStream;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -45,7 +48,6 @@ import tau.tac.adx.report.publisher.AdxPublisherReportEntry;
 import tau.tac.adx.users.properties.Age;
 import tau.tac.adx.users.properties.Gender;
 import tau.tac.adx.users.properties.Income;
-import java.io.*;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -175,11 +177,14 @@ public class AgentNAMM extends Agent {
 	/**
 	 * This property is the instance of a new NAMM class to keep record of all Ad-Net reports during a game execution.
 	 * The idea is to use historic data as reference to estimate new bid prices or provide values for some strategies.
+	 * Basically this is storing entries returned during the AdNetworkReport keeping record if the last bids were
+	 * successful, so it can be used as reference for later impresssion bids.
 	 */
 	private ImpressionHistory impressionBidHistory;
 
 	public AgentNAMM() {
 		campaignReports = new LinkedList<CampaignReport>();
+		// Initializes impression bid history variable when a new Agent instance is created
 		impressionBidHistory = new ImpressionHistory();
 		//campaignsInGame = new ArrayList<CampaignData>();
 	}
@@ -553,12 +558,15 @@ public class AgentNAMM extends Agent {
 
 	/**
 	 * Miguel
-	 *
+	 * Wrote additional code to the existing one to apply the impression bid strategy.
+	 * Basically the strategy consist of getting a history of previous bids regardless of whether were successful or not
+	 * and define the new bid (bid bundle) according to the best estimated price. As satarting point, the algorithm is using
+	 * a baseline gathered from test games with dummy agents and previous version of this agent.
 	 */
 	protected void sendBidAndAds() {
 
 		/**
-		 * TODO: MB, Remove this block for final version
+		 * Block below was not used. Instead, other blocks were used to store the AdNet report.
 		 */
 		// FileWriter csvWriter;
 		// try{
@@ -585,7 +593,7 @@ public class AgentNAMM extends Agent {
 			int qryCount = 0;
 
 			/**
-			 * TODO: MB, Consider overachieving campaigns when quality < 1
+			 * TODO: MB, Consider overachieving campaigns when quality < 1. This was attempted by using the history bid file.
 			 */
 			for (AdxQuery query : currCampaign.campaignQueries) {
 				if (currCampaign.impsTogo() - entCount > 0) {
@@ -643,7 +651,13 @@ public class AgentNAMM extends Agent {
 					for (Map.Entry<Integer, CampaignData> entry : myCampaigns.entrySet()) {
 						CampaignData campaign = entry.getValue();
 						if ((campaign.dayStart <= day) & (campaign.dayEnd >= day)) {
+							// This code was changed during the competition. Originally rbid was assigned the outcome of
+							// ImpressionBidCalculator that actually reads from the bid history file to determine a reasonable price
+							// During the competition this was changing too often and calculated prices were not the most accurate.
 							double rbidOld = ImpressionBidCalculator(entCount - qryCount, query);
+							// During the competition this was changed to get an initial value similar to the inherited agent
+							// and then adjusted some parameters to have higher chances to win more impression bids.
+							// Part of this implementation was the creation of an algorithm similar to Perceptron.
 							rbid = campaign.impCostEstThisDay * 500;
 							// TODO: ALUN ALUN
 							rbid = rbid * (reachPerceptron * profitablePerceptron);
@@ -748,12 +762,16 @@ public class AgentNAMM extends Agent {
 		campaignsInGame = new HashMap<Integer, CampaignData>();
 		log.fine("AdNet " + getName() + " simulationSetup");
 
+		// As soon as the simulation starts, the first action is to read the impression bid history to have
+		// a baseline for game bids.
 		impressionBidHistory.loadFile();
 	}
 
 	@Override
 	protected void simulationFinished() {
+		// Saves the impression bid history file with updates from the current game
 		impressionBidHistory.saveFile();
+		
 		campaignSaveFile();
 		campaignReports.clear();
 		bidBundle = null;
@@ -2069,6 +2087,8 @@ public class AgentNAMM extends Agent {
 
 	/**
 	 * Miguel: This method evaluates the bid for each impression query.
+	 * This method uses getStatsPerAllCriteria that filters records from the impression bid history by selecting only those
+	 * proved bids that are successful (all or most impressions won) to define the new base price (return line).
 	 */
 	private double ImpressionBidCalculator(int impressionTarget, AdxQuery iQuery){
 		BasicStatisticValues histImprStats;
@@ -2077,7 +2097,7 @@ public class AgentNAMM extends Agent {
 	}
 
 	/**
-	 * Class to keep a record of all historic bid results coming from the server. This ie useful for
+	 * Class to keep a record of all historic bid results coming from the server. This is useful for
 	 * future estimates and support in general the campaigns and impressions bidding strategy.
 	 */
 	private class ImpressionHistory {
@@ -2086,12 +2106,20 @@ public class AgentNAMM extends Agent {
 
 		/**
 		 * Constructor method. Basically initializes the ArrayList at the beginning of the game when
-		 * an instance of AgentNAMM is
+		 * an instance of AgentNAMM is created
 		 */
 		public ImpressionHistory(){
 			impressionList = new ArrayList<ImpressionRecord>();
 		}
 
+		/**
+		* Method to filter impression bid entries that are proven to be successful (bids = wons, or as implemented, 
+		* rEntry.lostCount == 0). This filter is applied for each specific target profile by checking the combination of 
+		* age, income and gender. The if sequence goes from the most specific cases to the most general ones. Finally,
+		* a statistical summary is created using a DescriptiveStatistics object from the org.apache.commons.math3 package.
+		*
+		* This method became obsolete during the development and was replaced by getStatsPerAllCriteria
+		**/
 		public BasicStatisticValues getStatsPerSegment(MarketSegment sGender, MarketSegment sAge, MarketSegment sIncome){
 			DescriptiveStatistics statsCalc = new DescriptiveStatistics();
 			BasicStatisticValues returnVal = new BasicStatisticValues();
@@ -2158,10 +2186,14 @@ public class AgentNAMM extends Agent {
 		}
 
 		/**
-		 * Calculates statistics for historic bid data, filtered by the query criteria
-		 * @param pQuery
-		 * @return
-		 */
+		* Method to filter impression bid entries that are proven to be successful (bids = wons, or as implemented, 
+		* rEntry.lostCount == 0). This filter is applied for each specific target profile by checking the combination of 
+		* age, income and gender. The if sequence goes from the most specific cases to the most general ones. Finally,
+		* a statistical summary is created using a DescriptiveStatistics object from the org.apache.commons.math3 package.
+		*
+		* This method was changed few times during the competition since filters were not working as expected, apparently due to
+		* a file encoding issue.
+		**/
 		public BasicStatisticValues getStatsPerAllCriteria(AdxQuery pQuery){
 			DescriptiveStatistics statsCalc = new DescriptiveStatistics();
 			BasicStatisticValues returnVal = new BasicStatisticValues();
@@ -2284,7 +2316,8 @@ public class AgentNAMM extends Agent {
 		}
 
 		/**
-		 * Method to save a file with the historic impressions bidding data
+		 * Method to save a file with the historic impressions bidding data. It basically opens the file stream and write each
+		 * line using the toCsv method from the ImpressionRecord class.
 		 */
 		public void saveFile(){
 			String workingDir = System.getProperty("user.dir");
@@ -2305,6 +2338,13 @@ public class AgentNAMM extends Agent {
 			}
 		}
 
+		/**
+		* This method reads the BHFull.csv file from the running directory to feed the impression bid strategy with
+		* historic data from previous games.
+		*
+		* This methods was changed several times during the competition as per inconsistencies identified at runtime
+		* that turned out to be a file encoding issue. It was fiexed using the .equals method from Strings.
+		**/
 		public void loadFile(){
 			String workingDir = System.getProperty("user.dir");
 			String fName = workingDir + "/BHFull.csv";
@@ -2353,7 +2393,7 @@ public class AgentNAMM extends Agent {
 	/**
 	 * Class to store a single line of data coming from the AdNet Report.
 	 * This class is used within Impression History to have a collection of historic records. This allows the
-	 * calculation of statistics and other indices to take decisions during the trading.
+	 * calculation of statistics and other indices to take decisions during the game.
 	 */
 	private class ImpressionRecord {
 		public int simId = 0;
@@ -2374,6 +2414,9 @@ public class AgentNAMM extends Agent {
 		public double costImpr = 0;
 		public int lostCount = 0;
 
+		/**
+		* Constructor using each property as parameter
+		**/
 		public ImpressionRecord(int pSimId, int pBidDay, int pCampId, AdType pAdType, Device pDev, String pPub, Gender pSegGender,
 								Income pSegIncome, Age pSegAge, int pBidCount, int pWinCount, double pTotalCost){
 			simId = pSimId;
@@ -2395,6 +2438,9 @@ public class AgentNAMM extends Agent {
 			lostCount = pBidCount - pWinCount;
 		}
 
+		/**
+		* Constructor using only the Report entry as parameter. All values are extracted within this method.
+		**/
 		public ImpressionRecord(AdNetworkReportEntry pReportEntry){
 			simId = startInfo.getSimulationID();
 			bidDay = day -1;
@@ -2415,6 +2461,9 @@ public class AgentNAMM extends Agent {
 			lostCount = bidCount - winCount;
 		}
 
+		/**
+		* Method to help with the file writing action by concatenating each value separated by a comma in a specified order.
+		**/
 		public String toCsv(){
 			if(totalCost > 0.00000000001) {
 				return simId + "," + bidDay + "," + campId + "," + adType.toString() + "," +
@@ -2428,6 +2477,10 @@ public class AgentNAMM extends Agent {
 		}
 	}
 
+	/**
+	* Structure to ease the manipulation of different statistical reports from a collection of values. Used to ease
+	* the manipulation of org.apache.commons.math3 operations.
+	**/
 	private class BasicStatisticValues {
 		public double mean;
 		public double std;
