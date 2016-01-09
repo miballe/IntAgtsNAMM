@@ -1,0 +1,1035 @@
+Processing game 117 (./../ExecutionLogs/game117.slg.gz)
+****AGENT INDEXES****
+coordinator: 0
+adxusers: 1
+demand: 2
+Lucy: 3
+BargainHunter: 4
+AgentIsHard: 5
+LYYB: 6
+Deneto: 7
+NAMM: 8
+Coulson: 9
+FDP: 10
+**** AdX General Log Prser***
+Next day :          0 srarting
+0    	Lucy                	Bank balance:       0.0
+0    	BargainHunter       	Bank balance:       0.0
+0    	AgentIsHard         	Bank balance:       0.0
+0    	LYYB                	Bank balance:       0.0
+0    	Deneto              	Bank balance:       0.0
+0    	NAMM                	Bank balance:       0.0
+0    	Coulson             	Bank balance:       0.0
+0    	FDP                 	Bank balance:       0.0
+Next day :          1 srarting
+1    	Lucy                	Bank balance:       0.0
+1    	BargainHunter       	Bank balance:       -0.2
+1    	AgentIsHard         	Bank balance:       -0.09841500000000002
+1    	LYYB                	Bank balance:       -0.11512659600000003
+1    	Deneto              	Bank balance:       -0.07085880000000001
+1    	NAMM                	Bank balance:       0.0
+1    	Coulson             	Bank balance:       -0.15865806228207158
+1    	FDP                 	Bank balance:       -0.18000000000000002
+Next day :          2 srarting
+ Advancing from day 1 to day 2 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 1 to day 2 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 1 to day 2 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 1 to day 2 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 1 to day 2 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 1 to day 2 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 1 to day 2 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 1 to day 2 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+2    	Lucy                	Bank balance:       -0.22861915987500003
+2    	BargainHunter       	Bank balance:       -0.28857350000000004
+2    	AgentIsHard         	Bank balance:       -0.24421500000000002
+2    	LYYB                	Bank balance:       -0.11512659600000003
+2    	Deneto              	Bank balance:       -0.13743290100753802
+2    	NAMM                	Bank balance:       -0.19679760000000002
+2    	Coulson             	Bank balance:       -0.42745806228207156
+2    	FDP                 	Bank balance:       -0.30779675302694465
+Next day :          3 srarting
+ Advancing from day 2 to day 3 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 2 to day 3 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 2 to day 3 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 2 to day 3 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 2 to day 3 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 2 to day 3 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 2 to day 3 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 2 to day 3 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+3    	Lucy                	Bank balance:       -0.7738864947543624
+3    	BargainHunter       	Bank balance:       -0.9849714170430608
+3    	AgentIsHard         	Bank balance:       -1.5627302816354394
+3    	LYYB                	Bank balance:       -0.4577281038664171
+3    	Deneto              	Bank balance:       -0.5038619035771629
+3    	NAMM                	Bank balance:       -0.37391544000000004
+3    	Coulson             	Bank balance:       -11.188133718091843
+3    	FDP                 	Bank balance:       -4.635726865807818
+Next day :          4 srarting
+ Advancing from day 3 to day 4 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 3 to day 4 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 3 to day 4 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 3 to day 4 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 3 to day 4 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 3 to day 4 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 3 to day 4 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 3 to day 4 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+4    	Lucy                	Bank balance:       -2.0473986285640584
+4    	BargainHunter       	Bank balance:       -2.0758116746057977
+4    	AgentIsHard         	Bank balance:       -2.704764248611406
+4    	LYYB                	Bank balance:       -3.956967639777041
+4    	Deneto              	Bank balance:       -1.7614122388412046
+4    	NAMM                	Bank balance:       -6.911726800004538
+4    	Coulson             	Bank balance:       -22.072784941695026
+4    	FDP                 	Bank balance:       -8.870383754546939
+Next day :          5 srarting
+ Advancing from day 4 to day 5 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 4 to day 5 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 4 to day 5 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 4 to day 5 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 4 to day 5 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 4 to day 5 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 4 to day 5 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 4 to day 5 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+5    	Lucy                	Bank balance:       -2.4598698223547704
+5    	BargainHunter       	Bank balance:       -2.3178345981889685
+5    	AgentIsHard         	Bank balance:       -3.788323134040623
+5    	LYYB                	Bank balance:       -3.956967639777041
+5    	Deneto              	Bank balance:       -1.7617074838412046
+5    	NAMM                	Bank balance:       -14.06514914711495
+5    	Coulson             	Bank balance:       -33.16696698117654
+5    	FDP                 	Bank balance:       -13.154439990784534
+Next day :          6 srarting
+ Advancing from day 5 to day 6 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 5 to day 6 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 5 to day 6 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 5 to day 6 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 5 to day 6 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 5 to day 6 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 5 to day 6 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 5 to day 6 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+6    	Lucy                	Bank balance:       7.907730143833316
+6    	BargainHunter       	Bank balance:       -2.779547668088149
+6    	AgentIsHard         	Bank balance:       -4.7571820980040815
+6    	LYYB                	Bank balance:       -0.524138254255301
+6    	Deneto              	Bank balance:       -2.827193429517678
+6    	NAMM                	Bank balance:       -20.4557659772763
+6    	Coulson             	Bank balance:       -43.32920673708967
+6    	FDP                 	Bank balance:       -17.09329576246183
+Next day :          7 srarting
+ Advancing from day 6 to day 7 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 6 to day 7 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 6 to day 7 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 6 to day 7 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 6 to day 7 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 6 to day 7 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 6 to day 7 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 6 to day 7 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+7    	Lucy                	Bank balance:       7.360258702140943
+7    	BargainHunter       	Bank balance:       -3.0487217517605454
+7    	AgentIsHard         	Bank balance:       -5.86567633244357
+7    	LYYB                	Bank balance:       -0.524138254255301
+7    	Deneto              	Bank balance:       -2.989193429517678
+7    	NAMM                	Bank balance:       -29.526935280004224
+7    	Coulson             	Bank balance:       -56.160484433490986
+7    	FDP                 	Bank balance:       -22.32172056268792
+Next day :          8 srarting
+ Advancing from day 7 to day 8 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 7 to day 8 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 7 to day 8 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 7 to day 8 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 7 to day 8 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 7 to day 8 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 7 to day 8 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 7 to day 8 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+8    	Lucy                	Bank balance:       6.976375174076093
+8    	BargainHunter       	Bank balance:       -3.049088616753995
+8    	AgentIsHard         	Bank balance:       -5.86567633244357
+8    	LYYB                	Bank balance:       -0.524138254255301
+8    	Deneto              	Bank balance:       -3.1691934295176782
+8    	NAMM                	Bank balance:       -29.526935280004224
+8    	Coulson             	Bank balance:       -56.160484433490986
+8    	FDP                 	Bank balance:       -23.36097365182512
+Next day :          9 srarting
+ Advancing from day 8 to day 9 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 8 to day 9 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 8 to day 9 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 8 to day 9 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 8 to day 9 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 8 to day 9 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 8 to day 9 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 8 to day 9 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+9    	Lucy                	Bank balance:       6.5767293282199
+9    	BargainHunter       	Bank balance:       -2.9780058113469754
+9    	AgentIsHard         	Bank balance:       -5.86567633244357
+9    	LYYB                	Bank balance:       -0.524138254255301
+9    	Deneto              	Bank balance:       -3.1695984295176785
+9    	NAMM                	Bank balance:       -29.526935280004224
+9    	Coulson             	Bank balance:       -56.160484433490986
+9    	FDP                 	Bank balance:       -24.361662061305687
+Next day :          10 srarting
+ Advancing from day 9 to day 10 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 9 to day 10 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 9 to day 10 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 9 to day 10 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 9 to day 10 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 9 to day 10 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 9 to day 10 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 9 to day 10 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+10   	Lucy                	Bank balance:       6.287899915258136
+10   	BargainHunter       	Bank balance:       -3.2418676516475906
+10   	AgentIsHard         	Bank balance:       -5.86567633244357
+10   	LYYB                	Bank balance:       -0.524138254255301
+10   	Deneto              	Bank balance:       -3.2100263448791835
+10   	NAMM                	Bank balance:       -29.526935280004224
+10   	Coulson             	Bank balance:       -56.160484433490986
+10   	FDP                 	Bank balance:       -24.644537122504627
+Next day :          11 srarting
+ Advancing from day 10 to day 11 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 10 to day 11 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 10 to day 11 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 10 to day 11 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 10 to day 11 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 10 to day 11 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 10 to day 11 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 10 to day 11 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+11   	Lucy                	Bank balance:       5.9330542489879745
+11   	BargainHunter       	Bank balance:       -3.2418676516475906
+11   	AgentIsHard         	Bank balance:       -5.86567633244357
+11   	LYYB                	Bank balance:       -0.524138254255301
+11   	Deneto              	Bank balance:       -3.210487644716379
+11   	NAMM                	Bank balance:       -29.526935280004224
+11   	Coulson             	Bank balance:       -56.160484433490986
+11   	FDP                 	Bank balance:       -24.714521122504628
+Next day :          12 srarting
+ Advancing from day 11 to day 12 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 11 to day 12 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 11 to day 12 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 11 to day 12 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 11 to day 12 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 11 to day 12 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 11 to day 12 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 11 to day 12 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+12   	Lucy                	Bank balance:       7.218062491025153
+12   	BargainHunter       	Bank balance:       -3.2418676516475906
+12   	AgentIsHard         	Bank balance:       -5.86567633244357
+12   	LYYB                	Bank balance:       -0.524138254255301
+12   	Deneto              	Bank balance:       -3.2109262268159497
+12   	NAMM                	Bank balance:       -29.526935280004224
+12   	Coulson             	Bank balance:       -56.160484433490986
+12   	FDP                 	Bank balance:       -24.870076678060183
+Next day :          13 srarting
+ Advancing from day 12 to day 13 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 12 to day 13 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 12 to day 13 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 12 to day 13 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 12 to day 13 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 12 to day 13 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 12 to day 13 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 12 to day 13 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+13   	Lucy                	Bank balance:       8.894286229539173
+13   	BargainHunter       	Bank balance:       -3.2418676516475906
+13   	AgentIsHard         	Bank balance:       -5.86567633244357
+13   	LYYB                	Bank balance:       -0.524138254255301
+13   	Deneto              	Bank balance:       -3.2109415290725716
+13   	NAMM                	Bank balance:       -29.526935280004224
+13   	Coulson             	Bank balance:       -56.160484433490986
+13   	FDP                 	Bank balance:       -24.995466409014583
+Next day :          14 srarting
+ Advancing from day 13 to day 14 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 13 to day 14 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 13 to day 14 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 13 to day 14 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 13 to day 14 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 13 to day 14 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 13 to day 14 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 13 to day 14 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+14   	Lucy                	Bank balance:       10.412845687970504
+14   	BargainHunter       	Bank balance:       -3.2418676516475906
+14   	AgentIsHard         	Bank balance:       -5.86567633244357
+14   	LYYB                	Bank balance:       -0.524138254255301
+14   	Deneto              	Bank balance:       -3.2109781462666267
+14   	NAMM                	Bank balance:       -29.526935280004224
+14   	Coulson             	Bank balance:       -56.160484433490986
+14   	FDP                 	Bank balance:       -28.06457987736779
+Next day :          15 srarting
+ Advancing from day 14 to day 15 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 14 to day 15 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 14 to day 15 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 14 to day 15 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 14 to day 15 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 14 to day 15 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 14 to day 15 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 14 to day 15 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+15   	Lucy                	Bank balance:       2.6129553452383547
+15   	BargainHunter       	Bank balance:       -3.2418676516475906
+15   	AgentIsHard         	Bank balance:       -6.07210322490357
+15   	LYYB                	Bank balance:       -0.524138254255301
+15   	Deneto              	Bank balance:       -3.234385367603533
+15   	NAMM                	Bank balance:       -29.64360194667089
+15   	Coulson             	Bank balance:       -56.160484433490986
+15   	FDP                 	Bank balance:       -30.267846208257485
+Next day :          16 srarting
+ Advancing from day 15 to day 16 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 15 to day 16 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 15 to day 16 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 15 to day 16 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 15 to day 16 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 15 to day 16 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 15 to day 16 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 15 to day 16 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+16   	Lucy                	Bank balance:       -2.392442473399125
+16   	BargainHunter       	Bank balance:       -3.2418676516475906
+16   	AgentIsHard         	Bank balance:       -6.27728011736357
+16   	LYYB                	Bank balance:       -0.524138254255301
+16   	Deneto              	Bank balance:       -2.168583851457427
+16   	NAMM                	Bank balance:       -29.76026861333756
+16   	Coulson             	Bank balance:       -56.160484433490986
+16   	FDP                 	Bank balance:       -34.41144784756693
+Next day :          17 srarting
+ Advancing from day 16 to day 17 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 16 to day 17 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 16 to day 17 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 16 to day 17 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 16 to day 17 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 16 to day 17 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 16 to day 17 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 16 to day 17 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+17   	Lucy                	Bank balance:       -4.135150776239389
+17   	BargainHunter       	Bank balance:       -3.2418676516475906
+17   	AgentIsHard         	Bank balance:       -7.706815506667955
+17   	LYYB                	Bank balance:       -0.524138254255301
+17   	Deneto              	Bank balance:       -2.168583851457427
+17   	NAMM                	Bank balance:       -30.939325858880235
+17   	Coulson             	Bank balance:       -56.160484433490986
+17   	FDP                 	Bank balance:       -35.68970855017573
+Next day :          18 srarting
+ Advancing from day 17 to day 18 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 17 to day 18 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 17 to day 18 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 17 to day 18 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 17 to day 18 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 17 to day 18 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 17 to day 18 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 17 to day 18 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+18   	Lucy                	Bank balance:       -6.273675758114354
+18   	BargainHunter       	Bank balance:       -3.2418676516475906
+18   	AgentIsHard         	Bank balance:       -8.795524511899169
+18   	LYYB                	Bank balance:       -0.524138254255301
+18   	Deneto              	Bank balance:       -2.168583851457427
+18   	NAMM                	Bank balance:       -33.5809979422752
+18   	Coulson             	Bank balance:       -56.160484433490986
+18   	FDP                 	Bank balance:       -39.49303613146605
+Next day :          19 srarting
+ Advancing from day 18 to day 19 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 18 to day 19 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 18 to day 19 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 18 to day 19 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 18 to day 19 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 18 to day 19 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 18 to day 19 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 18 to day 19 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+19   	Lucy                	Bank balance:       -6.668425609716653
+19   	BargainHunter       	Bank balance:       -3.2418676516475906
+19   	AgentIsHard         	Bank balance:       -8.795524511899169
+19   	LYYB                	Bank balance:       -0.524138254255301
+19   	Deneto              	Bank balance:       -2.168583851457427
+19   	NAMM                	Bank balance:       -34.98087097734995
+19   	Coulson             	Bank balance:       -56.160484433490986
+19   	FDP                 	Bank balance:       -39.77750425265599
+Next day :          20 srarting
+ Advancing from day 19 to day 20 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 19 to day 20 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 19 to day 20 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 19 to day 20 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 19 to day 20 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 19 to day 20 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 19 to day 20 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 19 to day 20 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+20   	Lucy                	Bank balance:       -0.19219744347216405
+20   	BargainHunter       	Bank balance:       -3.2418676516475906
+20   	AgentIsHard         	Bank balance:       -8.78802059395052
+20   	LYYB                	Bank balance:       -0.524138254255301
+20   	Deneto              	Bank balance:       -2.168583851457427
+20   	NAMM                	Bank balance:       -36.32325403066729
+20   	Coulson             	Bank balance:       -56.160484433490986
+20   	FDP                 	Bank balance:       -40.12744268600304
+Next day :          21 srarting
+ Advancing from day 20 to day 21 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 20 to day 21 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 20 to day 21 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 20 to day 21 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 20 to day 21 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 20 to day 21 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 20 to day 21 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 20 to day 21 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+21   	Lucy                	Bank balance:       -0.4241552781934805
+21   	BargainHunter       	Bank balance:       -3.2418676516475906
+21   	AgentIsHard         	Bank balance:       -8.78802059395052
+21   	LYYB                	Bank balance:       -0.524138254255301
+21   	Deneto              	Bank balance:       -2.168583851457427
+21   	NAMM                	Bank balance:       -37.8056010372234
+21   	Coulson             	Bank balance:       -56.160484433490986
+21   	FDP                 	Bank balance:       -39.03407068262463
+Next day :          22 srarting
+ Advancing from day 21 to day 22 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 21 to day 22 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 21 to day 22 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 21 to day 22 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 21 to day 22 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 21 to day 22 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 21 to day 22 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 21 to day 22 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+22   	Lucy                	Bank balance:       -0.5899009981779877
+22   	BargainHunter       	Bank balance:       -3.2418676516475906
+22   	AgentIsHard         	Bank balance:       -8.78802059395052
+22   	LYYB                	Bank balance:       -0.524138254255301
+22   	Deneto              	Bank balance:       -2.168583851457427
+22   	NAMM                	Bank balance:       -38.49244476003185
+22   	Coulson             	Bank balance:       -56.160484433490986
+22   	FDP                 	Bank balance:       -36.17127003912838
+Next day :          23 srarting
+ Advancing from day 22 to day 23 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 22 to day 23 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 22 to day 23 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 22 to day 23 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 22 to day 23 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 22 to day 23 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 22 to day 23 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 22 to day 23 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+23   	Lucy                	Bank balance:       -0.1713121584219659
+23   	BargainHunter       	Bank balance:       -3.2418676516475906
+23   	AgentIsHard         	Bank balance:       -8.78802059395052
+23   	LYYB                	Bank balance:       -0.524138254255301
+23   	Deneto              	Bank balance:       -2.168583851457427
+23   	NAMM                	Bank balance:       -39.2393378129783
+23   	Coulson             	Bank balance:       -56.160484433490986
+23   	FDP                 	Bank balance:       -36.17167503912838
+Next day :          24 srarting
+ Advancing from day 23 to day 24 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 23 to day 24 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 23 to day 24 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 23 to day 24 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 23 to day 24 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 23 to day 24 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 23 to day 24 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 23 to day 24 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+24   	Lucy                	Bank balance:       -0.3881919244590261
+24   	BargainHunter       	Bank balance:       -3.2418676516475906
+24   	AgentIsHard         	Bank balance:       -8.78802059395052
+24   	LYYB                	Bank balance:       -0.524138254255301
+24   	Deneto              	Bank balance:       -2.168948351457427
+24   	NAMM                	Bank balance:       -36.991342158151845
+24   	Coulson             	Bank balance:       -56.160484433490986
+24   	FDP                 	Bank balance:       -36.22206351912838
+Next day :          25 srarting
+ Advancing from day 24 to day 25 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 24 to day 25 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 24 to day 25 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 24 to day 25 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 24 to day 25 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 24 to day 25 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 24 to day 25 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 24 to day 25 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+25   	Lucy                	Bank balance:       -0.5530433144969292
+25   	BargainHunter       	Bank balance:       -3.2418676516475906
+25   	AgentIsHard         	Bank balance:       -8.78802059395052
+25   	LYYB                	Bank balance:       -0.524138254255301
+25   	Deneto              	Bank balance:       -2.1693533514574272
+25   	NAMM                	Bank balance:       -36.991342158151845
+25   	Coulson             	Bank balance:       -56.160484433490986
+25   	FDP                 	Bank balance:       -36.27805071912838
+Next day :          26 srarting
+ Advancing from day 25 to day 26 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 25 to day 26 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 25 to day 26 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 25 to day 26 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 25 to day 26 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 25 to day 26 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 25 to day 26 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 25 to day 26 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+26   	Lucy                	Bank balance:       -0.20325785353766268
+26   	BargainHunter       	Bank balance:       -3.2418676516475906
+26   	AgentIsHard         	Bank balance:       -8.78802059395052
+26   	LYYB                	Bank balance:       -0.524138254255301
+26   	Deneto              	Bank balance:       -2.171191227239595
+26   	NAMM                	Bank balance:       -36.991342158151845
+26   	Coulson             	Bank balance:       -56.160484433490986
+26   	FDP                 	Bank balance:       -36.386075410486406
+Next day :          27 srarting
+ Advancing from day 26 to day 27 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 26 to day 27 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 26 to day 27 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 26 to day 27 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 26 to day 27 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 26 to day 27 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 26 to day 27 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 26 to day 27 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+27   	Lucy                	Bank balance:       -0.37132207026009667
+27   	BargainHunter       	Bank balance:       -3.2418676516475906
+27   	AgentIsHard         	Bank balance:       -8.78802059395052
+27   	LYYB                	Bank balance:       -0.524138254255301
+27   	Deneto              	Bank balance:       -2.1715962272395952
+27   	NAMM                	Bank balance:       -36.991342158151845
+27   	Coulson             	Bank balance:       -56.160484433490986
+27   	FDP                 	Bank balance:       -37.126899501074355
+Next day :          28 srarting
+ Advancing from day 27 to day 28 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 27 to day 28 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 27 to day 28 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 27 to day 28 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 27 to day 28 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 27 to day 28 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 27 to day 28 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 27 to day 28 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+28   	Lucy                	Bank balance:       -1.265200917820611
+28   	BargainHunter       	Bank balance:       -3.2418676516475906
+28   	AgentIsHard         	Bank balance:       -8.78802059395052
+28   	LYYB                	Bank balance:       -0.524138254255301
+28   	Deneto              	Bank balance:       -2.1720012272395954
+28   	NAMM                	Bank balance:       -36.991342158151845
+28   	Coulson             	Bank balance:       -56.160484433490986
+28   	FDP                 	Bank balance:       -38.30231567833941
+Next day :          29 srarting
+ Advancing from day 28 to day 29 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 28 to day 29 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 28 to day 29 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 28 to day 29 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 28 to day 29 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 28 to day 29 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 28 to day 29 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 28 to day 29 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+29   	Lucy                	Bank balance:       -6.1392370492613155
+29   	BargainHunter       	Bank balance:       -3.2418676516475906
+29   	AgentIsHard         	Bank balance:       -8.78802059395052
+29   	LYYB                	Bank balance:       -0.524138254255301
+29   	Deneto              	Bank balance:       -2.1724062272395956
+29   	NAMM                	Bank balance:       -36.991342158151845
+29   	Coulson             	Bank balance:       -56.160484433490986
+29   	FDP                 	Bank balance:       -40.5743279596866
+Next day :          30 srarting
+ Advancing from day 29 to day 30 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 29 to day 30 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 29 to day 30 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 29 to day 30 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 29 to day 30 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 29 to day 30 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 29 to day 30 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 29 to day 30 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+30   	Lucy                	Bank balance:       -6.673339925916409
+30   	BargainHunter       	Bank balance:       -3.2418676516475906
+30   	AgentIsHard         	Bank balance:       -8.78802059395052
+30   	LYYB                	Bank balance:       -0.524138254255301
+30   	Deneto              	Bank balance:       -2.1772360921358267
+30   	NAMM                	Bank balance:       -36.991342158151845
+30   	Coulson             	Bank balance:       -56.160484433490986
+30   	FDP                 	Bank balance:       -39.2256722593827
+Next day :          31 srarting
+ Advancing from day 30 to day 31 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 30 to day 31 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 30 to day 31 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 30 to day 31 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 30 to day 31 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 30 to day 31 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 30 to day 31 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 30 to day 31 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+31   	Lucy                	Bank balance:       -8.641736982390704
+31   	BargainHunter       	Bank balance:       -3.2418676516475906
+31   	AgentIsHard         	Bank balance:       -8.78802059395052
+31   	LYYB                	Bank balance:       -0.524138254255301
+31   	Deneto              	Bank balance:       -2.190086356618247
+31   	NAMM                	Bank balance:       -36.991342158151845
+31   	Coulson             	Bank balance:       -56.160484433490986
+31   	FDP                 	Bank balance:       -39.31569283551438
+Next day :          32 srarting
+ Advancing from day 31 to day 32 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 31 to day 32 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 31 to day 32 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 31 to day 32 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 31 to day 32 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 31 to day 32 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 31 to day 32 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 31 to day 32 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+32   	Lucy                	Bank balance:       -10.83437759480477
+32   	BargainHunter       	Bank balance:       -3.2418676516475906
+32   	AgentIsHard         	Bank balance:       -8.78802059395052
+32   	LYYB                	Bank balance:       -0.524138254255301
+32   	Deneto              	Bank balance:       -2.1999669631169083
+32   	NAMM                	Bank balance:       -36.991342158151845
+32   	Coulson             	Bank balance:       -56.160484433490986
+32   	FDP                 	Bank balance:       -39.40571341164607
+Next day :          33 srarting
+ Advancing from day 32 to day 33 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 32 to day 33 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 32 to day 33 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 32 to day 33 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 32 to day 33 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 32 to day 33 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 32 to day 33 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 32 to day 33 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+33   	Lucy                	Bank balance:       -4.108591987487946
+33   	BargainHunter       	Bank balance:       -3.2418676516475906
+33   	AgentIsHard         	Bank balance:       -8.78802059395052
+33   	LYYB                	Bank balance:       -0.524138254255301
+33   	Deneto              	Bank balance:       -2.237739596987773
+33   	NAMM                	Bank balance:       -36.991342158151845
+33   	Coulson             	Bank balance:       -56.160484433490986
+33   	FDP                 	Bank balance:       -39.495733987777754
+Next day :          34 srarting
+ Advancing from day 33 to day 34 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 33 to day 34 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 33 to day 34 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 33 to day 34 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 33 to day 34 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 33 to day 34 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 33 to day 34 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 33 to day 34 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+34   	Lucy                	Bank balance:       -8.702613555690915
+34   	BargainHunter       	Bank balance:       -3.2418676516475906
+34   	AgentIsHard         	Bank balance:       -8.78802059395052
+34   	LYYB                	Bank balance:       -0.524138254255301
+34   	Deneto              	Bank balance:       4.427817831255896
+34   	NAMM                	Bank balance:       -37.091342158151846
+34   	Coulson             	Bank balance:       -56.160484433490986
+34   	FDP                 	Bank balance:       -41.92895757237993
+Next day :          35 srarting
+ Advancing from day 34 to day 35 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 34 to day 35 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 34 to day 35 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 34 to day 35 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 34 to day 35 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 34 to day 35 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 34 to day 35 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 34 to day 35 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+35   	Lucy                	Bank balance:       -12.174712460985592
+35   	BargainHunter       	Bank balance:       -3.2418676516475906
+35   	AgentIsHard         	Bank balance:       -8.78802059395052
+35   	LYYB                	Bank balance:       -0.524138254255301
+35   	Deneto              	Bank balance:       4.353036811962617
+35   	NAMM                	Bank balance:       -37.19134215815185
+35   	Coulson             	Bank balance:       -56.160484433490986
+35   	FDP                 	Bank balance:       -43.18321028392916
+Next day :          36 srarting
+ Advancing from day 35 to day 36 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 35 to day 36 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 35 to day 36 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 35 to day 36 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 35 to day 36 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 35 to day 36 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 35 to day 36 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 35 to day 36 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+36   	Lucy                	Bank balance:       -10.35217442894056
+36   	BargainHunter       	Bank balance:       -3.2418676516475906
+36   	AgentIsHard         	Bank balance:       -8.78802059395052
+36   	LYYB                	Bank balance:       -0.524138254255301
+36   	Deneto              	Bank balance:       4.352672311962617
+36   	NAMM                	Bank balance:       -41.107892229506255
+36   	Coulson             	Bank balance:       -56.160484433490986
+36   	FDP                 	Bank balance:       -45.478688684104014
+Next day :          37 srarting
+ Advancing from day 36 to day 37 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 36 to day 37 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 36 to day 37 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 36 to day 37 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 36 to day 37 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 36 to day 37 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 36 to day 37 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 36 to day 37 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+37   	Lucy                	Bank balance:       -13.39941931569453
+37   	BargainHunter       	Bank balance:       -3.2418676516475906
+37   	AgentIsHard         	Bank balance:       -8.78802059395052
+37   	LYYB                	Bank balance:       -0.524138254255301
+37   	Deneto              	Bank balance:       4.218591857607506
+37   	NAMM                	Bank balance:       -103.74158594438867
+37   	Coulson             	Bank balance:       -56.160484433490986
+37   	FDP                 	Bank balance:       -49.30742644324038
+Next day :          38 srarting
+ Advancing from day 37 to day 38 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 37 to day 38 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 37 to day 38 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 37 to day 38 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 37 to day 38 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 37 to day 38 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 37 to day 38 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 37 to day 38 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+38   	Lucy                	Bank balance:       -17.115915160199787
+38   	BargainHunter       	Bank balance:       -3.2418676516475906
+38   	AgentIsHard         	Bank balance:       -8.78802059395052
+38   	LYYB                	Bank balance:       -0.524138254255301
+38   	Deneto              	Bank balance:       4.141156235187808
+38   	NAMM                	Bank balance:       -108.53499310226132
+38   	Coulson             	Bank balance:       -56.160484433490986
+38   	FDP                 	Bank balance:       -52.78531846882532
+Next day :          39 srarting
+ Advancing from day 38 to day 39 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 38 to day 39 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 38 to day 39 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 38 to day 39 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 38 to day 39 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 38 to day 39 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 38 to day 39 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 38 to day 39 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+39   	Lucy                	Bank balance:       -20.057733175852867
+39   	BargainHunter       	Bank balance:       -3.2418676516475906
+39   	AgentIsHard         	Bank balance:       -8.78802059395052
+39   	LYYB                	Bank balance:       -0.524138254255301
+39   	Deneto              	Bank balance:       4.122207497172187
+39   	NAMM                	Bank balance:       -116.54665859051977
+39   	Coulson             	Bank balance:       -56.160484433490986
+39   	FDP                 	Bank balance:       -56.95849276301638
+Next day :          40 srarting
+ Advancing from day 39 to day 40 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 39 to day 40 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 39 to day 40 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 39 to day 40 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 39 to day 40 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 39 to day 40 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 39 to day 40 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 39 to day 40 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+40   	Lucy                	Bank balance:       -23.99704592986065
+40   	BargainHunter       	Bank balance:       -3.2418676516475906
+40   	AgentIsHard         	Bank balance:       -8.78802059395052
+40   	LYYB                	Bank balance:       -0.524138254255301
+40   	Deneto              	Bank balance:       4.121326645590476
+40   	NAMM                	Bank balance:       -161.6989937276299
+40   	Coulson             	Bank balance:       -56.160484433490986
+40   	FDP                 	Bank balance:       -58.155142699441704
+Next day :          41 srarting
+ Advancing from day 40 to day 41 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 40 to day 41 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 40 to day 41 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 40 to day 41 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 40 to day 41 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 40 to day 41 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 40 to day 41 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 40 to day 41 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+41   	Lucy                	Bank balance:       -25.389047032412197
+41   	BargainHunter       	Bank balance:       -3.2418676516475906
+41   	AgentIsHard         	Bank balance:       -8.78802059395052
+41   	LYYB                	Bank balance:       -0.524138254255301
+41   	Deneto              	Bank balance:       4.121326645590476
+41   	NAMM                	Bank balance:       -181.5253642251937
+41   	Coulson             	Bank balance:       -56.160484433490986
+41   	FDP                 	Bank balance:       -59.04898964041982
+Next day :          42 srarting
+ Advancing from day 41 to day 42 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 41 to day 42 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 41 to day 42 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 41 to day 42 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 41 to day 42 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 41 to day 42 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 41 to day 42 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 41 to day 42 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+42   	Lucy                	Bank balance:       -25.389047032412197
+42   	BargainHunter       	Bank balance:       -3.2418676516475906
+42   	AgentIsHard         	Bank balance:       -8.78802059395052
+42   	LYYB                	Bank balance:       -0.524138254255301
+42   	Deneto              	Bank balance:       4.121326645590476
+42   	NAMM                	Bank balance:       -191.7808204873608
+42   	Coulson             	Bank balance:       -56.160484433490986
+42   	FDP                 	Bank balance:       -57.88014140643655
+Next day :          43 srarting
+ Advancing from day 42 to day 43 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 42 to day 43 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 42 to day 43 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 42 to day 43 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 42 to day 43 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 42 to day 43 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 42 to day 43 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 42 to day 43 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+43   	Lucy                	Bank balance:       -25.389047032412197
+43   	BargainHunter       	Bank balance:       -3.2418676516475906
+43   	AgentIsHard         	Bank balance:       -8.78802059395052
+43   	LYYB                	Bank balance:       -0.524138254255301
+43   	Deneto              	Bank balance:       4.121326645590476
+43   	NAMM                	Bank balance:       -201.00297335177402
+43   	Coulson             	Bank balance:       -56.160484433490986
+43   	FDP                 	Bank balance:       -60.240660610360635
+Next day :          44 srarting
+ Advancing from day 43 to day 44 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 43 to day 44 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 43 to day 44 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 43 to day 44 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 43 to day 44 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 43 to day 44 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 43 to day 44 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 43 to day 44 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+44   	Lucy                	Bank balance:       -25.389047032412197
+44   	BargainHunter       	Bank balance:       -3.2418676516475906
+44   	AgentIsHard         	Bank balance:       -8.78802059395052
+44   	LYYB                	Bank balance:       -0.524138254255301
+44   	Deneto              	Bank balance:       4.121326645590476
+44   	NAMM                	Bank balance:       -201.10087770476238
+44   	Coulson             	Bank balance:       -56.160484433490986
+44   	FDP                 	Bank balance:       -60.26934594863258
+Next day :          45 srarting
+ Advancing from day 44 to day 45 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 44 to day 45 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 44 to day 45 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 44 to day 45 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 44 to day 45 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 44 to day 45 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 44 to day 45 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 44 to day 45 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+45   	Lucy                	Bank balance:       -25.389047032412197
+45   	BargainHunter       	Bank balance:       -3.2418676516475906
+45   	AgentIsHard         	Bank balance:       -8.78802059395052
+45   	LYYB                	Bank balance:       -0.524138254255301
+45   	Deneto              	Bank balance:       4.121326645590476
+45   	NAMM                	Bank balance:       -201.10087770476238
+45   	Coulson             	Bank balance:       -56.160484433490986
+45   	FDP                 	Bank balance:       -52.94007287164271
+Next day :          46 srarting
+ Advancing from day 45 to day 46 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 45 to day 46 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 45 to day 46 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 45 to day 46 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 45 to day 46 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 45 to day 46 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 45 to day 46 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 45 to day 46 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+46   	Lucy                	Bank balance:       -25.4890470324122
+46   	BargainHunter       	Bank balance:       -3.2418676516475906
+46   	AgentIsHard         	Bank balance:       -8.78802059395052
+46   	LYYB                	Bank balance:       -0.524138254255301
+46   	Deneto              	Bank balance:       4.121326645590476
+46   	NAMM                	Bank balance:       -201.10087770476238
+46   	Coulson             	Bank balance:       -56.160484433490986
+46   	FDP                 	Bank balance:       -53.86537291588724
+Next day :          47 srarting
+ Advancing from day 46 to day 47 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 46 to day 47 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 46 to day 47 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 46 to day 47 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 46 to day 47 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 46 to day 47 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 46 to day 47 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 46 to day 47 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+47   	Lucy                	Bank balance:       -25.5890470324122
+47   	BargainHunter       	Bank balance:       -3.2418676516475906
+47   	AgentIsHard         	Bank balance:       -8.78802059395052
+47   	LYYB                	Bank balance:       -0.524138254255301
+47   	Deneto              	Bank balance:       4.121326645590476
+47   	NAMM                	Bank balance:       -201.10087770476238
+47   	Coulson             	Bank balance:       -56.160484433490986
+47   	FDP                 	Bank balance:       -26.95473082611416
+Next day :          48 srarting
+ Advancing from day 47 to day 48 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 47 to day 48 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 47 to day 48 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 47 to day 48 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 47 to day 48 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 47 to day 48 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 47 to day 48 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 47 to day 48 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+48   	Lucy                	Bank balance:       -25.589512337046838
+48   	BargainHunter       	Bank balance:       -3.2418676516475906
+48   	AgentIsHard         	Bank balance:       -8.78802059395052
+48   	LYYB                	Bank balance:       -0.524138254255301
+48   	Deneto              	Bank balance:       4.121326645590476
+48   	NAMM                	Bank balance:       -201.10087770476238
+48   	Coulson             	Bank balance:       -56.160484433490986
+48   	FDP                 	Bank balance:       -17.1135233107303
+Next day :          49 srarting
+ Advancing from day 48 to day 49 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 48 to day 49 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 48 to day 49 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 48 to day 49 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 48 to day 49 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 48 to day 49 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 48 to day 49 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 48 to day 49 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+49   	Lucy                	Bank balance:       -25.58997705842658
+49   	BargainHunter       	Bank balance:       -3.2418676516475906
+49   	AgentIsHard         	Bank balance:       -8.78802059395052
+49   	LYYB                	Bank balance:       -0.524138254255301
+49   	Deneto              	Bank balance:       4.121326645590476
+49   	NAMM                	Bank balance:       -201.10087770476238
+49   	Coulson             	Bank balance:       -56.26048443349099
+49   	FDP                 	Bank balance:       -19.362426643560532
+Next day :          50 srarting
+ Advancing from day 49 to day 50 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 49 to day 50 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 49 to day 50 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 49 to day 50 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 49 to day 50 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 49 to day 50 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 49 to day 50 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 49 to day 50 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+50   	Lucy                	Bank balance:       -25.664526510584295
+50   	BargainHunter       	Bank balance:       -3.2418676516475906
+50   	AgentIsHard         	Bank balance:       -8.78802059395052
+50   	LYYB                	Bank balance:       -0.524138254255301
+50   	Deneto              	Bank balance:       4.121326645590476
+50   	NAMM                	Bank balance:       -201.10087770476238
+50   	Coulson             	Bank balance:       -56.36048443349099
+50   	FDP                 	Bank balance:       -20.62144975486242
+Next day :          51 srarting
+ Advancing from day 50 to day 51 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 50 to day 51 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 50 to day 51 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 50 to day 51 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 50 to day 51 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 50 to day 51 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 50 to day 51 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 50 to day 51 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+51   	Lucy                	Bank balance:       -22.863036307825297
+51   	BargainHunter       	Bank balance:       -3.2418676516475906
+51   	AgentIsHard         	Bank balance:       -8.78802059395052
+51   	LYYB                	Bank balance:       -0.524138254255301
+51   	Deneto              	Bank balance:       4.121326645590476
+51   	NAMM                	Bank balance:       -201.10087770476238
+51   	Coulson             	Bank balance:       -57.73590362897389
+51   	FDP                 	Bank balance:       -21.864861255516182
+Next day :          52 srarting
+ Advancing from day 51 to day 52 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 51 to day 52 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 51 to day 52 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 51 to day 52 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 51 to day 52 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 51 to day 52 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 51 to day 52 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 51 to day 52 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+52   	Lucy                	Bank balance:       -24.64479978303623
+52   	BargainHunter       	Bank balance:       -3.2418676516475906
+52   	AgentIsHard         	Bank balance:       -8.78802059395052
+52   	LYYB                	Bank balance:       -0.524138254255301
+52   	Deneto              	Bank balance:       4.121326645590476
+52   	NAMM                	Bank balance:       -201.10087770476238
+52   	Coulson             	Bank balance:       -58.757779414918396
+52   	FDP                 	Bank balance:       -13.383186210202593
+Next day :          53 srarting
+ Advancing from day 52 to day 53 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 52 to day 53 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 52 to day 53 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 52 to day 53 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 52 to day 53 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 52 to day 53 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 52 to day 53 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 52 to day 53 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+53   	Lucy                	Bank balance:       -27.15918273792786
+53   	BargainHunter       	Bank balance:       -3.2418676516475906
+53   	AgentIsHard         	Bank balance:       -8.78802059395052
+53   	LYYB                	Bank balance:       -0.524138254255301
+53   	Deneto              	Bank balance:       4.121326645590476
+53   	NAMM                	Bank balance:       -201.10087770476238
+53   	Coulson             	Bank balance:       -59.036165652068966
+53   	FDP                 	Bank balance:       -7.717768918121745
+Next day :          54 srarting
+ Advancing from day 53 to day 54 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 53 to day 54 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 53 to day 54 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 53 to day 54 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 53 to day 54 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 53 to day 54 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 53 to day 54 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 53 to day 54 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+54   	Lucy                	Bank balance:       -29.03285468422324
+54   	BargainHunter       	Bank balance:       -3.2418676516475906
+54   	AgentIsHard         	Bank balance:       -8.78802059395052
+54   	LYYB                	Bank balance:       -0.524138254255301
+54   	Deneto              	Bank balance:       4.121326645590476
+54   	NAMM                	Bank balance:       -201.10087770476238
+54   	Coulson             	Bank balance:       -59.036165652068966
+54   	FDP                 	Bank balance:       3.593807663253436
+Next day :          55 srarting
+ Advancing from day 54 to day 55 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 54 to day 55 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 54 to day 55 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 54 to day 55 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 54 to day 55 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 54 to day 55 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 54 to day 55 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 54 to day 55 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+55   	Lucy                	Bank balance:       -29.03285468422324
+55   	BargainHunter       	Bank balance:       -3.2418676516475906
+55   	AgentIsHard         	Bank balance:       -8.78802059395052
+55   	LYYB                	Bank balance:       -0.524138254255301
+55   	Deneto              	Bank balance:       4.121326645590476
+55   	NAMM                	Bank balance:       -201.10087770476238
+55   	Coulson             	Bank balance:       -59.036165652068966
+55   	FDP                 	Bank balance:       2.621146078156172
+Next day :          56 srarting
+ Advancing from day 55 to day 56 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 55 to day 56 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 55 to day 56 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 55 to day 56 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 55 to day 56 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 55 to day 56 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 55 to day 56 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 55 to day 56 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+56   	Lucy                	Bank balance:       -29.222822122991115
+56   	BargainHunter       	Bank balance:       -3.2418676516475906
+56   	AgentIsHard         	Bank balance:       -8.78802059395052
+56   	LYYB                	Bank balance:       -0.524138254255301
+56   	Deneto              	Bank balance:       4.121326645590476
+56   	NAMM                	Bank balance:       -201.10087770476238
+56   	Coulson             	Bank balance:       -59.036165652068966
+56   	FDP                 	Bank balance:       2.6206960781561723
+Next day :          57 srarting
+ Advancing from day 56 to day 57 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 56 to day 57 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 56 to day 57 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 56 to day 57 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 56 to day 57 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 56 to day 57 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 56 to day 57 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 56 to day 57 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+57   	Lucy                	Bank balance:       -29.521671070849347
+57   	BargainHunter       	Bank balance:       -3.2418676516475906
+57   	AgentIsHard         	Bank balance:       -8.78802059395052
+57   	LYYB                	Bank balance:       -0.524138254255301
+57   	Deneto              	Bank balance:       4.121326645590476
+57   	NAMM                	Bank balance:       -201.10087770476238
+57   	Coulson             	Bank balance:       -59.036165652068966
+57   	FDP                 	Bank balance:       5.643036921518947
+Next day :          58 srarting
+ Advancing from day 57 to day 58 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 57 to day 58 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 57 to day 58 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 57 to day 58 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 57 to day 58 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 57 to day 58 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 57 to day 58 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 57 to day 58 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+58   	Lucy                	Bank balance:       -29.90091771732279
+58   	BargainHunter       	Bank balance:       -3.2418676516475906
+58   	AgentIsHard         	Bank balance:       -8.78802059395052
+58   	LYYB                	Bank balance:       -0.524138254255301
+58   	Deneto              	Bank balance:       4.121326645590476
+58   	NAMM                	Bank balance:       -201.10087770476238
+58   	Coulson             	Bank balance:       -59.036165652068966
+58   	FDP                 	Bank balance:       5.642586921518947
+Next day :          59 srarting
+ Advancing from day 58 to day 59 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 58 to day 59 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 58 to day 59 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 58 to day 59 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 58 to day 59 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 58 to day 59 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 58 to day 59 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 58 to day 59 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+59   	Lucy                	Bank balance:       -21.494428559209695
+59   	BargainHunter       	Bank balance:       -3.2418676516475906
+59   	AgentIsHard         	Bank balance:       -8.78802059395052
+59   	LYYB                	Bank balance:       -0.524138254255301
+59   	Deneto              	Bank balance:       4.121326645590476
+59   	NAMM                	Bank balance:       -201.10087770476238
+59   	Coulson             	Bank balance:       -59.036165652068966
+59   	FDP                 	Bank balance:       5.642136921518947
+Next day :          60 srarting
+ Advancing from day 59 to day 60 for AgentIsHard:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 59 to day 60 for Coulson:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 59 to day 60 for BargainHunter:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 59 to day 60 for FDP:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 59 to day 60 for LYYB:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 59 to day 60 for NAMM:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 59 to day 60 for Lucy:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+ Advancing from day 59 to day 60 for Deneto:   ucsAccumulatedCosts: 0.0  adxAccumulatedCosts: 0.0  accumulatedRevenue: 0.0
+60   	Lucy                	Bank balance:       -20.84422612609912
+60   	BargainHunter       	Bank balance:       -3.2418676516475906
+60   	AgentIsHard         	Bank balance:       -8.78802059395052
+60   	LYYB                	Bank balance:       -0.524138254255301
+60   	Deneto              	Bank balance:       4.121326645590476
+60   	NAMM                	Bank balance:       -201.10087770476238
+60   	Coulson             	Bank balance:       -59.036165652068966
+60   	FDP                 	Bank balance:       5.641686921518947
