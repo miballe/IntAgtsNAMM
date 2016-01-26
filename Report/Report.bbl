@@ -1,0 +1,21 @@
+\begin{thebibliography}{1}
+
+\bibitem{edelman2005internet}
+B.~Edelman, M.~Ostrovsky, and M.~Schwarz.
+\newblock Internet advertising and the generalized second price auction:
+  Selling billions of dollars worth of keywords.
+\newblock Technical report, National Bureau of Economic Research, 2005.
+
+\bibitem{tao2015tac}
+B.~Tao, F.~Wu, and G.~Chen.
+\newblock Tac adx'14: Autonomous agents for realtime ad exchange.
+\newblock In {\em Proceedings of the 2015 International Conference on
+  Autonomous Agents and Multiagent Systems}, pages 1111--1119. International
+  Foundation for Autonomous Agents and Multiagent Systems, 2015.
+
+\bibitem{vickrey1961counterspeculation}
+W.~Vickrey.
+\newblock Counterspeculation, auctions, and competitive sealed tenders.
+\newblock {\em The Journal of finance}, 16(1):8--37, 1961.
+
+\end{thebibliography}
